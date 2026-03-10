@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://di7g7k7tci0jn"]
+
+[ext_resource type="PackedScene" uid="uid://p4sn0r4j4ecw" path="res://scenes/player/player_projectile.tscn" id="1_ml1kf"]
+[ext_resource type="Script" uid="uid://b4i5ovxtp5dcs" path="res://data/weapons/weapon_data.gd" id="1_sn2vi"]
+
+[resource]
+script = ExtResource("1_sn2vi")
+name = "shotgun"
+damage = 5
+cooldown = 1.0
+projectile_count = 3
+spread_degrees = 45.0
+projectile_scene = ExtResource("1_ml1kf")
+metadata/_custom_type_script = "uid://b4i5ovxtp5dcs"

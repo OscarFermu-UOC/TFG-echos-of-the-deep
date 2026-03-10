@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://cmtp8ghkt8j6w"]
+
+[ext_resource type="PackedScene" uid="uid://p4sn0r4j4ecw" path="res://scenes/player/player_projectile.tscn" id="1_dooq4"]
+[ext_resource type="Script" uid="uid://b4i5ovxtp5dcs" path="res://data/weapons/weapon_data.gd" id="1_dp2a2"]
+
+[resource]
+script = ExtResource("1_dp2a2")
+projectile_speed = 150.0
+projectile_scene = ExtResource("1_dooq4")
+metadata/_custom_type_script = "uid://b4i5ovxtp5dcs"

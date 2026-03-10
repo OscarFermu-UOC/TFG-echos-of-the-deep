@@ -1,6 +1,89 @@
-[gd_scene load_steps=2 format=3 uid="uid://xhrfnn2mxr4j"]
+[gd_scene load_steps=13 format=3 uid="uid://brhtmr3l7q4oq"]
 
-[ext_resource type="Script" uid="uid://bdsjbo4t3tuqs" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://cvjbv15yrpion" path="res://scenes/player/player.gd" id="1_g2els"]
+[ext_resource type="Resource" uid="uid://28meoeyrxa5q" path="res://data/characters/list/scavenger.tres" id="2_uf5tr"]
+[ext_resource type="Script" uid="uid://ct8lmck7768cn" path="res://scenes/player/hurtbox.gd" id="3_fm80t"]
+[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="3_je7p5"]
+[ext_resource type="Texture2D" uid="uid://dfxug265t5v" path="res://assets/sprites/player/light.png" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://cmr3gkbs8a6t3" path="res://scenes/player/weapon_system.gd" id="5_gx1jg"]
+[ext_resource type="AudioStream" uid="uid://cl7vbk86wtuoh" path="res://assets/sounds/player/footstep.ogg" id="11_d2wvv"]
+[ext_resource type="Script" uid="uid://bptuv7y70ovsc" path="res://globals/state_machine/state_machine.gd" id="16_lgqa7"]
+[ext_resource type="Script" uid="uid://gqdj5cfam0fr" path="res://scenes/player/state_machine/player_move.gd" id="17_8ydkj"]
+[ext_resource type="Script" uid="uid://djfv8qxrblkac" path="res://scenes/player/state_machine/player_roll.gd" id="18_3j4b4"]
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_8afob")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2wvv"]
+radius = 5.000002
+height = 22.500011
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_je7p5"]
+size = Vector2(15.000002, 27.500004)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 5
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_g2els")
+stats = ExtResource("2_uf5tr")
+
+[node name="VisualPivot" type="Node2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Sprite2D" type="Sprite2D" parent="VisualPivot"]
+light_mask = 3
+texture = ExtResource("3_je7p5")
+
+[node name="Flashlight" type="PointLight2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+energy = 0.35
+shadow_enabled = true
+shadow_filter = 1
+shadow_item_cull_mask = 3
+texture = ExtResource("3_qhqgy")
+
+[node name="CollisionBody" type="CollisionShape2D" parent="."]
+position = Vector2(1.25, 2.3841858e-07)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("CapsuleShape2D_d2wvv")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_fm80t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1.2500001, 1.2500001)
+shape = SubResource("RectangleShape2D_je7p5")
+
+[node name="WeaponHolder" type="Node2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("5_gx1jg")
+
+[node name="Muzzle" type="Marker2D" parent="WeaponHolder"]
+position = Vector2(2.5000002, 0)
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="StepSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_d2wvv")
+max_distance = 200.0
+
+[node name="RunSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_d2wvv")
+max_distance = 200.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("16_lgqa7")
+initial_state = NodePath("Move")
+
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("17_8ydkj")
+player = NodePath("../..")
+
+[node name="Roll" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("18_3j4b4")
+player = NodePath("../..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)
