@@ -1,0 +1,46 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://2vtjuxe3q0q1"]
+
+[ext_resource type="Texture2D" uid="uid://cofrro3gkjqqr" path="res://assets/sprites/map/tileset.png" id="1_qv07q"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qv07q"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2hj43"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rmtps"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0556h"]
+texture = ExtResource("1_qv07q")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 1
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_qv07q")
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 2
+1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_2hj43")
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rmtps")
+
+[resource]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Floor"
+terrain_set_0/terrain_0/color = Color(0.7083647, 0.028871255, 0.31052884, 1)
+terrain_set_0/terrain_1/name = "Top"
+terrain_set_0/terrain_1/color = Color(0, 0.5400402, 0.09015376, 1)
+terrain_set_0/terrain_2/name = "Face"
+terrain_set_0/terrain_2/color = Color(0.180498, 0.4154492, 1, 1)
+navigation_layer_0/layers = 2
+sources/0 = SubResource("TileSetAtlasSource_0556h")
