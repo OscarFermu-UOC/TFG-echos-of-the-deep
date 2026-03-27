@@ -1,0 +1,97 @@
+[gd_scene load_steps=16 format=3 uid="uid://bg1msmhxlamx4"]
+
+[ext_resource type="Script" uid="uid://bwl8b1t0naqpk" path="res://scenes/hunter/hunter.gd" id="1_5ovnb"]
+[ext_resource type="Script" uid="uid://ct8lmck7768cn" path="res://scenes/player/hurtbox.gd" id="1_fev3k"]
+[ext_resource type="Script" uid="uid://bptuv7y70ovsc" path="res://globals/state_machine/state_machine.gd" id="2_er1t5"]
+[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="2_ykymc"]
+[ext_resource type="AudioStream" uid="uid://d3lhjljwfm5xm" path="res://assets/sounds/hunter/telegraph.mp3" id="3_avjqt"]
+[ext_resource type="AudioStream" uid="uid://bcxeh18y6pc6h" path="res://assets/sounds/hunter/dash.mp3" id="4_ac63g"]
+[ext_resource type="AudioStream" uid="uid://bcfbu4gtjnk4l" path="res://assets/sounds/enemy/hurt.mp3" id="5_fwjvn"]
+[ext_resource type="AudioStream" uid="uid://cgshm3iwomc1" path="res://assets/sounds/hunter/retreat.mp3" id="6_sd5u0"]
+[ext_resource type="Script" uid="uid://djcp23lkegfxr" path="res://scenes/hunter/state_machine/hunter_hover.gd" id="8_ykymc"]
+[ext_resource type="Script" uid="uid://cx3aq3wvi68v7" path="res://scenes/hunter/state_machine/hunter_telegraph.gd" id="9_avjqt"]
+[ext_resource type="Script" uid="uid://rk0c8auui8if" path="res://scenes/hunter/state_machine/hunter_dash.gd" id="10_ac63g"]
+[ext_resource type="Script" uid="uid://clqri12udkdti" path="res://scenes/hunter/state_machine/hunter_retreat.gd" id="11_fwjvn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ovnb"]
+radius = 5.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ovnb"]
+size = Vector2(34, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykymc"]
+size = Vector2(22, 28)
+
+[node name="Hunter" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_5ovnb")
+dash_speed = 500.0
+retreat_duration = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_ykymc")
+
+[node name="CollisionBody" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5ovnb")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="TelegraphSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_avjqt")
+max_distance = 5000.0
+bus = &"SFX"
+
+[node name="DashSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_ac63g")
+max_distance = 5000.0
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_fwjvn")
+max_distance = 5000.0
+bus = &"SFX"
+
+[node name="RetreatSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_sd5u0")
+max_distance = 5000.0
+bus = &"SFX"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_fev3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_5ovnb")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_ykymc")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_er1t5")
+initial_state = NodePath("Hover")
+
+[node name="Hover" type="Node" parent="State Machine" node_paths=PackedStringArray("hunter")]
+script = ExtResource("8_ykymc")
+hunter = NodePath("../..")
+
+[node name="Telegraph" type="Node" parent="State Machine" node_paths=PackedStringArray("hunter")]
+script = ExtResource("9_avjqt")
+hunter = NodePath("../..")
+
+[node name="Dash" type="Node" parent="State Machine" node_paths=PackedStringArray("hunter")]
+script = ExtResource("10_ac63g")
+hunter = NodePath("../..")
+
+[node name="Retreat" type="Node" parent="State Machine" node_paths=PackedStringArray("hunter")]
+script = ExtResource("11_fwjvn")
+hunter = NodePath("../..")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

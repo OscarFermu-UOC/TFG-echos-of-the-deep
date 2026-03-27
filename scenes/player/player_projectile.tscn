@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://p4sn0r4j4ecw"]
+[gd_scene load_steps=5 format=3 uid="uid://p4sn0r4j4ecw"]
 
 [ext_resource type="Script" uid="uid://dbkgmrs5qj62m" path="res://scenes/player/player_projectile.gd" id="1_2g36u"]
+[ext_resource type="AudioStream" uid="uid://mxa35u6kryrd" path="res://assets/sounds/enemy/ranged_attack.mp3" id="2_javh7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rvm7w"]
 size = Vector2(8, 8)
@@ -21,6 +22,13 @@ shape = SubResource("RectangleShape2D_rvm7w")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-4, -4, 8, 8)
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("2_javh7")
+max_distance = 10000.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

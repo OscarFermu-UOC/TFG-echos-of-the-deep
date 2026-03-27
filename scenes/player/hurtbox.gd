@@ -2,7 +2,7 @@
 extends Area2D
 class_name Hurtbox
 
-func take_damage(amount: int):
+func take_damage(amount: int) -> void:
 	# Comprobamos que el propietario tenga el método antes de llamarlo,
 	# así este componente es reutilizable en cualquier entidad
 	if owner.has_method("take_damage"):

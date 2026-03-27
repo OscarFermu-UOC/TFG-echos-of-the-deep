@@ -4,10 +4,10 @@ class_name PlayerMove
 
 @export var player: Player
 
-func Enter():
+func enter() -> void:
 	player.play_animation("Idle")
 	
-func Physics_Update(delta: float):
+func physics_update(delta: float) -> void:
 	if not player: return
 	
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -47,4 +47,4 @@ func Physics_Update(delta: float):
 	player.move_and_slide()
 	
 	if Input.is_action_just_pressed("roll") and player.can_roll and input_vector != Vector2.ZERO:
-		Transitioned.emit(self, "Roll")
+		transitioned.emit(self, "Roll")

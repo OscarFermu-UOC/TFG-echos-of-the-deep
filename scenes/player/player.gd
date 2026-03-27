@@ -16,11 +16,14 @@ class_name Player
 @export var tilt_angle : float = 5.0
 
 # ==========================================================
-# CONSTANTS
+# CONSTANTES
 # ==========================================================
 const VELOCITY_IDLE_THRESHOLD: float = 10.0
 const REVIVE_HEALTH: int = 40
 const REVIVE_INVULNERABILITY_DURATION: float = 2.0
+
+const STEP_WALK_INTERVAL: float = 0.5
+const STEP_RUN_INTERVAL: float = 0.3
 
 # ==========================================================
 # STATE
@@ -46,7 +49,10 @@ var noise_distance_threshold: float
 @onready var sprite: Sprite2D = $VisualPivot/Sprite2D
 
 @onready var step_sound: AudioStreamPlayer2D = $Audio/StepSound
-@onready var roll_sound: AudioStreamPlayer2D = $Audio/RunSound 
+@onready var roll_sound: AudioStreamPlayer2D = $Audio/RollSound 
+@onready var hurt_sound: AudioStreamPlayer2D = $Audio/HurtSound
+@onready var death_sound: AudioStreamPlayer2D = $Audio/DeathSound
+@onready var revive_sound: AudioStreamPlayer2D = $Audio/ReviveSound
 
 # ==========================================================
 # VARIABLES DE LÓGICA
@@ -62,6 +68,8 @@ var has_revive: bool = false
 
 var anim_time : float = 0.0
 var is_rolling_anim : bool = false # Evita superponer la animación de roll con otras
+
+var step_timer: float = 0.0
 
 # ==========================================================
 # CICLO DE VIDA
@@ -81,7 +89,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_rolling_anim:
 		_apply_procedural_animation(delta)
+		_handle_footsteps(delta)
 		
+# ==========================================================
+# INICIALIZACIÓN
+# ==========================================================
 func _initialize_character() -> void:
 	sprite.texture = stats.portrait
 	current_health = stats.max_health
@@ -103,6 +115,26 @@ func _initialize_character() -> void:
 		weapon_system.equip_weapon(stats.starting_weapon)
 
 	EventBus.health_changed.emit(current_health, max_health)
+	
+# ==========================================================
+# SONIDO MOVIMIENTO
+# ==========================================================
+func _handle_footsteps(delta: float) -> void:
+	var speed: float = velocity.length()
+
+	if speed <= VELOCITY_IDLE_THRESHOLD:
+		step_timer = 0.0  
+		return
+
+	var is_running: bool = speed > walk_speed + VELOCITY_IDLE_THRESHOLD
+	var interval: float = STEP_RUN_INTERVAL if is_running else STEP_WALK_INTERVAL
+
+	step_timer -= delta
+	if step_timer <= 0.0:
+		step_timer = interval
+		if step_sound and step_sound.stream:
+			step_sound.pitch_scale = randf_range(0.9, 1.1)
+			step_sound.play()
 
 # ==========================================================
 # SISTEMA DE ANIMACIÓN
@@ -204,6 +236,10 @@ func take_damage(amount: int) -> void:
 		else:
 			die()
 		return
+		
+	if hurt_sound and hurt_sound.stream:
+		hurt_sound.pitch_scale = randf_range(0.95, 1.05)
+		hurt_sound.play()
 
 	# Flash rojo al recibir daño
 	var tween = create_tween()
@@ -221,7 +257,8 @@ func _trigger_revive() -> void:
 	tween.tween_property(sprite, "modulate", Color.GREEN, 0.2)
 	tween.tween_property(sprite, "modulate", Color.WHITE, 0.5)
 	
-	# TODO: Sonido revivir
+	if revive_sound and revive_sound.stream:
+		revive_sound.play()
 	
 	# Invulnerabilidad temporal tras revivir
 	if hurtbox_col:
@@ -230,6 +267,10 @@ func _trigger_revive() -> void:
 		hurtbox_col.set_deferred("disabled", false)
 
 func die() -> void:
+	if death_sound and death_sound.stream:
+		death_sound.reparent(get_parent())
+		death_sound.play()
+	
 	play_animation("Death")
 	EventBus.player_died.emit()
 	

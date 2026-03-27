@@ -12,7 +12,7 @@ extends Resource
 # Estadísticas base del personaje
 @export_group("Base Stats")
 @export var max_health: int = 100
-@export var walk_speed: float = 40
+@export var walk_speed: float = 40.0
 @export var run_speed: float = 100.0
 @export var acceleration: float = 800.0
 @export var friction: float = 1000.0

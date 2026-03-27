@@ -1,0 +1,156 @@
+[gd_scene load_steps=24 format=3 uid="uid://bhl1u4wvloqb"]
+
+[ext_resource type="Script" uid="uid://erf060m012i0" path="res://scenes/enemy/enemy_ranged.gd" id="1_3f1l2"]
+[ext_resource type="Resource" uid="uid://e2vnjjrjky1f" path="res://data/enemies/list/archer.tres" id="2_nmkjp"]
+[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="3_3f1l2"]
+[ext_resource type="AudioStream" uid="uid://chy40owf0c2ev" path="res://assets/sounds/enemy/footstep.ogg" id="4_u4hjc"]
+[ext_resource type="AudioStream" uid="uid://cjjkvfabec22l" path="res://assets/sounds/enemy/idle.mp3" id="4_y44j7"]
+[ext_resource type="AudioStream" uid="uid://kot5ioj0blcw" path="res://assets/sounds/enemy/stun.ogg" id="5_lcxkx"]
+[ext_resource type="Script" uid="uid://bptuv7y70ovsc" path="res://globals/state_machine/state_machine.gd" id="6_lcg8a"]
+[ext_resource type="AudioStream" uid="uid://mxa35u6kryrd" path="res://assets/sounds/enemy/ranged_attack.mp3" id="6_svw0u"]
+[ext_resource type="Script" uid="uid://ct8lmck7768cn" path="res://scenes/player/hurtbox.gd" id="7_nmkjp"]
+[ext_resource type="AudioStream" uid="uid://bcfbu4gtjnk4l" path="res://assets/sounds/enemy/hurt.mp3" id="7_oad33"]
+[ext_resource type="Script" uid="uid://ch3036lpu1a" path="res://scenes/enemy/state_machine/enemy_idle.gd" id="7_y44j7"]
+[ext_resource type="Script" uid="uid://2gmpjg18wvd" path="res://scenes/enemy/state_machine/enemy_chase.gd" id="8_svw0u"]
+[ext_resource type="AudioStream" uid="uid://b0kbv2y2xktij" path="res://assets/sounds/enemy/death.mp3" id="8_xw4u8"]
+[ext_resource type="AudioStream" uid="uid://cv1m4137gxdn8" path="res://assets/sounds/enemy/alert.mp3" id="9_3gx24"]
+[ext_resource type="Script" uid="uid://b8kyl8rt7w0oy" path="res://scenes/enemy/state_machine/enemy_attack.gd" id="9_oad33"]
+[ext_resource type="Script" uid="uid://djan0yebmv0sj" path="res://scenes/enemy/state_machine/enemy_retreat.gd" id="12_467a5"]
+[ext_resource type="Script" uid="uid://jy5g0ddykrip" path="res://scenes/enemy/state_machine/enemy_stunned.gd" id="13_nmkjp"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uwnm8"]
+light_mode = 2
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x2c6u"]
+light_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8i8w"]
+radius = 4.0
+height = 10.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_467a5"]
+size = Vector2(20, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_467a5"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmkjp"]
+bg_color = Color(0.97457546, 0, 0.23830083, 1)
+
+[node name="EnemyRanged" type="CharacterBody2D"]
+material = SubResource("CanvasItemMaterial_uwnm8")
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_3f1l2")
+stats = ExtResource("2_nmkjp")
+
+[node name="VisualPivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="VisualPivot"]
+material = SubResource("CanvasItemMaterial_x2c6u")
+texture = ExtResource("3_3f1l2")
+
+[node name="CollisionBody" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_w8i8w")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="IdleSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_y44j7")
+max_distance = 300.0
+bus = &"SFX"
+
+[node name="StepSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_u4hjc")
+max_distance = 250.0
+bus = &"SFX"
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_svw0u")
+max_distance = 200.0
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_oad33")
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("8_xw4u8")
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="AlertSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("9_3gx24")
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="StunSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_lcxkx")
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("7_nmkjp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_467a5")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+
+[node name="HealthBarRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="HealthBarRoot"]
+visible = false
+layout_mode = 0
+offset_left = -10.0
+offset_top = -22.0
+offset_right = 10.0
+offset_bottom = -20.0
+pivot_offset = Vector2(10, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_467a5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nmkjp")
+step = 1.0
+show_percentage = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+simplify_path = true
+avoidance_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.89305556, 0, 0.27478072, 1)
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_lcg8a")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_y44j7")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://ch3036lpu1a"
+
+[node name="Chase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("8_svw0u")
+enemy = NodePath("../..")
+
+[node name="Attack" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("9_oad33")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://b8kyl8rt7w0oy"
+
+[node name="Retreat" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("12_467a5")
+enemy = NodePath("../..")
+
+[node name="Stunned" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("13_nmkjp")
+enemy = NodePath("../..")

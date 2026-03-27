@@ -67,11 +67,28 @@ position = Vector2(2.5000002, 0)
 
 [node name="StepSound" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("11_d2wvv")
-max_distance = 200.0
+max_distance = 10000.0
+bus = &"SFX"
 
-[node name="RunSound" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="RollSound" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("11_d2wvv")
-max_distance = 200.0
+max_distance = 10000.0
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_d2wvv")
+max_distance = 10000.0
+bus = &"SFX"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_d2wvv")
+max_distance = 10000.0
+bus = &"SFX"
+
+[node name="ReviveSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_d2wvv")
+max_distance = 10000.0
+bus = &"SFX"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("16_lgqa7")
@@ -85,5 +102,5 @@ player = NodePath("../..")
 script = ExtResource("18_3j4b4")
 player = NodePath("../..")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="DEBUG_CAMERA" type="Camera2D" parent="."]
 zoom = Vector2(3.5, 3.5)

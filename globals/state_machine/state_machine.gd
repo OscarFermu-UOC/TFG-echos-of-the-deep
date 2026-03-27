@@ -7,7 +7,7 @@ class_name StateMachine
 var current_state : State
 var states : Dictionary = {} # Diccionario de estados indexados por nombre en minúsculas
 
-func _ready():
+func _ready() -> void:
 	# Esperamos a que el padre esté listo antes de inicializar
 	await get_parent().ready
 	
@@ -15,22 +15,22 @@ func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
+			child.transitioned.connect(on_child_transition)
 	
 	if initial_state:
-		initial_state.Enter()
+		initial_state.enter()
 		current_state = initial_state
 		
-func _process(delta):
+func _process(delta) -> void:
 	if current_state:
-		current_state.Update(delta)
+		current_state.update(delta)
 	
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if current_state:
-		current_state.Physics_Update(delta)
+		current_state.physics_update(delta)
 
-# Callback que se ejecuta cuando un estado emite la señal Transitioned
-func on_child_transition(state, new_state_name):
+# Callback que se ejecuta cuando un estado emite la señal transitioned
+func on_child_transition(state, new_state_name) -> void:
 	# Ignoramos la transición si no viene del estado activo
 	if state != current_state:
 		return
@@ -39,6 +39,6 @@ func on_child_transition(state, new_state_name):
 	if !new_state:
 		return
 	
-	current_state.Exit()
-	new_state.Enter()
+	current_state.exit()
+	new_state.enter()
 	current_state = new_state

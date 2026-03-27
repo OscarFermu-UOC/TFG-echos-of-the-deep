@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://c2m54r524r8id"]
+
+[ext_resource type="Script" uid="uid://plqrdsdje3s1" path="res://data/enemies/enemy_stats.gd" id="1_3huqv"]
+[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="2_2kids"]
+
+[resource]
+script = ExtResource("1_3huqv")
+name = "Skeleton"
+texture = ExtResource("2_2kids")
+detection_range = 150.0
+attack_range = 20.0
+wander_radius = 200.0
+metadata/_custom_type_script = "uid://plqrdsdje3s1"

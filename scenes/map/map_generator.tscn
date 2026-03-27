@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk0w1glmccbiu"]
+[gd_scene load_steps=6 format=3 uid="uid://dk0w1glmccbiu"]
 
 [ext_resource type="Script" uid="uid://4w3qrrpfhrva" path="res://scenes/map/map_generator.gd" id="1_8s5dm"]
 [ext_resource type="PackedScene" uid="uid://brhtmr3l7q4oq" path="res://scenes/player/player.tscn" id="3_47037"]
-[ext_resource type="PackedScene" uid="uid://bhl1u4wvloqb" path="res://scenes/enemy/enemy_ranged.tscn" id="5_kb4gc"]
 [ext_resource type="TileSet" uid="uid://2vtjuxe3q0q1" path="res://scenes/map/tileset.tres" id="12_wncm0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ui0b8"]
@@ -33,6 +32,3 @@ position = Vector2(640, 360)
 
 [node name="DEBUG_PLAYER" parent="." instance=ExtResource("3_47037")]
 position = Vector2(465.99997, 355.99997)
-
-[node name="EnemyRanged" parent="." instance=ExtResource("5_kb4gc")]
-position = Vector2(492, 262)

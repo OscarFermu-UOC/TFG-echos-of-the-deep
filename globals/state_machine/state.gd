@@ -2,17 +2,17 @@
 extends Node
 class_name State
 
-signal Transitioned # Señal que emite el estado cuando quiere cambiar a otro
+signal transitioned # Señal que emite el estado cuando quiere cambiar a otro
 
 # Métodos a sobreescribir por cada estado concreto
-func Enter():
+func enter() -> void:
 	pass
 	
-func Exit():
+func exit() -> void:
 	pass
 	
-func Update(_delta: float):
+func update(_delta: float) -> void:
 	pass
 
-func Physics_Update(_delta: float):
+func physics_update(_delta: float) -> void:
 	pass

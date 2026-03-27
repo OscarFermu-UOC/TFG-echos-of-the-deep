@@ -2,6 +2,11 @@
 class_name WeaponSystem
 extends Node2D
 
+const MIN_COOLDOWN: float = 0.1
+const CRIT_DAMAGE_MULT: int = 2
+
+@export var current_weapon: WeaponData
+
 @onready var muzzle: Marker2D = $Muzzle
 
 # Modificadores aplicables desde objetos o mejoras externas
@@ -9,10 +14,9 @@ var damage_bonus: int = 0
 var reload_speed_mult: float = 1.0
 var crit_chance: float = 0.0
 
-@export var current_weapon: WeaponData
 var can_shoot: bool = true
 
-func equip_weapon(data: WeaponData):
+func equip_weapon(data: WeaponData) -> void:
 	current_weapon = data
 
 func apply_modifiers(dmg_add: int, reload_mult: float, crit: float) -> void:
@@ -20,7 +24,7 @@ func apply_modifiers(dmg_add: int, reload_mult: float, crit: float) -> void:
 	reload_speed_mult = reload_mult
 	crit_chance = crit
 
-func shoot(aim_direction: Vector2):
+func shoot(aim_direction: Vector2) -> void:
 	if not can_shoot or not current_weapon:
 		return
 	
@@ -33,11 +37,11 @@ func shoot(aim_direction: Vector2):
 	
 	# El cooldown se escala con el modificador externo, con un mínimo de 0.1s
 	var final_cooldown = current_weapon.cooldown * reload_speed_mult
-	final_cooldown = max(0.1, final_cooldown)
+	final_cooldown = maxf(MIN_COOLDOWN, final_cooldown)
 	await get_tree().create_timer(final_cooldown).timeout
 	can_shoot = true
 
-func _spawn_projectile(dir: Vector2):
+func _spawn_projectile(dir: Vector2) -> void:
 	if not current_weapon.projectile_scene: return
 	
 	var bullet = current_weapon.projectile_scene.instantiate()
@@ -51,7 +55,7 @@ func _spawn_projectile(dir: Vector2):
 	var final_damage = current_weapon.damage + damage_bonus
 	var is_crit = randf() < crit_chance
 	if is_crit:
-		final_damage *= 2
+		final_damage *= CRIT_DAMAGE_MULT
 	
 	get_tree().root.add_child(bullet)
 	bullet.setup(
