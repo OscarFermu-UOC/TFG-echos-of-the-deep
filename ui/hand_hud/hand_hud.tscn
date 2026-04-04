@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvhb5r50dlig"]
+
+[ext_resource type="PackedScene" uid="uid://bhhxph03qpgn8" path="res://ui/hand_hud/hand_slot.tscn" id="1_3mokx"]
+[ext_resource type="Script" uid="uid://c0whi40awc1ke" path="res://ui/hand_hud/hand_hud.gd" id="1_tkjsh"]
+[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="4_tfp0e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxiai"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ympcc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjm17"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ybqt"]
+bg_color = Color(0.92535293, 0.9253528, 0.9253529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfp0e"]
+bg_color = Color(0.105882354, 0.12941177, 0.15294118, 1)
+
+[node name="HandHUD" type="CanvasLayer"]
+script = ExtResource("1_tkjsh")
+slot_scene = ExtResource("1_3mokx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CardsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HandSlot" parent="MarginContainer/VBoxContainer/CardsContainer" instance=ExtResource("1_3mokx")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hxiai")
+
+[node name="HandSlot2" parent="MarginContainer/VBoxContainer/CardsContainer" instance=ExtResource("1_3mokx")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ympcc")
+
+[node name="HandSlot3" parent="MarginContainer/VBoxContainer/CardsContainer" instance=ExtResource("1_3mokx")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjm17")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="CardReverse" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4_tfp0e")
+stretch_mode = 5
+
+[node name="CardCountLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GlobalReloadBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1ybqt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tfp0e")
+step = 1.0
+show_percentage = false
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3

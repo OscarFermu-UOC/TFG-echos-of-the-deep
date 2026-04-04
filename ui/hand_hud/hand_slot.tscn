@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhhxph03qpgn8"]
+
+[ext_resource type="Script" uid="uid://cim3jx7vl008g" path="res://ui/hand_hud/hand_slot.gd" id="2_d35hq"]
+[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="2_ulerr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgkhg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[node name="HandSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(80, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fgkhg")
+script = ExtResource("2_d35hq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="KeyBinding" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_ulerr")
+stretch_mode = 5
