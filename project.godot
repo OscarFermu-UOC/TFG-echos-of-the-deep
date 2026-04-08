@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Echos of the Deep"
+run/main_scene="uid://cm0mwo4u1mcpc"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]

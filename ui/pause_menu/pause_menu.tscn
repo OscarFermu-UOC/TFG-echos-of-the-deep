@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhlresaxijjg8"]
+
+[ext_resource type="Script" uid="uid://cpqprnpqh6va4" path="res://ui/pause_menu/pause_menu.gd" id="1_le02u"]
+[ext_resource type="PackedScene" uid="uid://deant84i4oa0a" path="res://ui/options_menu/options_menu.tscn" id="2_le02u"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 120
+script = ExtResource("1_le02u")
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButtons" type="VBoxContainer" parent="Overlay"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 510.0
+offset_top = 255.0
+offset_right = 770.0
+offset_bottom = 465.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="Overlay/MenuButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnResume" type="Button" parent="Overlay/MenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="BtnOptions" type="Button" parent="Overlay/MenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="BtnQuit" type="Button" parent="Overlay/MenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="OptionsMenu" parent="Overlay" instance=ExtResource("2_le02u")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Overlay/MenuButtons/BtnResume" to="." method="toggle_pause"]
+[connection signal="pressed" from="Overlay/MenuButtons/BtnOptions" to="." method="_on_btn_options_pressed"]
+[connection signal="pressed" from="Overlay/MenuButtons/BtnQuit" to="." method="_on_btn_quit_pressed"]
