@@ -1,47 +1,46 @@
+# Menú de pausa: gestiona la pausa del juego y da acceso a opciones y salida al menú principal.
 extends CanvasLayer
 
-@onready var menu_buttons: VBoxContainer = %MenuButtons
-@onready var btn_resume: Button = %BtnResume
-@onready var btn_options: Button = %BtnOptions
-@onready var btn_quit: Button = %BtnQuit
-@onready var options_menu: Control = $Overlay/OptionsMenu
+const SCENE_MAIN_MENU: String = "res://ui/main_menu/main_menu.tscn"
 
-var is_paused: bool = false
+@onready var _menu_buttons: VBoxContainer = %MenuButtons
+@onready var _options_menu: Control = $Overlay/OptionsMenu
+
+var _is_paused: bool = false
 
 func _ready() -> void:
 	hide()
-	options_menu.hide()	
+	_options_menu.hide()
 	
-	if options_menu.has_signal("back_pressed"):
-		options_menu.back_pressed.connect(_on_options_back)
+	if _options_menu.has_signal("back_pressed"):
+		_options_menu.back_pressed.connect(_on_options_back)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"): # Tecla ESC
-		if options_menu.visible:
-			options_menu.hide()
-		else:
-			toggle_pause()
+	if not event.is_action_pressed("ui_cancel"):
+		return
+		
+	if _options_menu.visible:
+		_on_options_back()
+	else:
+		toggle_pause()
 
 func toggle_pause() -> void:
-	is_paused = !is_paused
+	_is_paused = not _is_paused
 	
-	get_tree().paused = is_paused
-	visible = is_paused
+	get_tree().paused = _is_paused
+	visible = _is_paused
 	
-	if is_paused:
-		menu_buttons.show()
-		options_menu.hide()
-	else:
-		options_menu.hide()
+	_menu_buttons.visible = _is_paused
+	_options_menu.hide()
 
 func _on_btn_options_pressed() -> void:
-	menu_buttons.hide()
-	options_menu.show()
-	
+	_menu_buttons.hide()
+	_options_menu.show()
+
 func _on_options_back() -> void:
-	options_menu.hide()
-	menu_buttons.show()
+	_options_menu.hide()
+	_menu_buttons.show()
 
 func _on_btn_quit_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn")
+	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
