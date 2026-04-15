@@ -20,6 +20,10 @@ const NEIGHBOR_DIRS: Array[Vector2i] = [
 	Vector2i(-1, -1), Vector2i( 1, -1), Vector2i(-1,  1), Vector2i( 1,  1),
 ]
 
+const HUNTER_SPAWN_RADIUS: float = 600.0
+const COIN_SPAWN_CHANCE: float = 0.5
+const INNER_ROOM_MARGIN: int = -1  # Shrinks room by 1 tile to avoid wall overlaps.
+
 enum TileType { NONE, FLOOR, WALL_TOP, WALL_FACE }
 
 # ==========================================================
@@ -37,21 +41,38 @@ enum TileType { NONE, FLOOR, WALL_TOP, WALL_FACE }
 # Probabilidad de añadir conexiones adicionales al MST para crear ciclos en el mapa.
 @export_range(0.0, 1.0) var loop_probability: float = 0.5
 
+@export_group("Entities")
+@export var entities_container: Node2D
+@export var target_scene: PackedScene
+@export var exit_scene: PackedScene
+@export var coin_scene: PackedScene
+@export var stairs_down_scene: PackedScene
+@export var stairs_up_scene: PackedScene
+@export var key_scene: PackedScene
+@export var hunter_scene: PackedScene
+
+@export_group("Enemy Spawning")
+@export var possible_enemies: Array[EnemySpawnData] = []
+@export var base_spawn_chance: float = 0.2
+@export var chance_increase_per_stage: float = 0.15
+
+@onready var _player: Player = %Player
 # ==========================================================
 # STATE
 # ==========================================================
 var rooms: Array[Rect2i] = []
+var _spawn_chance: float  = 0.0
 
 # ==========================================================
 # LIFECYCLE
 # ==========================================================
 func _ready() -> void:
-	generate_dungeon(1)
+	generate_dungeon(2)
 
 # ==========================================================
 # PUBLIC API
 # ==========================================================
-func generate_dungeon(_stage: int) -> void:
+func generate_dungeon(stage: int) -> void:
 	if not tile_map_layer:
 		push_error("MapGenerator: asgina un TileMapLayer en el inspector.")
 		return
@@ -61,6 +82,11 @@ func generate_dungeon(_stage: int) -> void:
 
 	tile_map_layer.clear()
 	rooms.clear()
+	
+	_set_difficulty(stage)
+	
+	if GlobalData.max_clank_reached:
+		spawn_hunter()
 
 	_place_rooms()
 
@@ -71,10 +97,27 @@ func generate_dungeon(_stage: int) -> void:
 
 	_paint_map(final_edges)
 
-	# TODO: Spawn entities
+	_spawn_entities()
 
 	if nav_region:
 		nav_region.bake_navigation_polygon()
+
+func spawn_hunter() -> void:
+	if get_tree().get_first_node_in_group("Hunter"):
+		return
+		
+	var hunter: Node2D = hunter_scene.instantiate()
+	hunter.position = _calculate_hunter_spawn_pos()
+	entities_container.add_child(hunter)
+
+# ==========================================================
+# STEP 0 — DIFFICULTY SCALING
+# ==========================================================
+func _set_difficulty(stage: int) -> void:
+	map_width  += stage * 10
+	map_height += stage * 10
+	room_count += stage * 2
+	_spawn_chance = clampf(base_spawn_chance + stage * chance_increase_per_stage, 0.0, 1.0)
 
 # ==========================================================
 # STEP 1 — ROOM PLACEMENT
@@ -231,6 +274,96 @@ func _flush_to_tilemap(type_map: Dictionary) -> void:
 	tile_map_layer.set_cells_terrain_connect(floor_cells, 0, FLOOR_TERRAIN, true)
 	tile_map_layer.set_cells_terrain_connect(top_cells, 0, TOP_TERRAIN, true)
 	tile_map_layer.set_cells_terrain_connect(face_cells, 0, FACE_TERRAIN, true)
+	
+# ==========================================================
+# STEP 6 — ENTITY SPAWNING
+# ==========================================================
+func _spawn_entities() -> void:
+	if entities_container:
+		for child in entities_container.get_children():
+			child.queue_free()
+
+	if rooms.is_empty():
+		return
+
+	var start_room: Rect2i = rooms[0]
+	var exit_room: Rect2i  = _find_farthest_room(start_room)
+
+	var depth: int      = GlobalData.current_depth
+	var max_depth: int  = GlobalData.max_depth_for_cycle
+	var ascending: bool = GlobalData.is_ascending
+
+	# Place player at the appropriate end based on travel direction.
+	_player.position = tile_map_layer.map_to_local(
+		exit_room.get_center() if ascending else start_room.get_center()
+	)
+
+	# Entrance node: exit portal on floor 1, upward stairs on deeper floors.
+	if depth == 1:
+		_instance_scene(exit_scene, start_room.get_center())
+	else:
+		_instance_scene(stairs_up_scene, start_room.get_center())
+
+	# Exit node: artifact target on the deepest floor, downward stairs otherwise.
+	if depth == max_depth:
+		_instance_scene(target_scene, exit_room.get_center())
+	elif not ascending:
+		_instance_scene(stairs_down_scene, exit_room.get_center())
+
+	# Populate intermediate rooms with enemies and coins.
+	for room in rooms:
+		if room == start_room or room == exit_room:
+			continue
+		if randf() < _spawn_chance:
+			var spawn_data: EnemySpawnData = _pick_random_enemy_by_weight()
+			if spawn_data and spawn_data.enemy_scene:
+				_instance_scene(spawn_data.enemy_scene, _get_random_pos_in_room(room), spawn_data.stats)
+		if randf() < COIN_SPAWN_CHANCE:
+			_instance_scene(coin_scene, _get_random_pos_in_room(room))
+
+func _find_farthest_room(origin: Rect2i) -> Rect2i:
+	var farthest: Rect2i = origin
+	var max_dist: float  = 0.0
+	for room in rooms:
+		var dist: float = origin.get_center().distance_to(room.get_center())
+		if dist > max_dist:
+			max_dist = dist
+			farthest = room
+	return farthest
+
+func _instance_scene(scene: PackedScene, map_coords: Vector2, stats_override: EnemyStats = null) -> void:
+	if not scene or not entities_container:
+		return
+	var instance: Node2D = scene.instantiate()
+	if stats_override and instance is Enemy:
+		instance.stats = stats_override
+	instance.position = tile_map_layer.map_to_local(Vector2i(map_coords))
+	entities_container.add_child(instance)
+
+func _calculate_hunter_spawn_pos() -> Vector2:
+	var angle: float = randf() * TAU
+	return _player.global_position + Vector2(cos(angle), sin(angle)) * HUNTER_SPAWN_RADIUS
+
+func _pick_random_enemy_by_weight() -> EnemySpawnData:
+	var cycle: int = GlobalData.current_cycle
+	var candidates: Array = possible_enemies.filter(func(d): return cycle >= d.min_cycle)
+
+	if candidates.is_empty():
+		push_warning("MapGenerator: no enemies configured for cycle %d." % cycle)
+		return null
+
+	var total_weight: float = 0.0
+	for d in candidates:
+		total_weight += d.base_weight
+
+	var roll: float      = randf_range(0.0, total_weight)
+	var cumulative: float = 0.0
+	for d in candidates:
+		cumulative += d.base_weight
+		if roll <= cumulative:
+			return d
+
+	return candidates[0]
 
 # ==========================================================
 # HELPERS
@@ -254,3 +387,10 @@ func _get_line_coords(from: Vector2, to: Vector2) -> Array[Vector2i]:
 
 	coords.append(end)
 	return coords
+
+func _get_random_pos_in_room(room: Rect2i) -> Vector2:
+	var inner: Rect2i = room.grow(INNER_ROOM_MARGIN)
+	return Vector2(
+		randi_range(inner.position.x, inner.end.x - 1),
+		randi_range(inner.position.y, inner.end.y - 1)
+	)

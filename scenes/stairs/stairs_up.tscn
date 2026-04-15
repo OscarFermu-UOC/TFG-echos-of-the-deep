@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://t0juv1cetx13"]
+
+[ext_resource type="PackedScene" uid="uid://bu514r431lptb" path="res://scenes/stairs/dungeon_stairs.tscn" id="1_dw5xe"]
+
+[node name="DungeonStairs" instance=ExtResource("1_dw5xe")]
+type = 1

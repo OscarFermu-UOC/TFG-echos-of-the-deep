@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://dur7l4k2kwtfm"]
+
+[ext_resource type="Script" uid="uid://bbp0hdue87233" path="res://scenes/loot/loot_spawner.gd" id="1_gc0ja"]
+[ext_resource type="PackedScene" uid="uid://jh5h5r0smod7" path="res://scenes/loot/coin/coin.tscn" id="2_entp3"]
+[ext_resource type="PackedScene" uid="uid://blbocd3tbl4cs" path="res://scenes/loot/key/key.tscn" id="3_bk85c"]
+
+[node name="LootSpawner" type="Node2D"]
+script = ExtResource("1_gc0ja")
+coin_scene = ExtResource("2_entp3")
+key_scene = ExtResource("3_bk85c")

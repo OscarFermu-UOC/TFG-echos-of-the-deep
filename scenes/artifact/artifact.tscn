@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://depnjpqji6o8t"]
+
+[ext_resource type="Script" uid="uid://bil20smv437cf" path="res://scenes/artifact/artifact.gd" id="1_dicg0"]
+[ext_resource type="Resource" uid="uid://3thp1utmb0r4" path="res://data/artifacts/master_artifact_DB.tres" id="2_s762h"]
+[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="3_s762h"]
+[ext_resource type="AudioStream" uid="uid://ds42af15k785p" path="res://assets/sounds/artifact/reveal.mp3" id="4_1r1gx"]
+[ext_resource type="AudioStream" uid="uid://ck4ugirv2qtoa" path="res://assets/sounds/artifact/pickup.mp3" id="5_8xoyl"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="6_1r1gx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rmnt"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hu12f"]
+size = Vector2(160, 160)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hu12f"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Artifact" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_dicg0")
+artifact_database = ExtResource("2_s762h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_s762h")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_5rmnt")
+
+[node name="VisibilityArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibilityArea"]
+shape = SubResource("RectangleShape2D_hu12f")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="RevealSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_1r1gx")
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_8xoyl")
+max_distance = 200.0
+bus = &"SFX"
+
+[node name="UI_Prompt" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_1r1gx")
+
+[node name="Label" type="Label" parent="UI_Prompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -59.5
+offset_right = 69.0
+offset_bottom = -24.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "[F] PICK UP"
+label_settings = SubResource("LabelSettings_hu12f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="body_entered" from="VisibilityArea" to="." method="_on_visibility_area_body_entered"]
+[connection signal="body_exited" from="VisibilityArea" to="." method="_on_visibility_area_body_exited"]

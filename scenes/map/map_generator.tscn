@@ -1,18 +1,76 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk0w1glmccbiu"]
+[gd_scene load_steps=30 format=3 uid="uid://dk0w1glmccbiu"]
 
 [ext_resource type="Script" uid="uid://4w3qrrpfhrva" path="res://scenes/map/map_generator.gd" id="1_8s5dm"]
+[ext_resource type="PackedScene" uid="uid://depnjpqji6o8t" path="res://scenes/artifact/artifact.tscn" id="2_o0677"]
 [ext_resource type="PackedScene" uid="uid://brhtmr3l7q4oq" path="res://scenes/player/player.tscn" id="3_47037"]
+[ext_resource type="Script" uid="uid://fktr7va33frn" path="res://scenes/player/camera.gd" id="3_wy41y"]
+[ext_resource type="PackedScene" uid="uid://b4jvy8prlpc1v" path="res://scenes/exit/exit.tscn" id="3_x5wgc"]
+[ext_resource type="PackedScene" uid="uid://dur7l4k2kwtfm" path="res://scenes/loot/loot_spawner.tscn" id="4_7sfmm"]
+[ext_resource type="PackedScene" uid="uid://dhlresaxijjg8" path="res://ui/pause_menu/pause_menu.tscn" id="4_sasw2"]
+[ext_resource type="PackedScene" uid="uid://wjvenb0jkctu" path="res://scenes/stairs/stairs_down.tscn" id="5_7ci04"]
+[ext_resource type="PackedScene" uid="uid://dvhb5r50dlig" path="res://ui/hand_hud/hand_hud.tscn" id="5_kb4gc"]
+[ext_resource type="Script" uid="uid://bxrhs5sycdrna" path="res://globals/card_manager.gd" id="6_ox38v"]
+[ext_resource type="PackedScene" uid="uid://t0juv1cetx13" path="res://scenes/stairs/stairs_up.tscn" id="6_qiecr"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="7_0gbh1"]
+[ext_resource type="PackedScene" uid="uid://blbocd3tbl4cs" path="res://scenes/loot/key/key.tscn" id="7_yf36g"]
+[ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="8_o7c7t"]
+[ext_resource type="PackedScene" uid="uid://bg1msmhxlamx4" path="res://scenes/hunter/hunter.tscn" id="8_u75uj"]
+[ext_resource type="Script" uid="uid://beirn45gwpo74" path="res://data/enemies/enemy_spawn_data.gd" id="9_7ci04"]
+[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="9_s0wnr"]
+[ext_resource type="PackedScene" uid="uid://dvradrqgy4ibn" path="res://scenes/enemy/enemy_melee.tscn" id="10_qiecr"]
+[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="10_wy41y"]
+[ext_resource type="Resource" uid="uid://c2m54r524r8id" path="res://data/enemies/list/skeleton.tres" id="11_yf36g"]
 [ext_resource type="TileSet" uid="uid://2vtjuxe3q0q1" path="res://scenes/map/tileset.tres" id="12_wncm0"]
+
+[sub_resource type="Resource" id="Resource_u75uj"]
+script = ExtResource("9_7ci04")
+enemy_scene = ExtResource("10_qiecr")
+stats = ExtResource("11_yf36g")
+metadata/_custom_type_script = "uid://beirn45gwpo74"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ui0b8"]
 agent_radius = 12.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0gbh1"]
 
-[node name="MapGenerator" type="Node2D" node_paths=PackedStringArray("tile_map_layer", "nav_region")]
+[sub_resource type="Resource" id="Resource_0gbh1"]
+script = ExtResource("7_0gbh1")
+icon = ExtResource("9_s0wnr")
+metadata/_custom_type_script = "uid://nisejxogkmv"
+
+[sub_resource type="Resource" id="Resource_o7c7t"]
+script = ExtResource("7_0gbh1")
+icon = ExtResource("10_wy41y")
+metadata/_custom_type_script = "uid://nisejxogkmv"
+
+[sub_resource type="Resource" id="Resource_s0wnr"]
+script = ExtResource("7_0gbh1")
+icon = ExtResource("10_wy41y")
+metadata/_custom_type_script = "uid://nisejxogkmv"
+
+[sub_resource type="Resource" id="Resource_wy41y"]
+script = ExtResource("7_0gbh1")
+icon = ExtResource("10_wy41y")
+metadata/_custom_type_script = "uid://nisejxogkmv"
+
+[sub_resource type="Resource" id="Resource_wncm0"]
+script = ExtResource("7_0gbh1")
+icon = ExtResource("10_wy41y")
+metadata/_custom_type_script = "uid://nisejxogkmv"
+
+[node name="MapGenerator" type="Node2D" node_paths=PackedStringArray("tile_map_layer", "nav_region", "entities_container")]
 script = ExtResource("1_8s5dm")
 tile_map_layer = NodePath("NavigationRegion2D/TileMapLayer")
 nav_region = NodePath("NavigationRegion2D")
+entities_container = NodePath("NavigationRegion2D/EntitiesContainer")
+target_scene = ExtResource("2_o0677")
+exit_scene = ExtResource("3_x5wgc")
+coin_scene = ExtResource("4_7sfmm")
+stairs_down_scene = ExtResource("5_7ci04")
+stairs_up_scene = ExtResource("6_qiecr")
+key_scene = ExtResource("7_yf36g")
+hunter_scene = ExtResource("8_u75uj")
+possible_enemies = Array[ExtResource("9_7ci04")]([SubResource("Resource_u75uj")])
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_ui0b8")
@@ -29,6 +87,20 @@ color = Color(0.70532304, 0.71180487, 0.85026765, 1)
 
 [node name="DEBUG_CAMERA" type="Camera2D" parent="."]
 position = Vector2(640, 360)
+zoom = Vector2(3.5, 3.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("3_wy41y")
 
-[node name="DEBUG_PLAYER" parent="." instance=ExtResource("3_47037")]
+[node name="Player" parent="." instance=ExtResource("3_47037")]
+unique_name_in_owner = true
 position = Vector2(465.99997, 355.99997)
+
+[node name="CardManager" type="Node" parent="."]
+script = ExtResource("6_ox38v")
+debug_deck = Array[ExtResource("7_0gbh1")]([SubResource("Resource_0gbh1"), SubResource("Resource_o7c7t"), SubResource("Resource_s0wnr"), SubResource("Resource_wy41y"), SubResource("Resource_wncm0")])
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_sasw2")]
+visible = false
+
+[node name="HandHUD" parent="." instance=ExtResource("5_kb4gc")]

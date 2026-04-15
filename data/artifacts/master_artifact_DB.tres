@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArtifactDatabase" load_steps=4 format=3 uid="uid://3thp1utmb0r4"]
+
+[ext_resource type="Script" uid="uid://dkcqeqaqkouok" path="res://data/artifacts/artifact_database.gd" id="1_2fy00"]
+[ext_resource type="Script" uid="uid://bj6v8p5p2wnl1" path="res://data/artifacts/artifact_data.gd" id="2_62v65"]
+[ext_resource type="Resource" uid="uid://c0ngg06j5r85p" path="res://data/artifacts/list/test_artifact.tres" id="3_62v65"]
+
+[resource]
+script = ExtResource("1_2fy00")
+tier_1 = Array[ExtResource("2_62v65")]([ExtResource("3_62v65")])
+tier_2 = Array[ExtResource("2_62v65")]([ExtResource("3_62v65")])
+tier_3 = Array[ExtResource("2_62v65")]([ExtResource("3_62v65")])
