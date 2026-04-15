@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brhtmr3l7q4oq"]
+[gd_scene load_steps=16 format=3 uid="uid://brhtmr3l7q4oq"]
 
 [ext_resource type="Script" uid="uid://cvjbv15yrpion" path="res://scenes/player/player.gd" id="1_g2els"]
 [ext_resource type="Resource" uid="uid://28meoeyrxa5q" path="res://data/characters/list/scavenger.tres" id="2_uf5tr"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="3_je7p5"]
 [ext_resource type="Texture2D" uid="uid://dfxug265t5v" path="res://assets/sprites/player/light.png" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://cmr3gkbs8a6t3" path="res://scenes/player/weapon_system.gd" id="5_gx1jg"]
+[ext_resource type="AudioStream" uid="uid://cfiwi43r2r787" path="res://assets/sounds/player/hurt.mp3" id="8_gx1jg"]
+[ext_resource type="AudioStream" uid="uid://b0kbv2y2xktij" path="res://assets/sounds/enemy/death.mp3" id="8_je7p5"]
+[ext_resource type="AudioStream" uid="uid://dwwr2hlxt7vwe" path="res://assets/sounds/player/revive.mp3" id="10_ugbui"]
 [ext_resource type="AudioStream" uid="uid://cl7vbk86wtuoh" path="res://assets/sounds/player/footstep.ogg" id="11_d2wvv"]
 [ext_resource type="Script" uid="uid://bptuv7y70ovsc" path="res://globals/state_machine/state_machine.gd" id="16_lgqa7"]
 [ext_resource type="Script" uid="uid://gqdj5cfam0fr" path="res://scenes/player/state_machine/player_move.gd" id="17_8ydkj"]
@@ -76,17 +79,17 @@ max_distance = 10000.0
 bus = &"SFX"
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("11_d2wvv")
+stream = ExtResource("8_gx1jg")
 max_distance = 10000.0
 bus = &"SFX"
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("11_d2wvv")
+stream = ExtResource("8_je7p5")
 max_distance = 10000.0
 bus = &"SFX"
 
 [node name="ReviveSound" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("11_d2wvv")
+stream = ExtResource("10_ugbui")
 max_distance = 10000.0
 bus = &"SFX"
 
@@ -103,4 +106,5 @@ script = ExtResource("18_3j4b4")
 player = NodePath("../..")
 
 [node name="DEBUG_CAMERA" type="Camera2D" parent="."]
+enabled = false
 zoom = Vector2(3.5, 3.5)

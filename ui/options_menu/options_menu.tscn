@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://deant84i4oa0a"]
+[gd_scene load_steps=3 format=3 uid="uid://deant84i4oa0a"]
 
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_8h7tm"]
 [ext_resource type="Script" uid="uid://qhqxdkbg6xhq" path="res://ui/options_menu/options_menu.gd" id="2_8h7tm"]
 
 [node name="OptionsMenu" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8h7tm")
 script = ExtResource("2_8h7tm")
 
 [node name="Background" type="PanelContainer" parent="."]

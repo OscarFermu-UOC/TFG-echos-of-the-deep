@@ -16,8 +16,11 @@ func setup(pos: Vector2, dir: Vector2, speed: float, dmg: int, duration: float) 
 	lifetime = duration
 	
 	if shoot_sound and shoot_sound.stream:
+		shoot_sound.reparent(get_parent())
 		shoot_sound.pitch_scale = randf_range(0.95, 1.05)
 		shoot_sound.play()
+		await shoot_sound.finished
+		shoot_sound.queue_free()
 	
 	# Se destruye al agotar su tiempo de vida o al salir de pantalla
 	await get_tree().create_timer(lifetime).timeout

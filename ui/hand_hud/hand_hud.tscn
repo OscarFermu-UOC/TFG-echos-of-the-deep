@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvhb5r50dlig"]
+[gd_scene load_steps=10 format=3 uid="uid://dvhb5r50dlig"]
 
 [ext_resource type="PackedScene" uid="uid://bhhxph03qpgn8" path="res://ui/hand_hud/hand_slot.tscn" id="1_3mokx"]
 [ext_resource type="Script" uid="uid://c0whi40awc1ke" path="res://ui/hand_hud/hand_hud.gd" id="1_tkjsh"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="3_1ybqt"]
 [ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="4_tfp0e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxiai"]
@@ -31,6 +32,7 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("3_1ybqt")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20

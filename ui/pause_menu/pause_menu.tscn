@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhlresaxijjg8"]
+[gd_scene load_steps=4 format=3 uid="uid://dhlresaxijjg8"]
 
 [ext_resource type="Script" uid="uid://cpqprnpqh6va4" path="res://ui/pause_menu/pause_menu.gd" id="1_le02u"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="2_b4b0p"]
 [ext_resource type="PackedScene" uid="uid://deant84i4oa0a" path="res://ui/options_menu/options_menu.tscn" id="2_le02u"]
 
 [node name="PauseMenu" type="CanvasLayer"]
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_b4b0p")
 
 [node name="MenuButtons" type="VBoxContainer" parent="Overlay"]
 unique_name_in_owner = true

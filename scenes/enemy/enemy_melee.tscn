@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="3_p78kn"]
 [ext_resource type="AudioStream" uid="uid://chy40owf0c2ev" path="res://assets/sounds/enemy/footstep.ogg" id="4_fyfq5"]
 [ext_resource type="AudioStream" uid="uid://cjjkvfabec22l" path="res://assets/sounds/enemy/idle.mp3" id="4_yp45u"]
-[ext_resource type="AudioStream" uid="uid://kot5ioj0blcw" path="res://assets/sounds/enemy/stun.ogg" id="5_4d0xs"]
 [ext_resource type="AudioStream" uid="uid://r2vlp2k1nlvs" path="res://assets/sounds/enemy/melee_attack.mp3" id="6_buk7u"]
 [ext_resource type="Script" uid="uid://ct8lmck7768cn" path="res://scenes/player/hurtbox.gd" id="6_n14ib"]
 [ext_resource type="Script" uid="uid://bptuv7y70ovsc" path="res://globals/state_machine/state_machine.gd" id="6_yp45u"]
@@ -15,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://b0kbv2y2xktij" path="res://assets/sounds/enemy/death.mp3" id="8_stwbc"]
 [ext_resource type="AudioStream" uid="uid://cv1m4137gxdn8" path="res://assets/sounds/enemy/alert.mp3" id="9_gblb6"]
 [ext_resource type="Script" uid="uid://b8kyl8rt7w0oy" path="res://scenes/enemy/state_machine/enemy_attack.gd" id="9_stwbc"]
+[ext_resource type="AudioStream" uid="uid://b0gaimfqmvgyo" path="res://assets/sounds/enemy/stun.mp3" id="10_yp45u"]
 [ext_resource type="Script" uid="uid://jy5g0ddykrip" path="res://scenes/enemy/state_machine/enemy_stunned.gd" id="12_n14ib"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uwnm8"]
@@ -97,7 +97,7 @@ max_distance = 400.0
 bus = &"SFX"
 
 [node name="StunSound" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("5_4d0xs")
+stream = ExtResource("10_yp45u")
 volume_db = 3.0
 max_distance = 200.0
 bus = &"SFX"

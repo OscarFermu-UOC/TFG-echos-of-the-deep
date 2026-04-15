@@ -1,5 +1,17 @@
 extends Node
 
+# Game-related events
+signal game_completed
+signal run_successful(data: ArtifactData)
+signal artifact_picked_up(data: ArtifactData)
+signal artifact_selected
+signal compass_target_changed(target_pos)
+signal coin_collected
+signal key_collected
+signal ether_collected
+signal key_used
+signal stairs_used(type)
+
 # Player-related events
 signal player_died
 signal noise_made

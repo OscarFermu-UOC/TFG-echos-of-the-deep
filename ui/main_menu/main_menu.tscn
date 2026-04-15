@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm0mwo4u1mcpc"]
+[gd_scene load_steps=3 format=3 uid="uid://cm0mwo4u1mcpc"]
 
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_mu8pm"]
 [ext_resource type="Script" uid="uid://5vb4u8lffwr6" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
 
 [node name="MainMenu" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_mu8pm")
 script = ExtResource("1_uhj5c")
 
 [node name="ColorRect" type="ColorRect" parent="."]
