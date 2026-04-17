@@ -25,3 +25,4 @@ signal enemy_died
 signal card_played(card: CardData)
 signal hand_updated(slot_index: int, card: CardData)
 signal draw_timer_updated(time_left: float, max_time: float)
+signal card_clicked(card: CardData, from_container: Control)

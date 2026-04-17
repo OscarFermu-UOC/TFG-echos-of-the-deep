@@ -3,7 +3,7 @@ class_name MapGenerator
 extends Node2D
 
 # ==========================================================
-# CONSTANTS
+# CONSTANTES
 # ==========================================================
 const FLOOR_TERRAIN: int = 0
 const TOP_TERRAIN: int   = 1
@@ -58,19 +58,19 @@ enum TileType { NONE, FLOOR, WALL_TOP, WALL_FACE }
 
 @onready var _player: Player = %Player
 # ==========================================================
-# STATE
+# ESTADO
 # ==========================================================
 var rooms: Array[Rect2i] = []
 var _spawn_chance: float  = 0.0
 
 # ==========================================================
-# LIFECYCLE
+# CICLO DE VIDA
 # ==========================================================
 func _ready() -> void:
 	generate_dungeon(2)
 
 # ==========================================================
-# PUBLIC API
+# API PUBLICA
 # ==========================================================
 func generate_dungeon(stage: int) -> void:
 	if not tile_map_layer:
@@ -85,6 +85,7 @@ func generate_dungeon(stage: int) -> void:
 	
 	_set_difficulty(stage)
 	
+	# Si el clank ya alcanzó el umbral invocamos al Hunter antes de generar el nivel
 	if GlobalData.max_clank_reached:
 		spawn_hunter()
 
@@ -114,6 +115,7 @@ func spawn_hunter() -> void:
 # STEP 0 — DIFFICULTY SCALING
 # ==========================================================
 func _set_difficulty(stage: int) -> void:
+	# El mapa y los enemigos escalan con el stage actual
 	map_width  += stage * 10
 	map_height += stage * 10
 	room_count += stage * 2
@@ -293,24 +295,24 @@ func _spawn_entities() -> void:
 	var max_depth: int  = GlobalData.max_depth_for_cycle
 	var ascending: bool = GlobalData.is_ascending
 
-	# Place player at the appropriate end based on travel direction.
+	# Al ascender el jugador empieza en la habitación de salida
 	_player.position = tile_map_layer.map_to_local(
 		exit_room.get_center() if ascending else start_room.get_center()
 	)
 
-	# Entrance node: exit portal on floor 1, upward stairs on deeper floors.
+	# En la planta 1 colocamos la salida; en las demás, escaleras de subida
 	if depth == 1:
 		_instance_scene(exit_scene, start_room.get_center())
 	else:
 		_instance_scene(stairs_up_scene, start_room.get_center())
 
-	# Exit node: artifact target on the deepest floor, downward stairs otherwise.
+	# En la planta más profunda colocamos el artefacto; si no, escaleras de bajada
 	if depth == max_depth:
 		_instance_scene(target_scene, exit_room.get_center())
 	elif not ascending:
 		_instance_scene(stairs_down_scene, exit_room.get_center())
 
-	# Populate intermediate rooms with enemies and coins.
+	# Poblamos las habitaciones intermedias con enemigos y monedas
 	for room in rooms:
 		if room == start_room or room == exit_room:
 			continue
@@ -341,10 +343,12 @@ func _instance_scene(scene: PackedScene, map_coords: Vector2, stats_override: En
 	entities_container.add_child(instance)
 
 func _calculate_hunter_spawn_pos() -> Vector2:
+	# Posición aleatoria en el círculo alrededor del jugador
 	var angle: float = randf() * TAU
 	return _player.global_position + Vector2(cos(angle), sin(angle)) * HUNTER_SPAWN_RADIUS
 
 func _pick_random_enemy_by_weight() -> EnemySpawnData:
+	# Filtramos por ciclo mínimo y hacemos una selección aleatoria ponderada
 	var cycle: int = GlobalData.current_cycle
 	var candidates: Array = possible_enemies.filter(func(d): return cycle >= d.min_cycle)
 
@@ -389,6 +393,7 @@ func _get_line_coords(from: Vector2, to: Vector2) -> Array[Vector2i]:
 	return coords
 
 func _get_random_pos_in_room(room: Rect2i) -> Vector2:
+	# grow con valor negativo reduce el área para evitar spawns pegados a las paredes
 	var inner: Rect2i = room.grow(INNER_ROOM_MARGIN)
 	return Vector2(
 		randi_range(inner.position.x, inner.end.x - 1),

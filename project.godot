@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 [autoload]
 
 EventBus="*res://globals/events.gd"
+GlobalData="*res://globals/global_data.gd"
 
 [debug]
 

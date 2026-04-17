@@ -277,15 +277,16 @@ func die() -> void:
 	set_physics_process(false) 
 	stop_movement()
 	
+	EventBus.enemy_died.emit()
+	
+	_animate_death()
+	
 	if audio_death and audio_death.stream:
 		audio_death.reparent(get_parent())
 		audio_death.play()
 		await audio_death.finished
 		audio_death.queue_free()
-	
-	EventBus.enemy_died.emit()
-	
+		
 	# Esperamos a que termine la animación antes de liberar el nodo
-	_animate_death()
 	await get_tree().create_timer(DEATH_FREE_DELAY).timeout
 	queue_free()

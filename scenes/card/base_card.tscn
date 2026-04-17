@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvpa8qx3bxkva"]
+
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_fnijo"]
+[ext_resource type="StyleBox" uid="uid://dd2144855ixb7" path="res://theme/card_common.tres" id="2_6lcf5"]
+[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="2_okxtm"]
+[ext_resource type="Script" uid="uid://b1vtmhb1x01yh" path="res://scenes/card/base_card.gd" id="2_u2tlh"]
+[ext_resource type="StyleBox" uid="uid://73b0yy0www8t" path="res://theme/card_rare.tres" id="4_b7wc3"]
+[ext_resource type="StyleBox" uid="uid://frk047sk17h2" path="res://theme/card_epic.tres" id="5_ktr3p"]
+
+[node name="BaseCard" type="PanelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(240, 300)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_fnijo")
+theme_override_styles/panel = ExtResource("2_6lcf5")
+script = ExtResource("2_u2tlh")
+style_common = ExtResource("2_6lcf5")
+style_rare = ExtResource("4_b7wc3")
+style_epic = ExtResource("5_ktr3p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_okxtm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Test Card
+Test Card"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="ExtraInfo" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Cost: 5
+Cost: 50"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
