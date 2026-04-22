@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duhq2h25l4gp4"]
+
+[ext_resource type="Script" uid="uid://dlqqg7ojk08cm" path="res://globals/card_database/card_database.gd" id="1_0wpp4"]
+
+[node name="CardDatabaseManager" type="Node"]
+script = ExtResource("1_0wpp4")

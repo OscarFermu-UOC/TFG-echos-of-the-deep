@@ -2,9 +2,6 @@
 class_name CardManager
 extends Node
 
-# DEBUG:
-@export var debug_deck: Array[CardData]
-
 # ==========================================================
 # CONSTANTS
 # ==========================================================
@@ -36,9 +33,6 @@ var cooldown_mult: float = 1.0 # Modificador de velocidad de robo (aplicado por 
 func _ready() -> void:
 	hand.resize(hand_size)
 	hand.fill(null) # La mano empieza con todos los slots vacíos
-	
-	# DEBUG:
-	start_deck_cycle(debug_deck)
 
 func _process(delta: float) -> void:
 	if not is_drawing:

@@ -1,0 +1,62 @@
+[gd_scene load_steps=14 format=3 uid="uid://bvljql3o2vdmo"]
+
+[ext_resource type="PackedScene" uid="uid://dk0w1glmccbiu" path="res://scenes/map/map_generator.tscn" id="5_fo0ly"]
+[ext_resource type="PackedScene" uid="uid://brhtmr3l7q4oq" path="res://scenes/player/player.tscn" id="6_x53nd"]
+[ext_resource type="Script" uid="uid://dp5ddop7sifs8" path="res://scenes/run/run_manager.gd" id="7_l6p45"]
+[ext_resource type="Script" uid="uid://wh7gi8clyc88" path="res://scenes/run/clank_manager.gd" id="8_kdgoc"]
+[ext_resource type="PackedScene" uid="uid://dhlresaxijjg8" path="res://ui/pause_menu/pause_menu.tscn" id="8_wy2jw"]
+[ext_resource type="Script" uid="uid://t3ddh5tux7et" path="res://scenes/run/card_manager.gd" id="9_cnkn7"]
+[ext_resource type="Script" uid="uid://cmxu2f0k5bkcn" path="res://scenes/run/hazard_manager.gd" id="9_y3spc"]
+[ext_resource type="Script" uid="uid://batg7rvrt556t" path="res://scenes/run/loot_manager.gd" id="10_0pc8y"]
+[ext_resource type="PackedScene" uid="uid://jh5h5r0smod7" path="res://scenes/loot/coin/coin.tscn" id="10_g42ja"]
+[ext_resource type="Script" uid="uid://beirn45gwpo74" path="res://data/enemies/enemy_spawn_data.gd" id="10_u2bn2"]
+[ext_resource type="PackedScene" uid="uid://blbocd3tbl4cs" path="res://scenes/loot/key/key.tscn" id="11_cnkn7"]
+[ext_resource type="Script" uid="uid://fktr7va33frn" path="res://scenes/player/camera.gd" id="18_y3spc"]
+[ext_resource type="PackedScene" uid="uid://bqeb7uwvpj7jl" path="res://scenes/loot/ether/ether.tscn" id="21_psst2"]
+
+[node name="Main" type="Node2D"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_wy2jw")]
+visible = false
+
+[node name="MapGenerator" parent="." instance=ExtResource("5_fo0ly")]
+unique_name_in_owner = true
+z_index = -2
+map_width = 60
+map_height = 40
+room_count = 12
+possible_enemies = Array[ExtResource("10_u2bn2")]([])
+chance_increase_per_stage = 0.1
+
+[node name="Player" parent="." instance=ExtResource("6_x53nd")]
+unique_name_in_owner = true
+position = Vector2(560, 248)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("18_y3spc")
+
+[node name="RunManager" type="Node" parent="." groups=["RunManager"]]
+script = ExtResource("7_l6p45")
+
+[node name="ClankManager" type="Node" parent="RunManager"]
+script = ExtResource("8_kdgoc")
+max_clank = 5
+
+[node name="HazardManager" type="Node" parent="RunManager"]
+script = ExtResource("9_y3spc")
+
+[node name="CardManager" type="Node" parent="RunManager"]
+script = ExtResource("9_cnkn7")
+
+[node name="LootManager" type="Node" parent="RunManager"]
+script = ExtResource("10_0pc8y")
+spawn_interval = 2.0
+spawn_chance = 1.0
+key_weight = 0.0
+ether_weight = 0.0
+coin_scene = ExtResource("10_g42ja")
+key_scene = ExtResource("11_cnkn7")
+ether_scene = ExtResource("21_psst2")

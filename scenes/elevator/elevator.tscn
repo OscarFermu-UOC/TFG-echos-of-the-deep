@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://262dg6cwt5wp"]
+
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_7w7uo"]
+[ext_resource type="Script" uid="uid://g4lriomugdae" path="res://scenes/elevator/elevator.gd" id="1_x8gua"]
+[ext_resource type="PackedScene" uid="uid://buj42tsa1tgkw" path="res://scenes/card/elevator_card.tscn" id="3_hadwe"]
+
+[node name="Elevator" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7w7uo")
+script = ExtResource("1_x8gua")
+draft_card_scene = ExtResource("3_hadwe")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882354, 0.12941177, 0.15294118, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 1240.0
+offset_bottom = 680.0
+theme_override_constants/separation = 30
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "CYCLE 1 - STAGE 1 CLEARED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LootLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "loot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DraftSection" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="DraftContainer" type="HBoxContainer" parent="VBoxContainer/DraftSection"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BaseCard4" parent="VBoxContainer/DraftSection/DraftContainer" instance=ExtResource("3_hadwe")]
+layout_mode = 2
+
+[node name="BaseCard5" parent="VBoxContainer/DraftSection/DraftContainer" instance=ExtResource("3_hadwe")]
+layout_mode = 2
+
+[node name="BaseCard6" parent="VBoxContainer/DraftSection/DraftContainer" instance=ExtResource("3_hadwe")]
+layout_mode = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="BtnExtract" type="Button" parent="VBoxContainer/ButtonsContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+text = "EXTRACT (Convert to Ether)"
+
+[node name="BtnDescend" type="Button" parent="VBoxContainer/ButtonsContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+text = "DESCEND (Next Stage)"
+
+[connection signal="pressed" from="VBoxContainer/ButtonsContainer/BtnExtract" to="." method="_on_btn_extract_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonsContainer/BtnDescend" to="." method="_on_btn_descend_pressed"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcwgwe2h0qil3"]
+
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_e2mad"]
+
+[sub_resource type="GDScript" id="GDScript_7c1w7"]
+script/source = "# Pantalla de victoria: muestra título, subtítulo e icono al completar el juego.
+extends RevealScreen
+
+@onready var _title: Label = %Title
+@onready var _subtitle: Label = %Subtitle
+@onready var _skull_icon: TextureRect = %SkullIcon
+@onready var _btn_menu: Button = %BtnMenu
+
+func _get_reveal_nodes() -> Array[Node]:
+	return [_title, _subtitle, _skull_icon]
+
+func _get_confirm_button() -> Button:
+	return _btn_menu
+"
+
+[node name="GameWin" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e2mad")
+script = SubResource("GDScript_7c1w7")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882354, 0.12941177, 0.15294118, 1)
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -28.0
+offset_right = 83.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="MainLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_font_sizes/font_size = 64
+text = "You win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnMenu" type="Button" parent="MainLayout"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+text = "RETURN TO BASE"
+
+[connection signal="pressed" from="MainLayout/BtnMenu" to="." method="_on_btn_menu_pressed"]
