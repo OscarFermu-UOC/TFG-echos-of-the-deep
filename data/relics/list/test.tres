@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://c560ddrwqmp3r"]
+
+[ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_cp057"]
+[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="1_n8shd"]
+
+[resource]
+script = ExtResource("1_cp057")
+id = "Test"
+title = "Test"
+icon = ExtResource("1_n8shd")
+description = "Test"
+type = 1
+metadata/_custom_type_script = "uid://d13dob0bkwb03"

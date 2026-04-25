@@ -36,3 +36,7 @@ signal card_played(card: CardData)
 signal card_clicked(card: CardData, from_container: Control)
 signal hand_updated(slot_index: int, card: CardData)
 signal draw_timer_updated(time_left: float, max_time: float)
+
+# Shop-related events
+signal buy_requested(card: CardData, node: Node)
+signal relic_obtained(relic_data: RelicData)

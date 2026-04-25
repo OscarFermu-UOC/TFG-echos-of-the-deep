@@ -21,7 +21,7 @@ const NEIGHBOR_DIRS: Array[Vector2i] = [
 ]
 
 const HUNTER_SPAWN_RADIUS: float = 600.0
-const COIN_SPAWN_CHANCE: float = 0.5
+const LOOT_SPAWN_CHANCE: float = 0.5
 const INNER_ROOM_MARGIN: int = -1  # Shrinks room by 1 tile to avoid wall overlaps.
 
 enum TileType { NONE, FLOOR, WALL_TOP, WALL_FACE }
@@ -45,7 +45,7 @@ enum TileType { NONE, FLOOR, WALL_TOP, WALL_FACE }
 @export var entities_container: Node2D
 @export var target_scene: PackedScene
 @export var exit_scene: PackedScene
-@export var coin_scene: PackedScene
+@export var loot_scene: PackedScene
 @export var stairs_down_scene: PackedScene
 @export var stairs_up_scene: PackedScene
 @export var key_scene: PackedScene
@@ -314,8 +314,8 @@ func _spawn_entities() -> void:
 			var spawn_data: EnemySpawnData = _pick_random_enemy_by_weight()
 			if spawn_data and spawn_data.enemy_scene:
 				_instance_scene(spawn_data.enemy_scene, _get_random_pos_in_room(room), spawn_data.stats)
-		if randf() < COIN_SPAWN_CHANCE:
-			_instance_scene(coin_scene, _get_random_pos_in_room(room))
+		if randf() < LOOT_SPAWN_CHANCE:
+			_instance_scene(loot_scene, _get_random_pos_in_room(room))
 
 func _find_farthest_room(origin: Rect2i) -> Rect2i:
 	var farthest: Rect2i = origin

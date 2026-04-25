@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 EventBus="*res://globals/events.gd"
 GlobalData="*res://globals/global_data.gd"
 CardDatabase="*res://globals/card_database/card_database.tscn"
+RelicDatabase="*res://globals/relic_database/relic_database.tscn"
 
 [debug]
 
