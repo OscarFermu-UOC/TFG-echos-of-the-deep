@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3 uid="uid://c0ngg06j5r85p"]
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=3 format=3 uid="uid://c0ngg06j5r85p"]
 
 [ext_resource type="Script" uid="uid://bj6v8p5p2wnl1" path="res://data/artifacts/artifact_data.gd" id="1_gi0j2"]
+[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="1_ieilj"]
 
 [resource]
 script = ExtResource("1_gi0j2")
+title = "Test"
+icon = ExtResource("1_ieilj")
 metadata/_custom_type_script = "uid://bj6v8p5p2wnl1"

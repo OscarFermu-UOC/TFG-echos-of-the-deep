@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://dplsq8s2rbowe"]
+
+[ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_fi18d"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_a2oce"]
+[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="2_vnrgx"]
+
+[sub_resource type="Resource" id="Resource_eummo"]
+script = ExtResource("1_fi18d")
+value = 3
+metadata/_custom_type_script = "uid://cdp02l1gst5us"
+
+[resource]
+script = ExtResource("2_a2oce")
+id = "Block_Clank"
+title = "Block_Clank"
+description = "Block_Clank"
+icon = ExtResource("2_vnrgx")
+max_copies = 5
+cost = 2
+effects = Array[ExtResource("1_fi18d")]([SubResource("Resource_eummo")])
+metadata/_custom_type_script = "uid://nisejxogkmv"

@@ -25,4 +25,4 @@ extends Resource
 # Equipamiento inicial al comenzar la partida
 @export_group("Loadout")
 @export var starting_weapon: WeaponData
-# var starting_deck: ...
+@export var starting_deck: Array[CardData]

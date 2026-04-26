@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgo1k0s2wyd1t"]
+
+[ext_resource type="Script" uid="uid://dy86qxw53uj2w" path="res://ui/compass_hud/compass_hud.gd" id="2_3udy0"]
+[ext_resource type="Texture2D" uid="uid://8mrp0fparoh1" path="res://assets/sprites/loot/key/keys_1_3.png" id="2_378iy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_38beh"]
+
+[node name="CompassHUD" type="CanvasLayer"]
+layer = 0
+script = ExtResource("2_3udy0")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(160, 160)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -184.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_38beh")
+
+[node name="Container" type="MarginContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CompassArrow" type="Sprite2D" parent="PanelContainer/Container"]
+unique_name_in_owner = true
+position = Vector2(40, 40)
+rotation = 1.5707964
+scale = Vector2(4, 4)
+texture = ExtResource("2_378iy")

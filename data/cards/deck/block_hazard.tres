@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://2kb6mogeliyl"]
+
+[ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_08myg"]
+[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="2_08myg"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="3_pwbno"]
+
+[sub_resource type="Resource" id="Resource_eummo"]
+script = ExtResource("1_08myg")
+type = 1
+value = 3
+metadata/_custom_type_script = "uid://cdp02l1gst5us"
+
+[resource]
+script = ExtResource("3_pwbno")
+id = "Block_Hazard"
+title = "Block_Hazard"
+description = "Block_Hazard"
+icon = ExtResource("2_08myg")
+max_copies = 5
+cost = 2
+effects = Array[ExtResource("1_08myg")]([SubResource("Resource_eummo")])
+metadata/_custom_type_script = "uid://nisejxogkmv"

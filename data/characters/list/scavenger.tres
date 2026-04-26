@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterClass" load_steps=4 format=3 uid="uid://28meoeyrxa5q"]
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=7 format=3 uid="uid://28meoeyrxa5q"]
 
 [ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="1_n4unf"]
 [ext_resource type="Script" uid="uid://dswjbq3bld624" path="res://data/characters/character_class.gd" id="2_1jnn4"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="3_j23rl"]
+[ext_resource type="Resource" uid="uid://dplsq8s2rbowe" path="res://data/cards/deck/block_clank.tres" id="4_138iq"]
 [ext_resource type="Resource" uid="uid://cmtp8ghkt8j6w" path="res://data/weapons/list/pistol.tres" id="4_h078e"]
+[ext_resource type="Resource" uid="uid://2kb6mogeliyl" path="res://data/cards/deck/block_hazard.tres" id="5_h078e"]
 
 [resource]
 script = ExtResource("2_1jnn4")
 portrait = ExtResource("1_n4unf")
 roll_duration = 0.2
 starting_weapon = ExtResource("4_h078e")
+starting_deck = Array[ExtResource("3_j23rl")]([ExtResource("4_138iq"), ExtResource("4_138iq"), ExtResource("4_138iq"), ExtResource("4_138iq"), ExtResource("5_h078e"), ExtResource("5_h078e"), ExtResource("5_h078e"), ExtResource("5_h078e")])
 metadata/_custom_type_script = "uid://dswjbq3bld624"

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://duhq2h25l4gp4"]
+[gd_scene load_steps=5 format=3 uid="uid://duhq2h25l4gp4"]
 
 [ext_resource type="Script" uid="uid://dlqqg7ojk08cm" path="res://globals/card_database/card_database.gd" id="1_0wpp4"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_uxls3"]
+[ext_resource type="Resource" uid="uid://dplsq8s2rbowe" path="res://data/cards/deck/block_clank.tres" id="3_gmh4h"]
+[ext_resource type="Resource" uid="uid://2kb6mogeliyl" path="res://data/cards/deck/block_hazard.tres" id="4_4b7ws"]
 
 [node name="CardDatabaseManager" type="Node"]
 script = ExtResource("1_0wpp4")
+all_cards = Array[ExtResource("2_uxls3")]([ExtResource("3_gmh4h"), ExtResource("4_4b7ws")])

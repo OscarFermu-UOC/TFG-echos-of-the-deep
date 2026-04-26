@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm0mwo4u1mcpc"]
+[gd_scene load_steps=4 format=3 uid="uid://cm0mwo4u1mcpc"]
 
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_mu8pm"]
 [ext_resource type="Script" uid="uid://5vb4u8lffwr6" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+[ext_resource type="Resource" uid="uid://28meoeyrxa5q" path="res://data/characters/list/scavenger.tres" id="3_omy8q"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mu8pm")
 script = ExtResource("1_uhj5c")
+player_class = ExtResource("3_omy8q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
