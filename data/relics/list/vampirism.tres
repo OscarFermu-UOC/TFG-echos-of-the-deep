@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=2 format=3 uid="uid://xq08571avd42"]
+
+[ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_4f4fe"]
+
+[resource]
+script = ExtResource("1_4f4fe")
+id = "vampirism"
+title = "Vampirism"
+description = "Heal half a heart every time you kill an enemy"
+cost = 10
+type = 1
+metadata/_custom_type_script = "uid://d13dob0bkwb03"

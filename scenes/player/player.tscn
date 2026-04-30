@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://brhtmr3l7q4oq"]
+[gd_scene load_steps=17 format=3 uid="uid://brhtmr3l7q4oq"]
 
 [ext_resource type="Script" uid="uid://cvjbv15yrpion" path="res://scenes/player/player.gd" id="1_g2els"]
 [ext_resource type="Resource" uid="uid://28meoeyrxa5q" path="res://data/characters/list/scavenger.tres" id="2_uf5tr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="3_je7p5"]
 [ext_resource type="Texture2D" uid="uid://dfxug265t5v" path="res://assets/sprites/player/light.png" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://cmr3gkbs8a6t3" path="res://scenes/player/weapon_system.gd" id="5_gx1jg"]
+[ext_resource type="Script" uid="uid://dgct3d0lh8nx4" path="res://scenes/player/mouse_light.gd" id="5_ugbui"]
 [ext_resource type="AudioStream" uid="uid://cfiwi43r2r787" path="res://assets/sounds/player/hurt.mp3" id="8_gx1jg"]
 [ext_resource type="AudioStream" uid="uid://b0kbv2y2xktij" path="res://assets/sounds/enemy/death.mp3" id="8_je7p5"]
 [ext_resource type="AudioStream" uid="uid://dwwr2hlxt7vwe" path="res://assets/sounds/player/revive.mp3" id="10_ugbui"]
@@ -43,6 +44,17 @@ shadow_enabled = true
 shadow_filter = 1
 shadow_item_cull_mask = 3
 texture = ExtResource("3_qhqgy")
+
+[node name="MouseLight" type="PointLight2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+enabled = false
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_item_cull_mask = 3
+texture = ExtResource("3_qhqgy")
+texture_scale = 0.2
+script = ExtResource("5_ugbui")
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2(1.25, 2.3841858e-07)

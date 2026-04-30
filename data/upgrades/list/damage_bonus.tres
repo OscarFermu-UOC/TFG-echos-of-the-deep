@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://miupexudgiw8"]
+
+[ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_y2n4m"]
+
+[resource]
+script = ExtResource("1_y2n4m")
+id = "damage_bonus"
+title = "Hollow Points"
+description = "Increases de base damage of your weapon"
+stat_preview = "+1 Damage"

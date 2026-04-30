@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=2 format=3 uid="uid://wapthdfjkf01"]
+
+[ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_8yqum"]
+
+[resource]
+script = ExtResource("1_8yqum")
+id = "adrenaline"
+title = "Adrenaline Boost"
+description = "Increse your [color=\"blue\"]speed by 10%[/color]"
+cost = 15
+type = 1
+metadata/_custom_type_script = "uid://d13dob0bkwb03"

@@ -2,11 +2,11 @@
 extends CharacterBody2D
 class_name Player
 
-@export var stats: CharacterClass
-
 # ==========================================================
 # EXPORTS
 # ==========================================================
+@export var stats: CharacterClass
+
 @export_group("Procedural Animation")
 @export var bob_freq_walk : float = 15.0
 @export var bob_freq_run : float = 25.0
@@ -21,9 +21,11 @@ class_name Player
 const VELOCITY_IDLE_THRESHOLD: float = 10.0
 const REVIVE_HEALTH: int = 40
 const REVIVE_INVULNERABILITY_DURATION: float = 2.0
-
 const STEP_WALK_INTERVAL: float = 0.5
 const STEP_RUN_INTERVAL: float = 0.3
+const SPEED_MODIFIER_MODULATE: Color = Color(0.5, 1.0, 0.5)
+const SPEED_BOOST_FLASH_IN: float = 0.2
+const SPEED_BOOST_FLASH_OUT: float = 0.5
 
 # ==========================================================
 # STATE
@@ -77,7 +79,7 @@ var step_timer: float = 0.0
 func _ready() -> void:
 	add_to_group("Player")
 	
-	# TODO: Load stats from save
+	stats = GlobalData.current_class_data
 	
 	if not stats:
 		push_error("ERROR: El player no tiene CharacterClass asignado.")
@@ -107,14 +109,66 @@ func _initialize_character() -> void:
 	roll_cooldown = stats.roll_cooldown
 	noise_distance_threshold = stats.noise_distance_threshold
 	
-	# TODO: Aplicar meta-progresion
-	# TODO: Aplicar reliquias
+	var upgrades: Dictionary = GlobalData.save_file.unlocked_upgrades
 	
+	# Vida máxima
+	var lvl_hp = upgrades.get(UpgradeIDs.MAX_HEALTH, 0)
+	max_health += (lvl_hp * UpgradeIDs.MAX_HEALTH_VALUE)
+	current_health = max_health
+	
+	# Sigilo
+	var lvl_stealth = upgrades.get(UpgradeIDs.STEALTH, 0)
+	var stealth_mod = 1.0 + (lvl_stealth * UpgradeIDs.STEALTH_VALUE)
+	noise_distance_threshold *= stealth_mod
+	
+	# Velocidad
+	var lvl_speed = upgrades.get(UpgradeIDs.SPEED, 0)
+	var speed_mult = 1.0 + (lvl_speed * UpgradeIDs.SPEED_VALUE)
+	run_speed *= speed_mult
+	walk_speed *= speed_mult
+	
+	# Roll cooldown
+	var lvl_roll = upgrades.get(UpgradeIDs.ROLL_COOLDOWN, 0)
+	roll_cooldown = max(0.2, roll_cooldown - (lvl_roll * UpgradeIDs.ROLL_COOLDOWN_VALUE))
+	
+	# Revive
+	var lvl_revive = upgrades.get(UpgradeIDs.REVIVE, 0)
+	has_revive = (lvl_revive > 0)
+	
+	# Mejoras del arma
+	var dmg_bonus = upgrades.get(UpgradeIDs.DAMAGE, 0) * UpgradeIDs.DAMAGE_VALUE
+	var lvl_reload = upgrades.get(UpgradeIDs.RELOAD_SPEED, 0)
+	var reload_mult = 1.0 - (lvl_reload * UpgradeIDs.RELOAD_SPEED_VALUE)
+	var crit = upgrades.get(UpgradeIDs.CRIT_CHANCE, 0) * UpgradeIDs.CRIT_CHANCE_VALUE
+	
+	# Aplicar reliquias
+	if RelicIDs.ADRENALINE in GlobalData.current_run_relics:
+		run_speed *= 1.1
+		walk_speed *= 1.1
+	
+	# Equipar arma
 	if stats.starting_weapon:
-		# TODO: Aplicar mejoras del arma
+		weapon_system.apply_modifiers(dmg_bonus, reload_mult, crit)
 		weapon_system.equip_weapon(stats.starting_weapon)
 
 	EventBus.health_changed.emit(current_health, max_health)
+	
+func apply_speed_boost(percent: float, duration: float) -> void:
+	var mult_add = percent / 100.0
+	temp_speed_mult += mult_add
+	run_speed *= temp_speed_mult
+	walk_speed *= temp_speed_mult
+	
+	# Efecto visual
+	var tween: Tween = create_tween()
+	tween.tween_property(sprite, "modulate", SPEED_MODIFIER_MODULATE, SPEED_BOOST_FLASH_IN)
+	tween.tween_property(sprite, "modulate", Color.WHITE, SPEED_BOOST_FLASH_OUT)
+	
+	await get_tree().create_timer(duration).timeout
+	
+	run_speed /= temp_speed_mult
+	walk_speed /= temp_speed_mult
+	temp_speed_mult -= mult_add
 	
 # ==========================================================
 # SONIDO MOVIMIENTO

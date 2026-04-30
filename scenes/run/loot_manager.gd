@@ -6,6 +6,7 @@ extends Node
 # CONSTANTES
 # ==========================================================
 const LOOT_COIN_DEFAULT: int = 1
+const LOOT_COIN_RELIC_BONUS: int = 2 # Monedas extra con la reliquia activa
 
 # ==========================================================
 # CONFIGURACIÓN
@@ -40,7 +41,7 @@ func _ready() -> void:
 
 func _on_coin_collected() -> void:
 	# Si el jugador tiene la reliquia de loot, cada moneda vale más
-	coins += LOOT_COIN_DEFAULT
+	coins += LOOT_COIN_RELIC_BONUS if RelicIDs.LOOT in GlobalData.current_run_relics else LOOT_COIN_DEFAULT
 	
 func _on_ether_collected() -> void:
 	GlobalData.save_file.ether += 1

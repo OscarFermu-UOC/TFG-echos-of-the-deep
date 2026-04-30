@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://r1cwt2cqs4ab"]
+[gd_scene load_steps=10 format=3 uid="uid://r1cwt2cqs4ab"]
 
 [ext_resource type="Script" uid="uid://is67kwrhqhao" path="res://globals/relic_database/relic_database.gd" id="1_xo4k8"]
 [ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="2_x685s"]
-[ext_resource type="Resource" uid="uid://c560ddrwqmp3r" path="res://data/relics/list/test.tres" id="3_nqn83"]
+[ext_resource type="Resource" uid="uid://wapthdfjkf01" path="res://data/relics/list/adrenaline.tres" id="3_ffcsm"]
+[ext_resource type="Resource" uid="uid://csun3mq87dhca" path="res://data/relics/list/free_reroll.tres" id="4_3yffs"]
+[ext_resource type="Resource" uid="uid://dgxxhuar30ciw" path="res://data/relics/list/heal_potion.tres" id="5_yabxy"]
+[ext_resource type="Resource" uid="uid://gp8vyaxmdb86" path="res://data/relics/list/life_insurance.tres" id="6_tnbr4"]
+[ext_resource type="Resource" path="res://data/relics/list/loot.tres" id="7_u767q"]
+[ext_resource type="Resource" path="res://data/relics/list/mouse_light.tres" id="8_0v8c3"]
+[ext_resource type="Resource" uid="uid://xq08571avd42" path="res://data/relics/list/vampirism.tres" id="9_mrrv2"]
 
 [node name="RelicDatabase" type="Node"]
 script = ExtResource("1_xo4k8")
-all_relics = Array[ExtResource("2_x685s")]([ExtResource("3_nqn83")])
+all_relics = Array[ExtResource("2_x685s")]([ExtResource("3_ffcsm"), ExtResource("4_3yffs"), ExtResource("5_yabxy"), ExtResource("6_tnbr4"), ExtResource("7_u767q"), ExtResource("8_0v8c3"), ExtResource("9_mrrv2")])

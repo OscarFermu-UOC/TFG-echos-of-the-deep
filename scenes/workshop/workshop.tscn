@@ -1,11 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://cy6cre1dh6asf"]
+[gd_scene load_steps=21 format=3 uid="uid://cy6cre1dh6asf"]
 
 [ext_resource type="Script" uid="uid://cil836y4mnvup" path="res://scenes/workshop/workshop.gd" id="1_mrv4p"]
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="3_im08q"]
 [ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="3_lf5r6"]
 [ext_resource type="PackedScene" uid="uid://c0j40n3l4xgc5" path="res://scenes/workshop/workshop_item.tscn" id="3_mrv4p"]
-[ext_resource type="Resource" uid="uid://bg5itq4syu38r" path="res://data/upgrades/list/test.tres" id="4_im08q"]
+[ext_resource type="Resource" uid="uid://4m228n4v618" path="res://data/upgrades/list/card_cooldown_reduction.tres" id="4_lf5r6"]
 [ext_resource type="AudioStream" uid="uid://b0bn48onh66wd" path="res://assets/sounds/workshop/anvil.mp3" id="4_mdujs"]
+[ext_resource type="Resource" uid="uid://dk4bijss4n017" path="res://data/upgrades/list/crit_chance.tres" id="5_b3kjw"]
+[ext_resource type="Resource" uid="uid://miupexudgiw8" path="res://data/upgrades/list/damage_bonus.tres" id="6_rfakj"]
+[ext_resource type="Resource" uid="uid://bijisdlld2igh" path="res://data/upgrades/list/draft_options.tres" id="7_40ehm"]
+[ext_resource type="Resource" uid="uid://lobe0bbhjt6j" path="res://data/upgrades/list/ether_gain.tres" id="8_nsmpv"]
+[ext_resource type="Resource" uid="uid://d2r5te1onf0f6" path="res://data/upgrades/list/hazard_resistance.tres" id="9_7w873"]
+[ext_resource type="Resource" uid="uid://gdxnaenf8f87" path="res://data/upgrades/list/max_health.tres" id="10_dcfxw"]
+[ext_resource type="Resource" uid="uid://npe1rkmsqdro" path="res://data/upgrades/list/reload_speed.tres" id="11_7a5kg"]
+[ext_resource type="Resource" uid="uid://crp1eh7sy4k1u" path="res://data/upgrades/list/revive.tres" id="12_pg2ew"]
+[ext_resource type="Resource" uid="uid://dv4wnp6m3ydev" path="res://data/upgrades/list/roll_cooldown.tres" id="13_jouln"]
+[ext_resource type="Resource" uid="uid://cel04ve6ccf42" path="res://data/upgrades/list/speed.tres" id="14_7545s"]
+[ext_resource type="Resource" uid="uid://c06cmhfa74cqh" path="res://data/upgrades/list/stealth.tres" id="15_sdsin"]
 
 [sub_resource type="Gradient" id="Gradient_im08q"]
 offsets = PackedFloat32Array(0, 0.93307084, 1)
@@ -25,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mrv4p")
 upgrade_item_scene = ExtResource("3_mrv4p")
-all_upgrades = Array[ExtResource("3_lf5r6")]([ExtResource("4_im08q"), ExtResource("4_im08q")])
+all_upgrades = Array[ExtResource("3_lf5r6")]([ExtResource("4_lf5r6"), ExtResource("5_b3kjw"), ExtResource("6_rfakj"), ExtResource("7_40ehm"), ExtResource("8_nsmpv"), ExtResource("9_7w873"), ExtResource("10_dcfxw"), ExtResource("11_7a5kg"), ExtResource("12_pg2ew"), ExtResource("13_jouln"), ExtResource("14_7545s"), ExtResource("15_sdsin")])
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1

@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_d7gqy"]
 [ext_resource type="Script" uid="uid://f58llxhkkymv" path="res://scenes/workshop/workshop_item.gd" id="2_tlhlq"]
-[ext_resource type="Texture2D" uid="uid://dhx1o5au0xrxa" path="res://assets/sprites/upgrades/quantum_cpu.png" id="3_gbdgo"]
+[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="3_gbdgo"]
 
 [node name="WorkshopItem" type="PanelContainer"]
 custom_minimum_size = Vector2(500, 120)

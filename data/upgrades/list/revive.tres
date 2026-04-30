@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://crp1eh7sy4k1u"]
+
+[ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_210ih"]
+
+[resource]
+script = ExtResource("1_210ih")
+id = "revive"
+title = "Defibrillator"
+description = "Allows you to revive once per run with reduced health"
+max_level = 1
+base_cost = 20
+cost_increment = 0
+stat_preview = "1 Extra Life"

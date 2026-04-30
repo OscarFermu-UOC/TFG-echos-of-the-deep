@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://npe1rkmsqdro"]
+
+[ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_aekj6"]
+
+[resource]
+script = ExtResource("1_aekj6")
+id = "reload_speed"
+title = "Quick Mag"
+description = "Reduces the cooldown between shots"
+stat_preview = "-5% Cooldown"

@@ -46,7 +46,8 @@ func _generate_draft() -> void:
 		child.queue_free()
 
 	var discovery_chance: float = DISCOVERY_BASE_CHANCE + GlobalData.current_cycle * DISCOVERY_CHANCE_PER_CYCLE
-	var options: Array[CardData] = CardDatabase.get_draft_options(DRAFT_BASE_AMOUNT, discovery_chance)
+	var extra_cards: int = GlobalData.save_file.unlocked_upgrades.get(UpgradeIDs.DRAFT_OPTIONS, 0)
+	var options: Array[CardData] = CardDatabase.get_draft_options(DRAFT_BASE_AMOUNT + extra_cards, discovery_chance)
 
 	var unlocked_ids: Array = GlobalData.save_file.unlocked_card_ids
 	for card in options:
@@ -75,7 +76,10 @@ func _on_draft_card_selected(card: CardData, _widget_node: Control) -> void:
 	_loot_label.text += "\nAcquired: " + card.title
 
 func _on_btn_extract_pressed() -> void:
-	GlobalData.save_file.ether += int(GlobalData.temp_run_gold * GlobalData.ETHER_CONVERSION_RATE)
+	# El bonus de éter se escala con la mejora ETHER_GAIN
+	var lvl_ether: int = GlobalData.save_file.unlocked_upgrades.get(UpgradeIDs.ETHER_GAIN, 0)
+	var bonus: float = 1.0 + lvl_ether * UpgradeIDs.ETHER_GAIN_VALUE
+	GlobalData.save_file.ether += int(GlobalData.temp_run_gold * GlobalData.ETHER_CONVERSION_RATE * bonus)
 
 	GlobalData.temp_run_gold = 0
 	GlobalData.current_run_deck.clear()

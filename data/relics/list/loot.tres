@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=2 format=3 uid="uid://dri5qhwov17o"]
+
+[ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_mtvxy"]
+
+[resource]
+script = ExtResource("1_mtvxy")
+id = "loot"
+title = "Extra Loot"
+description = "Double the coins you obtain from the ground"
+cost = 5
+type = 1
+metadata/_custom_type_script = "uid://d13dob0bkwb03"

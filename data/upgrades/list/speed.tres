@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://cel04ve6ccf42"]
+
+[ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_4xmwk"]
+
+[resource]
+script = ExtResource("1_4xmwk")
+id = "speed"
+title = "Quick Feet"
+description = "Increases your move speed"
+stat_preview = "+5% move speed"

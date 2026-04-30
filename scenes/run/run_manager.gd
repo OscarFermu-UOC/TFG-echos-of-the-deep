@@ -35,6 +35,7 @@ const STORM_EYE_FLASH_OUT: float = 0.5
 @onready var hazard_system: HazardManager = $HazardManager
 @onready var card_manager: CardManager = $CardManager
 @onready var loot_manager: LootManager = $LootManager
+@onready var relic_manager: RelicManager = $RelicManager
 
 # ==========================================================
 # CICLO DE VIDA
@@ -78,6 +79,8 @@ func start_new_run() -> void:
 	_generate_dungeon_level(stage)
 	_update_compass_logic()
 
+	var upgrades: Dictionary = GlobalData.save_file.unlocked_upgrades
+	card_manager.set_speed_modifier(upgrades.get(UpgradeIDs.CARD_COOLDOWN, 0))
 	card_manager.start_deck_cycle(GlobalData.current_run_deck)
 
 	hazard_system.reset()
@@ -148,7 +151,11 @@ func _on_player_died() -> void:
 	get_tree().paused = true
 	GlobalData.temp_run_gold += loot_manager.coins
  
+	# Con LIFE_INSURANCE se conserva una fracción del oro acumulado
 	var gold_saved: int = 0
+	if relic_manager.has_relic(RelicIDs.LIFE_INSURANCE):
+		gold_saved = int(GlobalData.temp_run_gold * LIFE_INSURANCE_GOLD_KEPT)
+		GlobalData.temp_run_gold = gold_saved
  
 	# El oro guardado se convierte parcialmente en éter permanente
 	var saved_ether: int = int(gold_saved * GlobalData.ETHER_CONVERSION_RATE)

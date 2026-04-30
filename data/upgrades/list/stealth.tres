@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://c06cmhfa74cqh"]
+
+[ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_kxr61"]
+
+[resource]
+script = ExtResource("1_kxr61")
+id = "stealth"
+title = "Silent Step"
+description = "Increases the distance you can run without making noise"
+stat_preview = "+10% run distance"

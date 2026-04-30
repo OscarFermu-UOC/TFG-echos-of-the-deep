@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=2 format=3 uid="uid://dgxxhuar30ciw"]
+
+[ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_fn5qp"]
+
+[resource]
+script = ExtResource("1_fn5qp")
+id = "heal"
+title = "Heal Potion"
+description = "Heals 1 heart"
+cost = 5
+stat_value = 20.0
+metadata/_custom_type_script = "uid://d13dob0bkwb03"

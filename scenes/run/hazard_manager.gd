@@ -13,8 +13,13 @@ var _hazard_timer: Timer
 func _ready() -> void:
 	EventBus.modify_hazard.connect(add_hazard)
  
+	# El intervalo se alarga con la mejora de resistencia al peligro
+	var upgrades: Dictionary = GlobalData.save_file.unlocked_upgrades
+	var resistance_level: int = upgrades.get(UpgradeIDs.HAZARD_RESISTANCE, 0)
+	var interval: float = hazard_interval + resistance_level * UpgradeIDs.HAZARD_RESISTANCE_VALUE
+ 
 	_hazard_timer = Timer.new()
-	_hazard_timer.wait_time = hazard_interval
+	_hazard_timer.wait_time = interval
 	_hazard_timer.autostart = true
 	_hazard_timer.one_shot = false
 	add_child(_hazard_timer)
