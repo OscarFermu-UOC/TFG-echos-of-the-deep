@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://bg5itq4syu38r"]
+
+[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="1_b7cby"]
+[ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_tmo0p"]
+
+[resource]
+script = ExtResource("1_tmo0p")
+id = "test"
+title = "test"
+icon = ExtResource("1_b7cby")
+description = "test"
+metadata/_custom_type_script = "uid://v54jrmcyvjnn"

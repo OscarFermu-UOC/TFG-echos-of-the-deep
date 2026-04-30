@@ -5,8 +5,8 @@ extends Node
 # ==========================================================
 # CONFIGURACIÓN
 # ==========================================================
-const MAX_CYCLES: int = 3
-const MAX_STAGES: int = 3
+const MAX_CYCLES: int = 2
+const MAX_STAGES: int = 2
 const ETHER_CONVERSION_RATE: float = 0.1 # 10 de oro = 1 de éter
 
 # ==========================================================

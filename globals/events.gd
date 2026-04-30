@@ -39,4 +39,5 @@ signal draw_timer_updated(time_left: float, max_time: float)
 
 # Shop-related events
 signal buy_requested(card: CardData, node: Node)
+signal upgrade_requested(data: UpgradeData, cost: int, widget_node: Control)
 signal relic_obtained(relic_data: RelicData)

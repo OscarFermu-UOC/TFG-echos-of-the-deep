@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://cy6cre1dh6asf"]
+
+[ext_resource type="Script" uid="uid://cil836y4mnvup" path="res://scenes/workshop/workshop.gd" id="1_mrv4p"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="3_im08q"]
+[ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="3_lf5r6"]
+[ext_resource type="PackedScene" uid="uid://c0j40n3l4xgc5" path="res://scenes/workshop/workshop_item.tscn" id="3_mrv4p"]
+[ext_resource type="Resource" uid="uid://bg5itq4syu38r" path="res://data/upgrades/list/test.tres" id="4_im08q"]
+[ext_resource type="AudioStream" uid="uid://b0bn48onh66wd" path="res://assets/sounds/workshop/anvil.mp3" id="4_mdujs"]
+
+[sub_resource type="Gradient" id="Gradient_im08q"]
+offsets = PackedFloat32Array(0, 0.93307084, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_di8wu"]
+gradient = SubResource("Gradient_im08q")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdujs"]
+
+[node name="Workshop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mrv4p")
+upgrade_item_scene = ExtResource("3_mrv4p")
+all_upgrades = Array[ExtResource("3_lf5r6")]([ExtResource("4_im08q"), ExtResource("4_im08q")])
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_di8wu")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.24313726)
+
+[node name="MainLayout" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_im08q")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Header" type="VBoxContainer" parent="MainLayout/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="MainLayout/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Scavenger Workshop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrencyWidget" type="PanelContainer" parent="MainLayout/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mdujs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainLayout/VBoxContainer/Header/CurrencyWidget"]
+layout_mode = 2
+
+[node name="CurrencyIcon" type="TextureRect" parent="MainLayout/VBoxContainer/Header/CurrencyWidget/HBoxContainer"]
+layout_mode = 2
+
+[node name="EtherLabel" type="Label" parent="MainLayout/VBoxContainer/Header/CurrencyWidget/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ether: 500"
+
+[node name="Spacer" type="Control" parent="MainLayout/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Content" type="ScrollContainer" parent="MainLayout/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UpgradesGrid" type="GridContainer" parent="MainLayout/VBoxContainer/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="WorkshopItem" parent="MainLayout/VBoxContainer/Content/UpgradesGrid" instance=ExtResource("3_mrv4p")]
+layout_mode = 2
+
+[node name="WorkshopItem2" parent="MainLayout/VBoxContainer/Content/UpgradesGrid" instance=ExtResource("3_mrv4p")]
+layout_mode = 2
+
+[node name="WorkshopItem3" parent="MainLayout/VBoxContainer/Content/UpgradesGrid" instance=ExtResource("3_mrv4p")]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="MainLayout/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BtnBack" type="Button" parent="MainLayout/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("3_im08q")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="PurchaseSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_mdujs")
+max_distance = 500.0
+bus = &"SFX"
+
+[connection signal="pressed" from="MainLayout/VBoxContainer/BtnBack" to="." method="_on_btn_back_pressed"]

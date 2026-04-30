@@ -52,7 +52,6 @@ script = ExtResource("7_l6p45")
 
 [node name="ClankManager" type="Node" parent="RunManager"]
 script = ExtResource("8_kdgoc")
-max_clank = 5
 
 [node name="HazardManager" type="Node" parent="RunManager"]
 script = ExtResource("9_y3spc")

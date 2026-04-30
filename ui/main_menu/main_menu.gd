@@ -9,3 +9,7 @@ func _on_btn_play_pressed() -> void:
 
 func _on_btn_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_btn_workshop_pressed() -> void:
+	%Workshop.show()
