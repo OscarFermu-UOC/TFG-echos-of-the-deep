@@ -190,3 +190,62 @@ func _apply_single_effect(effect: CardEffect) -> void:
 			
 		CardEffect.Type.GENERATE_LOOT:
 			loot_manager.boost_all_spawners(effect.value)
+			
+		CardEffect.Type.MODIFY_SPEED:
+			%Player.apply_speed_boost(effect.value, 5.0)
+
+		CardEffect.Type.GLOBAL_STUN:
+			get_tree().call_group("Enemy", "apply_stun", float(effect.value))
+			
+		CardEffect.Type.ADD_CLANK:
+			clank_system.add_clank(int(effect.value))
+		
+		CardEffect.Type.DRAW_CARD:
+			card_manager.force_draw(int(effect.value))
+
+		CardEffect.Type.SPECIAL_SCALING, CardEffect.Type.CONVERT_RESOURCE:
+			_apply_special_logic(effect)
+
+func _apply_special_logic(effect: CardEffect) -> void:
+	var player: Player = %Player
+ 
+	match effect.custom_id:
+		"HP_TO_CLANK_BLOCK":
+			# Más bloqueo cuantos más corazones falten al jugador
+			var missing_hearts: int = int((player.max_health - player.current_health) / HP_HEART_SIZE)
+			clank_system.add_clank_block(HP_TO_BLOCK_BASE + missing_hearts * effect.value)
+ 
+		"HAZARD_TO_SPEED":
+			# Consume hazard block para convertirlo en velocidad temporal
+			var consume: int = mini(hazard_system.hazard_block, HAZARD_TO_SPEED_MAX_CONSUME)
+			if consume > 0:
+				hazard_system.add_hazard_block(-consume)
+				player.apply_speed_boost(consume * HAZARD_SPEED_PER_POINT, CLANK_SPEED_DURATION)
+ 
+		"BLOCK_TO_LOOT":
+			# Mayor boost si el jugador tiene mucho clank bloqueado acumulado
+			var power: int = BLOCK_TO_LOOT_HIGH_POWER if clank_system.clank_block > BLOCK_TO_LOOT_THRESHOLD else 1
+			loot_manager.boost_all_spawners(power)
+ 
+		"ARTIFACT_SHIELD":
+			# Escudo mayor al ascender, menor al explorar
+			var block: int = ARTIFACT_SHIELD_ASCENDING if GlobalData.is_ascending else ARTIFACT_SHIELD_DEFAULT
+			clank_system.add_clank_block(block)
+			hazard_system.add_hazard_block(block)
+ 
+		"CLANK_BLOCK_TO_SPEED":
+			# Convierte todo el clank bloqueado en un sprint temporal
+			var block: int = clank_system.clank_block
+			if block > 0:
+				clank_system.add_clank_block(-block)
+				player.apply_speed_boost(block * CLANK_SPEED_PER_POINT, CLANK_SPEED_DURATION)
+ 
+		"RESET_ALL_CHAOS":
+			# Resetea el clank y aturde a los enemigos
+			clank_system.current_clank = 0
+			EventBus.clank_changed.emit(0, clank_system.max_clank)
+			hazard_system.add_hazard_block(STORM_EYE_HAZARD_BLOCK)
+			get_tree().call_group("Enemy", "apply_stun", STORM_EYE_STUN_DURATION)
+			var tween: Tween = create_tween()
+			tween.tween_property(%Player, "modulate", Color(5.0, 5.0, 5.0), STORM_EYE_FLASH_IN)
+			tween.tween_property(%Player, "modulate", Color.WHITE, STORM_EYE_FLASH_OUT)

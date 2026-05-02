@@ -1,10 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://duhq2h25l4gp4"]
+[gd_scene load_steps=17 format=3 uid="uid://duhq2h25l4gp4"]
 
 [ext_resource type="Script" uid="uid://dlqqg7ojk08cm" path="res://globals/card_database/card_database.gd" id="1_0wpp4"]
 [ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_uxls3"]
-[ext_resource type="Resource" uid="uid://dplsq8s2rbowe" path="res://data/cards/deck/block_clank.tres" id="3_gmh4h"]
-[ext_resource type="Resource" uid="uid://2kb6mogeliyl" path="res://data/cards/deck/block_hazard.tres" id="4_4b7ws"]
+[ext_resource type="Resource" uid="uid://ck7efl7hmaf1d" path="res://data/cards/deck/containment.tres" id="3_nlk6s"]
+[ext_resource type="Resource" uid="uid://bc4luw38h8qor" path="res://data/cards/deck/duct_tape.tres" id="4_o0adb"]
+[ext_resource type="Resource" uid="uid://1rlcjwb1ylc5" path="res://data/cards/deck/eerie_silence.tres" id="5_72v5u"]
+[ext_resource type="Resource" uid="uid://8ctrkrn641h3" path="res://data/cards/deck/energy_drink.tres" id="6_hnp2u"]
+[ext_resource type="Resource" uid="uid://77a2m2gjmtqb" path="res://data/cards/deck/greedy_bag.tres" id="7_m8m2v"]
+[ext_resource type="Resource" uid="uid://71k56ovmu2y0" path="res://data/cards/deck/last_breath.tres" id="8_dh45p"]
+[ext_resource type="Resource" uid="uid://dacstn772leyx" path="res://data/cards/deck/master_key.tres" id="9_hwtk1"]
+[ext_resource type="Resource" uid="uid://d3u3phxtc18xl" path="res://data/cards/deck/panic_converter.tres" id="10_hchhb"]
+[ext_resource type="Resource" uid="uid://h8dpkh2sgqum" path="res://data/cards/deck/quick_draw.tres" id="11_n7xqw"]
+[ext_resource type="Resource" uid="uid://xxlwtlvdsd55" path="res://data/cards/deck/rock_throw.tres" id="12_00gw5"]
+[ext_resource type="Resource" uid="uid://cne11hq2pyb22" path="res://data/cards/deck/rusty_padlock.tres" id="13_vh0ov"]
+[ext_resource type="Resource" uid="uid://cfgnagrgaxusx" path="res://data/cards/deck/steam_engine.tres" id="14_kn85j"]
+[ext_resource type="Resource" uid="uid://5pd2dwsxka8p" path="res://data/cards/deck/storm_eye.tres" id="15_loowh"]
+[ext_resource type="Resource" uid="uid://b2mjlurmva7w" path="res://data/cards/deck/treasure_hunter.tres" id="16_01tu8"]
 
 [node name="CardDatabaseManager" type="Node"]
 script = ExtResource("1_0wpp4")
-all_cards = Array[ExtResource("2_uxls3")]([ExtResource("3_gmh4h"), ExtResource("4_4b7ws")])
+all_cards = Array[ExtResource("2_uxls3")]([ExtResource("3_nlk6s"), ExtResource("4_o0adb"), ExtResource("5_72v5u"), ExtResource("6_hnp2u"), ExtResource("7_m8m2v"), ExtResource("8_dh45p"), ExtResource("9_hwtk1"), ExtResource("10_hchhb"), ExtResource("11_n7xqw"), ExtResource("12_00gw5"), ExtResource("13_vh0ov"), ExtResource("14_kn85j"), ExtResource("15_loowh"), ExtResource("16_01tu8")])

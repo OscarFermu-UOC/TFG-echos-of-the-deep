@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://1rlcjwb1ylc5"]
+
+[ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_nwbse"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_nrlwn"]
+
+[sub_resource type="Resource" id="Resource_aetjx"]
+script = ExtResource("1_nwbse")
+value = 4
+metadata/_custom_type_script = "uid://ds2wbdjsqrbm0"
+
+[sub_resource type="Resource" id="Resource_li0rq"]
+script = ExtResource("1_nwbse")
+type = 1
+value = 4
+metadata/_custom_type_script = "uid://ds2wbdjsqrbm0"
+
+[resource]
+script = ExtResource("2_nrlwn")
+id = "2"
+title = "Eerie Silence"
+description = "Blocks 4 Hazard and 4 Clank"
+rarity = 1
+effects = Array[ExtResource("1_nwbse")]([SubResource("Resource_aetjx"), SubResource("Resource_li0rq")])

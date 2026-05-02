@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://77a2m2gjmtqb"]
+
+[ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_gy67m"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_v7q7m"]
+
+[sub_resource type="Resource" id="Resource_gy67m"]
+script = ExtResource("1_gy67m")
+type = 7
+value = 1
+custom_id = "BLOCK_TO_LOOT"
+metadata/_custom_type_script = "uid://ds2wbdjsqrbm0"
+
+[resource]
+script = ExtResource("2_v7q7m")
+id = "greedy_bag"
+title = "Greedy Bag"
+description = "Generates 1 loot. If you have more than 5 clank block, generates 3 loot."
+effects = Array[ExtResource("1_gy67m")]([SubResource("Resource_gy67m")])

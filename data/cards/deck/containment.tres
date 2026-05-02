@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://ck7efl7hmaf1d"]
+
+[ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_o54cf"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_5o2la"]
+
+[sub_resource type="Resource" id="Resource_o54cf"]
+script = ExtResource("1_o54cf")
+type = 7
+custom_id = "ARTIFACT_SHIELD"
+metadata/_custom_type_script = "uid://ds2wbdjsqrbm0"
+
+[resource]
+script = ExtResource("2_5o2la")
+id = "containment"
+title = "Containment Protocol"
+description = "Grants 10 Clank and Hazard block if you have the artifact. 2 otherwise"
+rarity = 2
+max_copies = 2
+effects = Array[ExtResource("1_o54cf")]([SubResource("Resource_o54cf")])
