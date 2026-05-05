@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://7iy6al05p7bk"]
+
+[ext_resource type="Script" uid="uid://cn1dlhpxcoaw8" path="res://ui/relic_hud/relic_hud.gd" id="1_srv4u"]
+[ext_resource type="PackedScene" uid="uid://c3ygkelpoxgfh" path="res://ui/relic_hud/relic_icon.tscn" id="2_ax8x7"]
+
+[node name="RelicHUD" type="CanvasLayer"]
+script = ExtResource("1_srv4u")
+relic_icon_scene = ExtResource("2_ax8x7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_right = 96.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RelicShelf" type="HBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RelicIcon" parent="MarginContainer/RelicShelf" instance=ExtResource("2_ax8x7")]
+layout_mode = 2
+
+[node name="RelicIcon2" parent="MarginContainer/RelicShelf" instance=ExtResource("2_ax8x7")]
+layout_mode = 2
+
+[node name="RelicIcon3" parent="MarginContainer/RelicShelf" instance=ExtResource("2_ax8x7")]
+layout_mode = 2
+
+[node name="RelicIcon4" parent="MarginContainer/RelicShelf" instance=ExtResource("2_ax8x7")]
+layout_mode = 2

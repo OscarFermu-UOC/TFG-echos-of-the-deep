@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvcid2omt0xma"]
+
+[ext_resource type="Script" uid="uid://dvnsuj4d7q1ex" path="res://ui/health_hud/health_hud.gd" id="1_8tydh"]
+[ext_resource type="PackedScene" uid="uid://dyxlv2eudyjrx" path="res://ui/health_hud/heart_icon.tscn" id="2_lwkxk"]
+
+[node name="HealthHUD" type="CanvasLayer"]
+script = ExtResource("1_8tydh")
+heart_scene = ExtResource("2_lwkxk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 236.0
+offset_bottom = 76.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HeartContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="HeartIcon" parent="MarginContainer/HeartContainer" instance=ExtResource("2_lwkxk")]
+layout_mode = 2
+
+[node name="HeartIcon2" parent="MarginContainer/HeartContainer" instance=ExtResource("2_lwkxk")]
+layout_mode = 2
+
+[node name="HeartIcon3" parent="MarginContainer/HeartContainer" instance=ExtResource("2_lwkxk")]
+layout_mode = 2
+
+[node name="HeartIcon4" parent="MarginContainer/HeartContainer" instance=ExtResource("2_lwkxk")]
+layout_mode = 2
+
+[node name="HeartIcon5" parent="MarginContainer/HeartContainer" instance=ExtResource("2_lwkxk")]
+layout_mode = 2

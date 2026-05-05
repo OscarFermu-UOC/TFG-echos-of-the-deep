@@ -1,23 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhhxph03qpgn8"]
 
-[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_2farb"]
-[ext_resource type="Script" uid="uid://cim3jx7vl008g" path="res://ui/hand_hud/hand_slot.gd" id="2_d35hq"]
-[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="2_ulerr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgkhg"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_ulerr"]
+[ext_resource type="Texture2D" uid="uid://btyxyt6cnmwvh" path="res://assets/GOOD/hazard.png" id="2_2farb"]
+[ext_resource type="Script" uid="uid://smhjwguqjy31" path="res://ui/hand_hud/hand_slot.gd" id="2_d35hq"]
+[ext_resource type="StyleBox" uid="uid://cg2yxjoka4com" path="res://theme/card.tres" id="2_i2rtc"]
 
 [node name="HandSlot" type="PanelContainer"]
 custom_minimum_size = Vector2(80, 100)
 offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("1_2farb")
-theme_override_styles/panel = SubResource("StyleBoxFlat_fgkhg")
+theme = ExtResource("1_ulerr")
+theme_override_styles/panel = ExtResource("2_i2rtc")
 script = ExtResource("2_d35hq")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -38,5 +31,5 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("2_ulerr")
+texture = ExtResource("2_2farb")
 stretch_mode = 5

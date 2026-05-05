@@ -1,11 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvljql3o2vdmo"]
+[gd_scene load_steps=23 format=3 uid="uid://bvljql3o2vdmo"]
 
+[ext_resource type="PackedScene" uid="uid://5v41kwv1vpo" path="res://ui/tension_hud/tension_hud.tscn" id="1_y3spc"]
+[ext_resource type="PackedScene" uid="uid://cvcid2omt0xma" path="res://ui/health_hud/health_hud.tscn" id="2_psst2"]
 [ext_resource type="PackedScene" uid="uid://cgo1k0s2wyd1t" path="res://ui/compass_hud/compass_hud.tscn" id="2_x53nd"]
 [ext_resource type="PackedScene" uid="uid://dvhb5r50dlig" path="res://ui/hand_hud/hand_hud.tscn" id="3_kdgoc"]
+[ext_resource type="PackedScene" uid="uid://dbvycnysr8mfw" path="res://ui/block_hud/block_hud.tscn" id="3_ymu0v"]
 [ext_resource type="PackedScene" uid="uid://dur7l4k2kwtfm" path="res://scenes/loot/loot_spawner.tscn" id="4_l6p45"]
 [ext_resource type="PackedScene" uid="uid://dk0w1glmccbiu" path="res://scenes/map/map_generator.tscn" id="5_fo0ly"]
+[ext_resource type="PackedScene" uid="uid://bmerlest64im3" path="res://ui/loot_hud/loot_hud.tscn" id="6_vqexm"]
 [ext_resource type="PackedScene" uid="uid://brhtmr3l7q4oq" path="res://scenes/player/player.tscn" id="6_x53nd"]
 [ext_resource type="Script" uid="uid://dp5ddop7sifs8" path="res://scenes/run/run_manager.gd" id="7_l6p45"]
+[ext_resource type="PackedScene" uid="uid://7iy6al05p7bk" path="res://ui/relic_hud/relic_hud.tscn" id="7_wy2jw"]
 [ext_resource type="Script" uid="uid://wh7gi8clyc88" path="res://scenes/run/clank_manager.gd" id="8_kdgoc"]
 [ext_resource type="PackedScene" uid="uid://dhlresaxijjg8" path="res://ui/pause_menu/pause_menu.tscn" id="8_wy2jw"]
 [ext_resource type="Script" uid="uid://t3ddh5tux7et" path="res://scenes/run/card_manager.gd" id="9_cnkn7"]
@@ -20,12 +25,24 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="PauseMenu" parent="." instance=ExtResource("8_wy2jw")]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TensionHUD" parent="UI" instance=ExtResource("1_y3spc")]
+
+[node name="HealthHUD" parent="UI" instance=ExtResource("2_psst2")]
+
+[node name="BlockHUD" parent="UI" instance=ExtResource("3_ymu0v")]
+
+[node name="HandHUD" parent="UI" instance=ExtResource("3_kdgoc")]
+
+[node name="CompassHUD" parent="UI" instance=ExtResource("2_x53nd")]
+
+[node name="LootHUD" parent="UI" instance=ExtResource("6_vqexm")]
+
+[node name="RelicHUD" parent="UI" instance=ExtResource("7_wy2jw")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("8_wy2jw")]
 visible = false
-
-[node name="CompassHUD" parent="." instance=ExtResource("2_x53nd")]
-
-[node name="HandHUD" parent="." instance=ExtResource("3_kdgoc")]
 
 [node name="MapGenerator" parent="." instance=ExtResource("5_fo0ly")]
 unique_name_in_owner = true

@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgo1k0s2wyd1t"]
+[gd_scene load_steps=5 format=3 uid="uid://cgo1k0s2wyd1t"]
 
 [ext_resource type="Script" uid="uid://dy86qxw53uj2w" path="res://ui/compass_hud/compass_hud.gd" id="2_3udy0"]
-[ext_resource type="Texture2D" uid="uid://8mrp0fparoh1" path="res://assets/sprites/loot/key/keys_1_3.png" id="2_378iy"]
+[ext_resource type="Texture2D" uid="uid://cgh2xckqaywmu" path="res://assets/sprites/hud/compass.png" id="2_378iy"]
+[ext_resource type="Texture2D" uid="uid://dwkffk43rg8gq" path="res://assets/sprites/hud/compass-arrow.png" id="3_ev3mh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_38beh"]
+texture = ExtResource("2_378iy")
 
 [node name="CompassHUD" type="CanvasLayer"]
 layer = 0
@@ -39,4 +41,4 @@ unique_name_in_owner = true
 position = Vector2(40, 40)
 rotation = 1.5707964
 scale = Vector2(4, 4)
-texture = ExtResource("2_378iy")
+texture = ExtResource("3_ev3mh")

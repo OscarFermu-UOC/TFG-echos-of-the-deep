@@ -1,7 +1,7 @@
 # HUD de brújula: rota una flecha hacia el objetivo actual marcado por GlobalData.
 extends CanvasLayer
 
-const COMPASS_OFFSET_ANGLE: float = 0.0 # El sprite apunta hacia arriba, compensamos 90° al calcular la dirección
+const COMPASS_OFFSET_ANGLE: float = 90.0 # El sprite apunta hacia arriba, compensamos 90° al calcular la dirección
 const TARGET_PULSE_SCALE: Vector2 = Vector2(4.2, 4.2)
 const RESTING_SCALE: Vector2 = Vector2(4.0, 4.0)
 const PULSE_DURATION: float = 0.1

@@ -1,15 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvhb5r50dlig"]
+[gd_scene load_steps=8 format=3 uid="uid://dvhb5r50dlig"]
 
 [ext_resource type="PackedScene" uid="uid://bhhxph03qpgn8" path="res://ui/hand_hud/hand_slot.tscn" id="1_3mokx"]
-[ext_resource type="Script" uid="uid://c0whi40awc1ke" path="res://ui/hand_hud/hand_hud.gd" id="1_tkjsh"]
-[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="3_1ybqt"]
-[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="4_tfp0e"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxiai"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ympcc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjm17"]
+[ext_resource type="Script" uid="uid://7eba7jpge1cl" path="res://ui/hand_hud/hand_hud.gd" id="1_tkjsh"]
+[ext_resource type="StyleBox" uid="uid://dd2144855ixb7" path="res://theme/card_common.tres" id="3_i5vit"]
+[ext_resource type="Texture2D" uid="uid://dspvm0lr526lj" path="res://assets/GOOD/deck_icon.png" id="4_tfp0e"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="5_hxiai"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ybqt"]
 bg_color = Color(0.92535293, 0.9253528, 0.9253529, 1)
@@ -32,7 +27,6 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("3_1ybqt")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -47,15 +41,15 @@ layout_mode = 2
 
 [node name="HandSlot" parent="MarginContainer/VBoxContainer/CardsContainer" instance=ExtResource("1_3mokx")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hxiai")
+theme_override_styles/panel = ExtResource("3_i5vit")
 
 [node name="HandSlot2" parent="MarginContainer/VBoxContainer/CardsContainer" instance=ExtResource("1_3mokx")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ympcc")
+theme_override_styles/panel = ExtResource("3_i5vit")
 
 [node name="HandSlot3" parent="MarginContainer/VBoxContainer/CardsContainer" instance=ExtResource("1_3mokx")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fjm17")
+theme_override_styles/panel = ExtResource("3_i5vit")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -76,6 +70,7 @@ stretch_mode = 5
 [node name="CardCountLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("5_hxiai")
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1

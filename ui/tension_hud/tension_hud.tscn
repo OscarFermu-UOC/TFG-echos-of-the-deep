@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://5v41kwv1vpo"]
+
+[ext_resource type="Shader" uid="uid://bwexqirsx2kya" path="res://ui/tension_hud/tension_hud.gdshader" id="1_goeqa"]
+[ext_resource type="Script" uid="uid://du3n3ix73yg3p" path="res://ui/tension_hud/tension_hud.gd" id="1_trime"]
+[ext_resource type="AudioStream" uid="uid://co7pyn8et6ax3" path="res://assets/sounds/hud/heartbeat.mp3" id="3_nfewb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trime"]
+shader = ExtResource("1_goeqa")
+shader_parameter/color = Color(0.4, 0, 0, 1)
+shader_parameter/intensity = 0.0
+shader_parameter/softness = 0.5
+
+[node name="TensionHUD" type="CanvasLayer"]
+script = ExtResource("1_trime")
+
+[node name="AtmosphereLayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HazardVignette" type="ColorRect" parent="AtmosphereLayer"]
+material = SubResource("ShaderMaterial_trime")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClankPulse" type="ColorRect" parent="AtmosphereLayer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HeartbeatAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nfewb")
+volume_db = -6.0
+bus = &"SFX"

@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmerlest64im3"]
+
+[ext_resource type="Script" uid="uid://cfr1a0d72yp1u" path="res://ui/loot_hud/loot_hud.gd" id="1_fbodl"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_t7fti"]
+[ext_resource type="Texture2D" uid="uid://b2wqri26sus1j" path="res://assets/sprites/hud/keys.png" id="2_fbodl"]
+[ext_resource type="Texture2D" uid="uid://c7p1mgl0ureg3" path="res://assets/sprites/hud/coin.png" id="3_fbodl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7fti"]
+
+[node name="LootHUD" type="CanvasLayer"]
+script = ExtResource("1_fbodl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_t7fti")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Background" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_t7fti")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CoinContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/Layout"]
+layout_mode = 2
+
+[node name="CoinIcon" type="TextureRect" parent="MarginContainer/MarginContainer/Layout/CoinContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("3_fbodl")
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="MarginContainer/MarginContainer/Layout/CoinContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Visual divider" type="VSeparator" parent="MarginContainer/MarginContainer/Layout"]
+modulate = Color(1, 1, 1, 0.24313726)
+layout_mode = 2
+
+[node name="KeyIcon" type="TextureRect" parent="MarginContainer/MarginContainer/Layout"]
+unique_name_in_owner = true
+modulate = Color(0.31061712, 0.31061712, 0.31061706, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_fbodl")
+expand_mode = 1
+stretch_mode = 5
