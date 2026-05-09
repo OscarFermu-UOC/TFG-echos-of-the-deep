@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bebtwocy6jtjg"]
+[gd_scene load_steps=5 format=3 uid="uid://dbcarvsvuubr3"]
 
-[ext_resource type="Script" uid="uid://bobo56ianta8s" path="res://scenes/sanctuary/sanctuary.gd" id="1_100s2"]
-[ext_resource type="PackedScene" uid="uid://v4spcs6e1en" path="res://scenes/sanctuary/shop_relic.tscn" id="2_jp048"]
-[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="2_qaxay"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_0iqq2"]
+[ext_resource type="Script" uid="uid://5vxybvdncx66" path="res://scenes/sanctuary/sanctuary.gd" id="1_bl6qk"]
+[ext_resource type="Texture2D" uid="uid://bdgptje80iqa5" path="res://assets/sprites/background/sanctury-bg.png" id="3_ijoj3"]
+[ext_resource type="PackedScene" uid="uid://v4spcs6e1en" path="res://scenes/sanctuary/shop_relic.tscn" id="13_xdh4o"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -11,41 +12,91 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_qaxay")
-script = ExtResource("1_100s2")
-shop_item_scene = ExtResource("2_jp048")
+script = ExtResource("1_bl6qk")
+shop_item_scene = ExtResource("13_xdh4o")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -39.0
+offset_right = 75.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ijoj3")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.24313726)
+
+[node name="MainLayout" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0iqq2")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainLayout"]
 custom_minimum_size = Vector2(200, 200)
-layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 1240.0
-offset_bottom = 680.0
+layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Header" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Header" type="VBoxContainer" parent="MainLayout/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Title" type="Label" parent="VBoxContainer/Header"]
+[node name="Title" type="Label" parent="MainLayout/VBoxContainer/Header"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Sanctuary"
+text = "The Smuggler's Stash"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrencyLabel" type="Label" parent="VBoxContainer/Header"]
-unique_name_in_owner = true
+[node name="Subtitle" type="HBoxContainer" parent="MainLayout/VBoxContainer/Header"]
 layout_mode = 2
+alignment = 1
+
+[node name="LeftColumn" type="Control" parent="MainLayout/VBoxContainer/Header/Subtitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrencyLabel" type="Label" parent="MainLayout/VBoxContainer/Header/Subtitle/LeftColumn"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 534.0
+offset_bottom = 16.0
 text = "Credits: 150"
 
-[node name="BtnReroll" type="Button" parent="VBoxContainer/Header"]
-unique_name_in_owner = true
+[node name="RightColumn" type="Control" parent="MainLayout/VBoxContainer/Header/Subtitle"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BtnReroll" type="Button" parent="MainLayout/VBoxContainer/Header/Subtitle/RightColumn"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 534.0
+offset_bottom = 8.0
 text = "Re-roll"
 
-[node name="ItemsContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Spacer" type="Control" parent="MainLayout/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemsContainer" type="HBoxContainer" parent="MainLayout/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
@@ -53,17 +104,22 @@ size_flags_vertical = 3
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="BaseCard" parent="VBoxContainer/ItemsContainer" instance=ExtResource("2_jp048")]
+[node name="BaseCard" parent="MainLayout/VBoxContainer/ItemsContainer" instance=ExtResource("13_xdh4o")]
 layout_mode = 2
 
-[node name="BaseCard2" parent="VBoxContainer/ItemsContainer" instance=ExtResource("2_jp048")]
+[node name="BaseCard2" parent="MainLayout/VBoxContainer/ItemsContainer" instance=ExtResource("13_xdh4o")]
 layout_mode = 2
 
-[node name="BtnBack" type="Button" parent="VBoxContainer"]
+[node name="Spacer2" type="Control" parent="MainLayout/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_qaxay")
+size_flags_vertical = 3
+
+[node name="BtnBack" type="Button" parent="MainLayout/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_0iqq2")
 theme_override_font_sizes/font_size = 24
 text = "Continue"
 
-[connection signal="pressed" from="VBoxContainer/Header/BtnReroll" to="." method="_on_btn_reroll_pressed"]
-[connection signal="pressed" from="VBoxContainer/BtnBack" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="MainLayout/VBoxContainer/Header/Subtitle/RightColumn/BtnReroll" to="." method="_on_btn_reroll_pressed"]
+[connection signal="pressed" from="MainLayout/VBoxContainer/BtnBack" to="." method="_on_btn_back_pressed"]

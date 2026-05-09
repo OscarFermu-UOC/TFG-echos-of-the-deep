@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhhxph03qpgn8"]
 
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_ulerr"]
-[ext_resource type="Texture2D" uid="uid://btyxyt6cnmwvh" path="res://assets/GOOD/hazard.png" id="2_2farb"]
+[ext_resource type="Texture2D" uid="uid://ds3jcwbvyapi4" path="res://assets/sprites/hud/clank.png" id="2_2farb"]
 [ext_resource type="Script" uid="uid://smhjwguqjy31" path="res://ui/hand_hud/hand_slot.gd" id="2_d35hq"]
-[ext_resource type="StyleBox" uid="uid://cg2yxjoka4com" path="res://theme/card.tres" id="2_i2rtc"]
+[ext_resource type="StyleBox" path="res://theme/card.tres" id="2_i2rtc"]
 
 [node name="HandSlot" type="PanelContainer"]
 custom_minimum_size = Vector2(80, 100)

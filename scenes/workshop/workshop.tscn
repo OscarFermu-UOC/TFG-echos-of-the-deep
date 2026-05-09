@@ -1,29 +1,23 @@
-[gd_scene load_steps=21 format=3 uid="uid://cy6cre1dh6asf"]
+[gd_scene load_steps=20 format=3 uid="uid://cy6cre1dh6asf"]
 
 [ext_resource type="Script" uid="uid://cil836y4mnvup" path="res://scenes/workshop/workshop.gd" id="1_mrv4p"]
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="3_im08q"]
 [ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="3_lf5r6"]
 [ext_resource type="PackedScene" uid="uid://c0j40n3l4xgc5" path="res://scenes/workshop/workshop_item.tscn" id="3_mrv4p"]
-[ext_resource type="Resource" uid="uid://4m228n4v618" path="res://data/upgrades/list/card_cooldown_reduction.tres" id="4_lf5r6"]
-[ext_resource type="AudioStream" uid="uid://b0bn48onh66wd" path="res://assets/sounds/workshop/anvil.mp3" id="4_mdujs"]
-[ext_resource type="Resource" uid="uid://dk4bijss4n017" path="res://data/upgrades/list/crit_chance.tres" id="5_b3kjw"]
-[ext_resource type="Resource" uid="uid://miupexudgiw8" path="res://data/upgrades/list/damage_bonus.tres" id="6_rfakj"]
-[ext_resource type="Resource" uid="uid://bijisdlld2igh" path="res://data/upgrades/list/draft_options.tres" id="7_40ehm"]
-[ext_resource type="Resource" uid="uid://lobe0bbhjt6j" path="res://data/upgrades/list/ether_gain.tres" id="8_nsmpv"]
-[ext_resource type="Resource" uid="uid://d2r5te1onf0f6" path="res://data/upgrades/list/hazard_resistance.tres" id="9_7w873"]
-[ext_resource type="Resource" uid="uid://gdxnaenf8f87" path="res://data/upgrades/list/max_health.tres" id="10_dcfxw"]
-[ext_resource type="Resource" uid="uid://npe1rkmsqdro" path="res://data/upgrades/list/reload_speed.tres" id="11_7a5kg"]
-[ext_resource type="Resource" uid="uid://crp1eh7sy4k1u" path="res://data/upgrades/list/revive.tres" id="12_pg2ew"]
-[ext_resource type="Resource" uid="uid://dv4wnp6m3ydev" path="res://data/upgrades/list/roll_cooldown.tres" id="13_jouln"]
-[ext_resource type="Resource" uid="uid://cel04ve6ccf42" path="res://data/upgrades/list/speed.tres" id="14_7545s"]
-[ext_resource type="Resource" uid="uid://c06cmhfa74cqh" path="res://data/upgrades/list/stealth.tres" id="15_sdsin"]
-
-[sub_resource type="Gradient" id="Gradient_im08q"]
-offsets = PackedFloat32Array(0, 0.93307084, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_di8wu"]
-gradient = SubResource("Gradient_im08q")
+[ext_resource type="Resource" uid="uid://4m228n4v618" path="res://data/upgrades/list/card_cooldown_reduction.tres" id="4_b3kjw"]
+[ext_resource type="Resource" uid="uid://dk4bijss4n017" path="res://data/upgrades/list/crit_chance.tres" id="5_rfakj"]
+[ext_resource type="Resource" uid="uid://miupexudgiw8" path="res://data/upgrades/list/damage_bonus.tres" id="6_40ehm"]
+[ext_resource type="Resource" uid="uid://bijisdlld2igh" path="res://data/upgrades/list/draft_options.tres" id="7_nsmpv"]
+[ext_resource type="Resource" uid="uid://lobe0bbhjt6j" path="res://data/upgrades/list/ether_gain.tres" id="8_7w873"]
+[ext_resource type="Resource" uid="uid://d2r5te1onf0f6" path="res://data/upgrades/list/hazard_resistance.tres" id="9_dcfxw"]
+[ext_resource type="Resource" uid="uid://gdxnaenf8f87" path="res://data/upgrades/list/max_health.tres" id="10_7a5kg"]
+[ext_resource type="Resource" uid="uid://npe1rkmsqdro" path="res://data/upgrades/list/reload_speed.tres" id="11_pg2ew"]
+[ext_resource type="Resource" uid="uid://crp1eh7sy4k1u" path="res://data/upgrades/list/revive.tres" id="12_jouln"]
+[ext_resource type="Resource" uid="uid://dv4wnp6m3ydev" path="res://data/upgrades/list/roll_cooldown.tres" id="13_7545s"]
+[ext_resource type="Resource" uid="uid://cel04ve6ccf42" path="res://data/upgrades/list/speed.tres" id="14_sdsin"]
+[ext_resource type="Resource" uid="uid://c06cmhfa74cqh" path="res://data/upgrades/list/stealth.tres" id="15_tlkpg"]
+[ext_resource type="Texture2D" uid="uid://bobkhih5jal2" path="res://assets/sprites/background/workshop-bg.png" id="16_b3kjw"]
+[ext_resource type="Texture2D" uid="uid://b78cf4caouhx" path="res://assets/sprites/hud/ether.png" id="18_b3kjw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdujs"]
 
@@ -36,16 +30,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mrv4p")
 upgrade_item_scene = ExtResource("3_mrv4p")
-all_upgrades = Array[ExtResource("3_lf5r6")]([ExtResource("4_lf5r6"), ExtResource("5_b3kjw"), ExtResource("6_rfakj"), ExtResource("7_40ehm"), ExtResource("8_nsmpv"), ExtResource("9_7w873"), ExtResource("10_dcfxw"), ExtResource("11_7a5kg"), ExtResource("12_pg2ew"), ExtResource("13_jouln"), ExtResource("14_7545s"), ExtResource("15_sdsin")])
+all_upgrades = Array[ExtResource("3_lf5r6")]([ExtResource("4_b3kjw"), ExtResource("5_rfakj"), ExtResource("6_40ehm"), ExtResource("7_nsmpv"), ExtResource("8_7w873"), ExtResource("9_dcfxw"), ExtResource("10_7a5kg"), ExtResource("11_pg2ew"), ExtResource("12_jouln"), ExtResource("13_7545s"), ExtResource("14_sdsin"), ExtResource("15_tlkpg")])
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -40.0
+offset_right = 75.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_di8wu")
+texture = ExtResource("16_b3kjw")
 
 [node name="Overlay" type="ColorRect" parent="."]
 layout_mode = 1
@@ -95,6 +93,7 @@ layout_mode = 2
 
 [node name="CurrencyIcon" type="TextureRect" parent="MainLayout/VBoxContainer/Header/CurrencyWidget/HBoxContainer"]
 layout_mode = 2
+texture = ExtResource("18_b3kjw")
 
 [node name="EtherLabel" type="Label" parent="MainLayout/VBoxContainer/Header/CurrencyWidget/HBoxContainer"]
 unique_name_in_owner = true
@@ -134,17 +133,11 @@ custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="BtnBack" type="Button" parent="MainLayout/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("3_im08q")
 theme_override_font_sizes/font_size = 24
 text = "Back"
-
-[node name="Audio" type="Node2D" parent="."]
-
-[node name="PurchaseSound" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("4_mdujs")
-max_distance = 500.0
-bus = &"SFX"
 
 [connection signal="pressed" from="MainLayout/VBoxContainer/BtnBack" to="." method="_on_btn_back_pressed"]

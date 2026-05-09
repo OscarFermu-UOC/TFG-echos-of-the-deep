@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://262dg6cwt5wp"]
+[gd_scene load_steps=6 format=3 uid="uid://262dg6cwt5wp"]
 
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_7w7uo"]
 [ext_resource type="Script" uid="uid://g4lriomugdae" path="res://scenes/elevator/elevator.gd" id="1_x8gua"]
 [ext_resource type="PackedScene" uid="uid://buj42tsa1tgkw" path="res://scenes/card/elevator_card.tscn" id="3_hadwe"]
+[ext_resource type="Texture2D" uid="uid://kuyeldcrvcnc" path="res://assets/sprites/background/elevator-bg.png" id="4_8ved2"]
+[ext_resource type="PackedScene" uid="uid://clthqkwh325le" path="res://ui/run_map_widget/run_map_widget.tscn" id="4_hadwe"]
 
 [node name="Elevator" type="Control"]
 process_mode = 3
@@ -16,24 +18,48 @@ theme = ExtResource("1_7w7uo")
 script = ExtResource("1_x8gua")
 draft_card_scene = ExtResource("3_hadwe")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -56.0
+offset_right = 152.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_8ved2")
+
+[node name="Overlay" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.105882354, 0.12941177, 0.15294118, 1)
+color = Color(0, 0, 0, 0.24313726)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 1240.0
-offset_bottom = 680.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+[node name="RunMapWidget" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_hadwe")]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
@@ -41,52 +67,68 @@ text = "CYCLE 1 - STAGE 1 CLEARED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LootLabel" type="Label" parent="VBoxContainer"]
+[node name="LootLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "loot"
+text = "Run Loot: 0 Gold"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DraftSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/DraftSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Choose your reward:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DraftSection" type="VBoxContainer" parent="VBoxContainer"]
+[node name="DraftContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/DraftSection"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="DraftContainer" type="HBoxContainer" parent="VBoxContainer/DraftSection"]
+[node name="BaseCard4" parent="MarginContainer/VBoxContainer/DraftSection/DraftContainer" instance=ExtResource("3_hadwe")]
+layout_mode = 2
+
+[node name="BaseCard5" parent="MarginContainer/VBoxContainer/DraftSection/DraftContainer" instance=ExtResource("3_hadwe")]
+layout_mode = 2
+
+[node name="BaseCard6" parent="MarginContainer/VBoxContainer/DraftSection/DraftContainer" instance=ExtResource("3_hadwe")]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="BaseCard4" parent="VBoxContainer/DraftSection/DraftContainer" instance=ExtResource("3_hadwe")]
-layout_mode = 2
-
-[node name="BaseCard5" parent="VBoxContainer/DraftSection/DraftContainer" instance=ExtResource("3_hadwe")]
-layout_mode = 2
-
-[node name="BaseCard6" parent="VBoxContainer/DraftSection/DraftContainer" instance=ExtResource("3_hadwe")]
-layout_mode = 2
-
-[node name="ButtonsContainer" type="HBoxContainer" parent="VBoxContainer"]
-unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="BtnExtract" type="Button" parent="VBoxContainer/ButtonsContainer"]
+[node name="BtnExtract" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer"]
 unique_name_in_owner = true
 process_mode = 3
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "EXTRACT (Convert to Ether)"
 
-[node name="BtnDescend" type="Button" parent="VBoxContainer/ButtonsContainer"]
+[node name="BtnDescend" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer"]
 unique_name_in_owner = true
 process_mode = 3
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "DESCEND (Next Stage)"
 
-[connection signal="pressed" from="VBoxContainer/ButtonsContainer/BtnExtract" to="." method="_on_btn_extract_pressed"]
-[connection signal="pressed" from="VBoxContainer/ButtonsContainer/BtnDescend" to="." method="_on_btn_descend_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/BtnExtract" to="." method="_on_btn_extract_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/BtnDescend" to="." method="_on_btn_descend_pressed"]

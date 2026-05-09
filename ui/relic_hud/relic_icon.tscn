@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3ygkelpoxgfh"]
 
+[ext_resource type="Texture2D" uid="uid://ds3jcwbvyapi4" path="res://assets/sprites/hud/clank.png" id="1_ricwq"]
 [ext_resource type="Script" uid="uid://djsa0edor7ujp" path="res://ui/relic_hud/relic_icon.gd" id="1_yg3sw"]
-[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="2_yg3sw"]
 
 [node name="RelicIcon" type="PanelContainer"]
 custom_minimum_size = Vector2(40, 40)
@@ -19,6 +19,6 @@ theme_override_constants/margin_bottom = 5
 [node name="Icon" type="TextureRect" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_yg3sw")
+texture = ExtResource("1_ricwq")
 expand_mode = 1
 stretch_mode = 5

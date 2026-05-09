@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://qvyt8tnwbh1l"]
+
+[ext_resource type="Texture2D" uid="uid://jh4edocxit3l" path="res://assets/sprites/background/class-selector-bg.png" id="1_3xb0w"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_pjh2y"]
+[ext_resource type="Script" uid="uid://rcd34fads458" path="res://scenes/class_selector/class_selector.gd" id="2_1517p"]
+[ext_resource type="Script" uid="uid://dswjbq3bld624" path="res://data/characters/character_class.gd" id="3_fgrt2"]
+[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="4_1snjc"]
+[ext_resource type="Resource" uid="uid://28meoeyrxa5q" path="res://data/characters/list/survivor.tres" id="5_c6vhm"]
+[ext_resource type="Resource" uid="uid://bvw7rt5rvloii" path="res://data/characters/list/thief.tres" id="5_fgrt2"]
+
+[node name="ClassSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pjh2y")
+script = ExtResource("2_1517p")
+available_classes = Array[ExtResource("3_fgrt2")]([ExtResource("5_c6vhm"), ExtResource("5_fgrt2")])
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -39.0
+offset_right = 75.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3xb0w")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.24313726)
+
+[node name="MainPanel" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ListColumn" type="VBoxContainer" parent="MainPanel/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MainPanel/HBoxContainer/ListColumn"]
+layout_mode = 2
+text = "SELECT CLASS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel/HBoxContainer/ListColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClassButtonsContainer" type="VBoxContainer" parent="MainPanel/HBoxContainer/ListColumn/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="MainPanel/HBoxContainer/ListColumn/ScrollContainer/ClassButtonsContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="Button2" type="Button" parent="MainPanel/HBoxContainer/ListColumn/ScrollContainer/ClassButtonsContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="BtnBack" type="Button" parent="MainPanel/HBoxContainer/ListColumn"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Cancel"
+
+[node name="VSeparator" type="VSeparator" parent="MainPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainPanel/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Portrait" type="TextureRect" parent="MainPanel/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_1snjc")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="ClassName" type="Label" parent="MainPanel/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "The "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsInfo" type="RichTextLabel" parent="MainPanel/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Info de Vida, Velocidad, Arma..."
+fit_content = true
+
+[node name="Spacer" type="Control" parent="MainPanel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnConfirm" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "EMBARK"
+
+[connection signal="pressed" from="MainPanel/HBoxContainer/ListColumn/BtnBack" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="MainPanel/HBoxContainer/VBoxContainer2/BtnConfirm" to="." method="_on_btn_confirm_pressed"]

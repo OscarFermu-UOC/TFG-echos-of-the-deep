@@ -6,7 +6,6 @@ extends Control
 
 @onready var _grid: GridContainer = %UpgradesGrid
 @onready var _ether_label: Label = %EtherLabel
-@onready var _purchase_sound: AudioStreamPlayer2D = $Audio/PurchaseSound
 
 func _ready() -> void:
 	all_upgrades.sort_custom(func(a, b): return a.title < b.title)
@@ -28,7 +27,7 @@ func _populate_grid() -> void:
 
 func _on_upgrade_requested(data: UpgradeData, cost: int, widget_node: WorkshopItem) -> void:
 	if GlobalData.save_file.ether < cost:
-		#TODO: visual feedback
+		UIFeedback.play_cant_afford(widget_node)
 		return
 
 	GlobalData.save_file.ether -= cost
@@ -43,7 +42,7 @@ func _on_upgrade_requested(data: UpgradeData, cost: int, widget_node: WorkshopIt
 	# Actualizamos todos los botones por si alguno ya no puede permitirse
 	_refresh_buttons_affordability()
 	
-	_purchase_sound.play()
+	UIFeedback.play_unlock(widget_node)
 
 func _update_currency_ui() -> void:
 	_ether_label.text = "Ether: %d" % GlobalData.save_file.ether
@@ -54,4 +53,6 @@ func _refresh_buttons_affordability() -> void:
 			child._update_dynamic_state()
 
 func _on_btn_back_pressed() -> void:
+	UIFeedback.play_back(%BtnBack)
+	get_parent().update_ui()
 	hide()

@@ -69,29 +69,35 @@ func _on_buy_requested(item_data: RelicData, widget_node: Control) -> void:
 		return
 
 	if GlobalData.temp_run_gold < item_data.cost:
-		# Animation
+		UIFeedback.play_cant_afford(widget_node)
 		return
 
 	GlobalData.temp_run_gold -= item_data.cost
 	GlobalData.current_run_relics.append(item_data.id)
 	_update_ui()
 	widget_node.mark_as_sold()
+	
+	UIFeedback.play_unlock(widget_node)
 
 # ==========================================================
 # REROLL Y EXIT
 # ==========================================================
 func _on_btn_reroll_pressed() -> void:
 	if GlobalData.temp_run_gold < _current_reroll_cost:
-		# Animation
+		UIFeedback.play_cant_afford(_btn_reroll)
 		return
 
 	GlobalData.temp_run_gold -= _current_reroll_cost
 	_current_reroll_cost += reroll_cost_increment
 	_generate_offer()
 	_update_ui()
+	
+	UIFeedback.play_confirm(_btn_reroll)
 
 func _on_btn_back_pressed() -> void:
 	get_tree().paused = false
+	
+	UIFeedback.play_back(_btn_reroll)
 
 	set_process_unhandled_input(false)
-	get_tree().change_scene_to_file(SCENE_ELEVATOR)
+	SceneTransition.change_scene_to_file(SCENE_ELEVATOR)

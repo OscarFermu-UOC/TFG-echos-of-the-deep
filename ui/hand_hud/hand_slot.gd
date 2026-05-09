@@ -12,6 +12,9 @@ const CARD_APPEAR_DURATION: float = 0.2
 var card_data: CardData
 
 func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	
 	_clear_display()
 
 func setup_key(key_text: String):
@@ -36,3 +39,12 @@ func _clear_display() -> void:
 	key_label.modulate = Color.DIM_GRAY
 	icon.texture = null
 	icon.modulate = Color.TRANSPARENT	
+	
+func _on_mouse_entered() -> void:
+	modulate = HOVER_MODULATE
+	if card_data:
+		Tooltip.show_data(card_data, "")
+ 
+func _on_mouse_exited() -> void:
+	modulate = Color.WHITE
+	Tooltip.hide_tooltip()

@@ -13,11 +13,15 @@ const BUS_SFX: String = "SFX"
 @onready var _fullscreen_check: CheckBox = %FullscreenCheck
 @onready var _back_button: Button = %BackButton
 
+@onready var _options: MarginContainer = %Options
+@onready var _buttons_menu: Control = %ButtonsMenu
+
 var _master_bus: int
 var _music_bus: int
 var _sfx_bus: int
 
 func _ready() -> void:
+	_buttons_menu.hide()
 	_master_bus = AudioServer.get_bus_index(BUS_MASTER)
 	_music_bus = AudioServer.get_bus_index(BUS_MUSIC)
 	_sfx_bus = AudioServer.get_bus_index(BUS_SFX)
@@ -34,6 +38,8 @@ func _ready() -> void:
 	_sfx_slider.value_changed.connect(_on_sfx_changed)
 	_fullscreen_check.toggled.connect(_on_fullscreen_toggled)
 	_back_button.pressed.connect(func(): back_pressed.emit())
+	if _buttons_menu.has_signal("back_pressed"):
+		_buttons_menu.back_pressed.connect(_on_controls_back)
 
 func _on_master_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(_master_bus, linear_to_db(value))
@@ -47,3 +53,11 @@ func _on_sfx_changed(value: float) -> void:
 func _on_fullscreen_toggled(toggled: bool) -> void:
 	var mode: DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_FULLSCREEN if toggled else DisplayServer.WINDOW_MODE_WINDOWED
 	DisplayServer.window_set_mode(mode)
+
+func _on_controls_button_pressed() -> void:
+	_options.hide()
+	_buttons_menu.show()
+	
+func _on_controls_back() -> void:
+	_options.show()
+	_buttons_menu.hide()

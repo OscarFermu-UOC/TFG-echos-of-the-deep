@@ -8,6 +8,10 @@ const COLOR_SOLD: Color = Color(0.3, 0.3, 0.3)
 
 var relic_data: RelicData
 
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+
 func setup_relic(relic: RelicData) -> void:
 	relic_data = relic
 	%Icon.texture = relic.icon
@@ -25,3 +29,12 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		accept_event()
 		EventBus.buy_requested.emit(relic_data, self)
+
+func _on_mouse_entered() -> void:
+	modulate = HOVER_MODULATE
+	if relic_data:
+		Tooltip.show_data(relic_data, "")
+
+func _on_mouse_exited() -> void:
+	modulate = Color.WHITE
+	Tooltip.hide_tooltip()

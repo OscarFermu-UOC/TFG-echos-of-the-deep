@@ -32,6 +32,8 @@ func toggle_pause() -> void:
 	
 	_menu_buttons.visible = _is_paused
 	_options_menu.hide()
+	
+	UIFeedback.play_pause(_menu_buttons)
 
 func _on_btn_options_pressed() -> void:
 	_menu_buttons.hide()
@@ -42,5 +44,7 @@ func _on_options_back() -> void:
 	_menu_buttons.show()
 
 func _on_btn_quit_pressed() -> void:
+	UIFeedback.play_back(_menu_buttons)
+	
 	get_tree().paused = false
-	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+	SceneTransition.change_scene_to_file(SCENE_MAIN_MENU)

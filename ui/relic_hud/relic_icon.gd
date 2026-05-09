@@ -8,6 +8,10 @@ const POP_DURATION: float = 0.3
 
 var my_relic: RelicData
 
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+
 func setup(relic: RelicData) -> void:
 	my_relic = relic
 	_icon.texture = relic.icon
@@ -17,3 +21,14 @@ func setup(relic: RelicData) -> void:
 	
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "scale", Vector2.ONE, POP_DURATION).set_trans(Tween.TRANS_BACK)
+
+func _on_mouse_entered() -> void:
+	if not my_relic:
+		return
+		
+	modulate = HOVER_MODULATE
+	Tooltip.show_data(my_relic, "")
+
+func _on_mouse_exited() -> void:
+	modulate = Color.WHITE
+	Tooltip.hide_tooltip()

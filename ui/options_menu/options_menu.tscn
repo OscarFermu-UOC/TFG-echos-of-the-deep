@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://deant84i4oa0a"]
+[gd_scene load_steps=4 format=3 uid="uid://deant84i4oa0a"]
 
-[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_8h7tm"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_3s1t0"]
 [ext_resource type="Script" uid="uid://qhqxdkbg6xhq" path="res://ui/options_menu/options_menu.gd" id="2_8h7tm"]
+[ext_resource type="PackedScene" uid="uid://8oemfwv12svf" path="res://ui/buttons_menu/buttons_menu.tscn" id="3_utl02"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_8h7tm")
+theme = ExtResource("1_3s1t0")
 script = ExtResource("2_8h7tm")
 
 [node name="Background" type="PanelContainer" parent="."]
@@ -28,54 +29,81 @@ offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="Options" type="MarginContainer" parent="Background"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Options"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="Background/VBoxContainer"]
+[node name="Title" type="Label" parent="Background/Options/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "SETTINGS"
 
-[node name="Master" type="Label" parent="Background/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Background/Options/VBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="Background/Options/VBoxContainer"]
 layout_mode = 2
 text = "Master Volume"
 
-[node name="MasterSlider" type="HSlider" parent="Background/VBoxContainer"]
+[node name="MasterSlider" type="HSlider" parent="Background/Options/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="Music" type="Label" parent="Background/VBoxContainer"]
+[node name="Music" type="Label" parent="Background/Options/VBoxContainer"]
 layout_mode = 2
 text = "Music Volume"
 
-[node name="MusicSlider" type="HSlider" parent="Background/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="Background/Options/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="SFX" type="Label" parent="Background/VBoxContainer"]
+[node name="SFX" type="Label" parent="Background/Options/VBoxContainer"]
 layout_mode = 2
 text = "SFX Volume"
 
-[node name="SfxSlider" type="HSlider" parent="Background/VBoxContainer"]
+[node name="SfxSlider" type="HSlider" parent="Background/Options/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="FullscreenCheck" type="CheckBox" parent="Background/VBoxContainer"]
+[node name="FullscreenCheck" type="CheckBox" parent="Background/Options/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="BackButton" type="Button" parent="Background/VBoxContainer"]
+[node name="ControlsButton" type="Button" parent="Background/Options/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Controls"
+
+[node name="Spacer" type="Control" parent="Background/Options/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" type="Button" parent="Background/Options/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
+
+[node name="ButtonsMenu" parent="." instance=ExtResource("3_utl02")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Background/Options/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]

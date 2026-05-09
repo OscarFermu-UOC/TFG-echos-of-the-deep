@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm0mwo4u1mcpc"]
+[gd_scene load_steps=9 format=3 uid="uid://buuwqrj8aep8m"]
 
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_mu8pm"]
-[ext_resource type="Script" uid="uid://5vb4u8lffwr6" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
-[ext_resource type="Resource" uid="uid://28meoeyrxa5q" path="res://data/characters/list/scavenger.tres" id="3_omy8q"]
-[ext_resource type="PackedScene" uid="uid://cy6cre1dh6asf" path="res://scenes/workshop/workshop.tscn" id="4_i5wg5"]
+[ext_resource type="Script" uid="uid://dean7ian5nqq0" path="res://ui/main_menu/main_menu.gd" id="1_qkhwq"]
+[ext_resource type="Texture2D" uid="uid://dhr2aoxvie4hh" path="res://assets/sprites/background/main-menu-bg.png" id="3_3c04x"]
+[ext_resource type="Texture2D" uid="uid://b78cf4caouhx" path="res://assets/sprites/hud/ether.png" id="4_6mijq"]
+[ext_resource type="PackedScene" uid="uid://cy6cre1dh6asf" path="res://scenes/workshop/workshop.tscn" id="4_u184e"]
+[ext_resource type="PackedScene" uid="uid://cki7i7wcdv7ri" path="res://scenes/codex/codex.tscn" id="5_3c04x"]
+[ext_resource type="PackedScene" uid="uid://qvyt8tnwbh1l" path="res://scenes/class_selector/class_selector.tscn" id="6_joh67"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_joh67"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,56 +18,123 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mu8pm")
-script = ExtResource("1_uhj5c")
-player_class = ExtResource("3_omy8q")
+script = ExtResource("1_qkhwq")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -40.0
+offset_right = 75.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3c04x")
+
+[node name="Overlay" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.105882354, 0.12941177, 0.15294118, 1)
+color = Color(0, 0, 0, 0.24313726)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -324.0
+offset_top = -176.0
+offset_right = 324.0
+offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Main Menu"
+text = "Echos of the Deep"
 
-[node name="BtnPlay" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-text = "Play
-"
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 124.0
+offset_top = -47.0
+offset_right = 412.0
+offset_bottom = 243.0
+grow_vertical = 2
+theme_override_constants/separation = 30
 
-[node name="BtnWorkshop" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="BtnExpedition" type="Button" parent="MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_mu8pm")
+text = "Start Expedition"
+
+[node name="BtnWorkshop" type="Button" parent="MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
 text = "Workshop"
 
-[node name="BtnQuit" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="BtnCodex" type="Button" parent="MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_vertical = 3
+text = "Codex"
+
+[node name="BtnQuit" type="Button" parent="MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
 text = "Quit"
 
-[node name="Workshop" parent="." instance=ExtResource("4_i5wg5")]
+[node name="InfoPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_left = 124.0
+offset_top = 48.0
+offset_right = 248.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_joh67")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel"]
+layout_mode = 2
+
+[node name="CurrencyIcon" type="TextureRect" parent="InfoPanel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_6mijq")
+
+[node name="CurrencyLabel" type="Label" parent="InfoPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Credits: 0"
+
+[node name="Workshop" parent="." instance=ExtResource("4_u184e")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/BtnPlay" to="." method="_on_btn_play_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BtnWorkshop" to="." method="_on_btn_workshop_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
+[node name="Codex" parent="." instance=ExtResource("5_3c04x")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="ClassSelector" parent="." instance=ExtResource("6_joh67")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MenuButtons/BtnExpedition" to="." method="_on_btn_expedition_pressed"]
+[connection signal="pressed" from="MenuButtons/BtnWorkshop" to="." method="_on_btn_workshop_pressed"]
+[connection signal="pressed" from="MenuButtons/BtnCodex" to="." method="_on_btn_codex_pressed"]
+[connection signal="pressed" from="MenuButtons/BtnQuit" to="." method="_on_btn_quit_pressed"]

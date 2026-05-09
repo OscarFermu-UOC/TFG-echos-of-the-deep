@@ -6,6 +6,8 @@ const SLOT_COUNT: int = 4
 @onready var container: HBoxContainer = %CardsContainer
 @onready var global_reload_bar: ProgressBar = %GlobalReloadBar
 @onready var card_count_label: Label = %CardCountLabel
+@onready var _audio_draw: AudioStreamPlayer = $Audio/DrawSound
+@onready var _audio_play: AudioStreamPlayer = $Audio/PlaySound
 
 @export var slot_scene: PackedScene
 
@@ -30,11 +32,20 @@ func _ready():
 	
 	EventBus.hand_updated.connect(_on_hand_updated)
 	EventBus.draw_timer_updated.connect(_on_timer_updated)
-
-func _on_hand_updated(index: int, card: CardData):
+		
+func _on_hand_updated(index: int, card: CardData) -> void:
 	slots_ui[index].set_card(card)
-	if card_manager:	
+	if card_manager:
 		card_count_label.text = str(card_manager.draw_pile.size())
+
+	if card != null:
+		if _audio_draw and _audio_draw.stream:
+			_audio_draw.pitch_scale = randf_range(0.95, 1.05)
+			_audio_draw.play()
+	else:
+		if _audio_play and _audio_play.stream:
+			_audio_play.pitch_scale = randf_range(0.95, 1.05)
+			_audio_play.play()
 
 func _on_timer_updated(time_left: float, max_time: float) -> void:
 	if time_left <= 0.0:

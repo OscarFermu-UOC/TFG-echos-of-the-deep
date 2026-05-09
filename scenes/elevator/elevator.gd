@@ -71,6 +71,8 @@ func _on_draft_card_selected(card: CardData, _widget_node: Control) -> void:
 		save.unlocked_card_ids.append(card.id)
 		save.save_data()
 
+	UIFeedback.play_unlock(_widget_node)
+
 	_draft_section.hide()
 	_buttons_container.show()
 	_loot_label.text += "\nAcquired: " + card.title
@@ -80,20 +82,25 @@ func _on_btn_extract_pressed() -> void:
 	var lvl_ether: int = GlobalData.save_file.unlocked_upgrades.get(UpgradeIDs.ETHER_GAIN, 0)
 	var bonus: float = 1.0 + lvl_ether * UpgradeIDs.ETHER_GAIN_VALUE
 	GlobalData.save_file.ether += int(GlobalData.temp_run_gold * GlobalData.ETHER_CONVERSION_RATE * bonus)
+	
+	UIFeedback.play_back(%BtnExtract)
 
 	GlobalData.temp_run_gold = 0
 	GlobalData.current_run_deck.clear()
 	GlobalData.save()
-	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+	SceneTransition.change_scene_to_file(SCENE_MAIN_MENU)
 
 func _on_btn_descend_pressed() -> void:
 	GlobalData.advance_stage()
 	GlobalData.save()
+	
+	UIFeedback.play_confirm(%BtnDescend)
 
 	if GlobalData.game_completed:
-		get_tree().change_scene_to_file(SCENE_GAME_WIN)
+		SceneTransition.change_scene_to_file(SCENE_GAME_WIN)
 		return
 
 	# El sanctuary aparece en el stage final de cada ciclo
-	var next_scene: String = SCENE_SANCTUARY if GlobalData.current_stage == GlobalData.MAX_STAGES else SCENE_RUN
-	get_tree().change_scene_to_file(next_scene)
+	#var next_scene: String = SCENE_SANCTUARY if GlobalData.current_stage == GlobalData.MAX_STAGES else SCENE_RUN
+	var next_scene : String = SCENE_SANCTUARY
+	SceneTransition.change_scene_to_file(next_scene)

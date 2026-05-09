@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b4jvy8prlpc1v"]
 
 [ext_resource type="Script" uid="uid://dqu8twnfrrdln" path="res://scenes/exit/exit.gd" id="1_c4vl1"]
-[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="2_tv5rl"]
+[ext_resource type="Texture2D" uid="uid://btxaj7523suwf" path="res://assets/sprites/stairs/door.png" id="2_rsnk2"]
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="2_wmb3t"]
 [ext_resource type="AudioStream" uid="uid://bindp43jfsyor" path="res://assets/sounds/exit/use.ogg" id="3_rsnk2"]
 [ext_resource type="AudioStream" uid="uid://bufxjwdgq3r66" path="res://assets/sounds/exit/reveal.mp3" id="4_vfpow"]
@@ -22,7 +22,7 @@ script = ExtResource("1_c4vl1")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_tv5rl")
+texture = ExtResource("2_rsnk2")
 
 [node name="InteractionArea" type="Area2D" parent="."]
 visible = false

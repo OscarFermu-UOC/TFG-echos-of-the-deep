@@ -1,0 +1,9 @@
+[gd_resource type="StyleBoxFlat" load_steps=0 format=3 uid="uid://cg2yxjoka4com"]
+
+[resource]
+bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2303159, 0.25103584, 0.23850244, 1)

@@ -1,0 +1,268 @@
+[gd_scene load_steps=4 format=3 uid="uid://8oemfwv12svf"]
+
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_7swnx"]
+[ext_resource type="Script" uid="uid://c6q18785sx1eg" path="res://ui/buttons_menu/input_remap_button.gd" id="2_513ot"]
+[ext_resource type="Script" uid="uid://bk6oio2758vxp" path="res://ui/buttons_menu/buttons_menu.gd" id="2_drlot"]
+
+[node name="ButtonsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7swnx")
+script = ExtResource("2_drlot")
+
+[node name="Background" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(300, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -102.0
+offset_right = 89.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CONTROLS"
+
+[node name="HSeparator" type="HSeparator" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MoveUp" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/MoveUp"]
+layout_mode = 2
+text = "Move up"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/MoveUp"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/MoveUp"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "move_up"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="MoveDown" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/MoveDown"]
+layout_mode = 2
+text = "Move down"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/MoveDown"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/MoveDown"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "move_down"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="MoveLeft" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/MoveLeft"]
+layout_mode = 2
+text = "Move left"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/MoveLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/MoveLeft"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "move_left"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="MoveRight" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/MoveRight"]
+layout_mode = 2
+text = "Move right"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/MoveRight"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/MoveRight"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "move_right"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="Roll" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/Roll"]
+layout_mode = 2
+text = "Roll"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/Roll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/Roll"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "roll"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="Run" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/Run"]
+layout_mode = 2
+text = "Run"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/Run"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/Run"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "run"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="Interact" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/Interact"]
+layout_mode = 2
+text = "Interact"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/Interact"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/Interact"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "interact"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="UseCard1" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/UseCard1"]
+layout_mode = 2
+text = "Use card 1"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/UseCard1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/UseCard1"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "use_card_1"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="UseCard2" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/UseCard2"]
+layout_mode = 2
+text = "Use card 2"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/UseCard2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/UseCard2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "use_card_2"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="UseCard3" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/UseCard3"]
+layout_mode = 2
+text = "Use card 3"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/UseCard3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/UseCard3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "use_card_3"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="UseCard4" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/UseCard4"]
+layout_mode = 2
+text = "Use card 4"
+
+[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/UseCard4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputReMapButton" type="Button" parent="Background/MarginContainer/VBoxContainer/UseCard4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_513ot")
+action = "use_card_4"
+metadata/_custom_type_script = "uid://c6q18785sx1eg"
+
+[node name="Spacer" type="Control" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" type="Button" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"

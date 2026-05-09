@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvhb5r50dlig"]
+[gd_scene load_steps=10 format=3 uid="uid://dvhb5r50dlig"]
 
 [ext_resource type="PackedScene" uid="uid://bhhxph03qpgn8" path="res://ui/hand_hud/hand_slot.tscn" id="1_3mokx"]
 [ext_resource type="Script" uid="uid://7eba7jpge1cl" path="res://ui/hand_hud/hand_hud.gd" id="1_tkjsh"]
 [ext_resource type="StyleBox" uid="uid://dd2144855ixb7" path="res://theme/card_common.tres" id="3_i5vit"]
-[ext_resource type="Texture2D" uid="uid://dspvm0lr526lj" path="res://assets/GOOD/deck_icon.png" id="4_tfp0e"]
+[ext_resource type="Texture2D" uid="uid://cm5lheyw2kv7d" path="res://assets/sprites/hud/deck_icon.png" id="4_tfp0e"]
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="5_hxiai"]
+[ext_resource type="AudioStream" uid="uid://dytwhpwcw0ljs" path="res://assets/sounds/card/draw.mp3" id="6_ympcc"]
+[ext_resource type="AudioStream" uid="uid://b3jnq1jvawf8f" path="res://assets/sounds/card/play.mp3" id="7_fjm17"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ybqt"]
 bg_color = Color(0.92535293, 0.9253528, 0.9253529, 1)
@@ -95,3 +97,15 @@ show_percentage = false
 [node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="DrawSound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_ympcc")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="PlaySound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_fjm17")
+volume_db = -3.0
+bus = &"SFX"

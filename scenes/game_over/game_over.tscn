@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd5bw0pk5ot4l"]
+[gd_scene load_steps=7 format=3 uid="uid://bd5bw0pk5ot4l"]
 
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_3j056"]
+[ext_resource type="Script" path="res://scenes/game_over/game_over.gd" id="2_sseyc"]
+[ext_resource type="Texture2D" uid="uid://corxenbey7fvw" path="res://assets/sprites/background/game-over-bg.png" id="3_iqjl0"]
+[ext_resource type="Texture2D" uid="uid://cwf70yrmmpy25" path="res://assets/sprites/hud/skull.png" id="3_p1tbv"]
+[ext_resource type="Texture2D" uid="uid://c7p1mgl0ureg3" path="res://assets/sprites/hud/coin.png" id="4_p1tbv"]
+[ext_resource type="Texture2D" uid="uid://b78cf4caouhx" path="res://assets/sprites/hud/ether.png" id="5_iqjl0"]
 
 [node name="GameOver" type="Control"]
 process_mode = 3
@@ -11,15 +16,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3j056")
+script = ExtResource("2_sseyc")
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.105882354, 0.12941177, 0.15294118, 1)
+[node name="Background2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -55.0
+offset_top = -40.0
+offset_right = 1355.0
+offset_bottom = 810.0
+texture = ExtResource("3_iqjl0")
+stretch_mode = 5
 
 [node name="MainLayout" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -37,15 +43,69 @@ grow_vertical = 2
 theme_override_constants/separation = 30
 
 [node name="Title" type="Label" parent="MainLayout"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
 theme_override_font_sizes/font_size = 64
-text = "Game Over"
+text = "SIGNAL LOST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SkullIcon" type="TextureRect" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+texture = ExtResource("3_p1tbv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StatsPanel" type="PanelContainer" parent="MainLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainLayout/StatsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="VBoxContainer" parent="MainLayout/StatsPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Gold" type="HBoxContainer" parent="MainLayout/StatsPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="CurrencyIcon" type="TextureRect" parent="MainLayout/StatsPanel/MarginContainer/GridContainer/Gold"]
+layout_mode = 2
+texture = ExtResource("4_p1tbv")
+
+[node name="GoldValue" type="Label" parent="MainLayout/StatsPanel/MarginContainer/GridContainer/Gold"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Gold Lost:"
+
+[node name="Ether" type="HBoxContainer" parent="MainLayout/StatsPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="CurrencyIcon" type="TextureRect" parent="MainLayout/StatsPanel/MarginContainer/GridContainer/Ether"]
+layout_mode = 2
+texture = ExtResource("5_iqjl0")
+
+[node name="EtherValue" type="Label" parent="MainLayout/StatsPanel/MarginContainer/GridContainer/Ether"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ether Secured:"
+
+[node name="Control" type="Control" parent="MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="BtnMenu" type="Button" parent="MainLayout"]
+unique_name_in_owner = true
 process_mode = 3
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "RETURN TO BASE"
