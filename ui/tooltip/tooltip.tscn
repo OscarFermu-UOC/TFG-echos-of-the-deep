@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://yqeou1ymmmqx"]
+
+[ext_resource type="Script" uid="uid://blmfslysu1etq" path="res://ui/tooltip/tooltip.gd" id="1_oh852"]
+[ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="2_1flpb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dv72"]
+bg_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.21590167, 0.21590179, 0.2159015, 1)
+
+[node name="TooltipLayer" type="CanvasLayer"]
+process_mode = 3
+layer = 128
+script = ExtResource("1_oh852")
+
+[node name="TooltipPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8dv72")
+
+[node name="MarginContainer" type="MarginContainer" parent="TooltipPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TooltipPanel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_1flpb")
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="TooltipPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Card test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TooltipPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DescLabel" type="RichTextLabel" parent="TooltipPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Generates 5 treasure"
+fit_content = true
+scroll_active = false
+
+[node name="FooterLabel" type="Label" parent="TooltipPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Cost = 5"

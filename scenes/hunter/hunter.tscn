@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bwl8b1t0naqpk" path="res://scenes/hunter/hunter.gd" id="1_5ovnb"]
 [ext_resource type="Script" uid="uid://ct8lmck7768cn" path="res://scenes/player/hurtbox.gd" id="1_fev3k"]
+[ext_resource type="Texture2D" uid="uid://x72o75sfmmb7" path="res://assets/sprites/enemy/hunter.png" id="2_avjqt"]
 [ext_resource type="Script" uid="uid://bptuv7y70ovsc" path="res://globals/state_machine/state_machine.gd" id="2_er1t5"]
-[ext_resource type="Texture2D" uid="uid://coiy36uc0uyfb" path="res://assets/sprites/enemy/default_enemy.png" id="2_ykymc"]
 [ext_resource type="AudioStream" uid="uid://d3lhjljwfm5xm" path="res://assets/sounds/hunter/telegraph.mp3" id="3_avjqt"]
 [ext_resource type="AudioStream" uid="uid://bcxeh18y6pc6h" path="res://assets/sounds/hunter/dash.mp3" id="4_ac63g"]
 [ext_resource type="AudioStream" uid="uid://bcfbu4gtjnk4l" path="res://assets/sounds/enemy/hurt.mp3" id="5_fwjvn"]
@@ -32,7 +32,7 @@ retreat_duration = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.2, 1.2)
-texture = ExtResource("2_ykymc")
+texture = ExtResource("2_avjqt")
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5ovnb")

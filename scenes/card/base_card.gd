@@ -14,6 +14,10 @@ const COLOR_RARITY_EPIC: Color = Color("cc66ffff")
 var card_data: CardData
 var _tooltip_extra_info: String = ""
 
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+
 # Virtual: las subclases deben llamar a super.setup(card) antes de su propia lógica.
 func setup(card: CardData) -> void:
 	card_data = card
@@ -41,3 +45,14 @@ func _apply_rarity_style(rarity: CardData.Rarity) -> void:
 	if style:
 		add_theme_stylebox_override("panel", style)
 	%Title.modulate = title_color
+
+func _on_mouse_entered() -> void:
+	modulate = HOVER_MODULATE
+	
+	# Solo mostramos el tooltip si la carta está desbloqueada
+	if card_data and card_data.id in GlobalData.save_file.unlocked_card_ids:
+		Tooltip.show_data(card_data, _tooltip_extra_info)
+
+func _on_mouse_exited() -> void:
+	modulate = Color.WHITE
+	Tooltip.hide_tooltip()

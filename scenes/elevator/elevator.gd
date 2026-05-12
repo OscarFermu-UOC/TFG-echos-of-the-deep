@@ -101,6 +101,5 @@ func _on_btn_descend_pressed() -> void:
 		return
 
 	# El sanctuary aparece en el stage final de cada ciclo
-	#var next_scene: String = SCENE_SANCTUARY if GlobalData.current_stage == GlobalData.MAX_STAGES else SCENE_RUN
-	var next_scene : String = SCENE_SANCTUARY
+	var next_scene: String = SCENE_SANCTUARY if GlobalData.current_stage == GlobalData.MAX_STAGES else SCENE_RUN
 	SceneTransition.change_scene_to_file(next_scene)

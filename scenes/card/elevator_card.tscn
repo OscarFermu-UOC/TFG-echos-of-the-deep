@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://buj42tsa1tgkw"]
+[gd_scene load_steps=8 format=3 uid="uid://buj42tsa1tgkw"]
 
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_ccak6"]
 [ext_resource type="Script" uid="uid://be0kt1657033i" path="res://scenes/card/elevator_card.gd" id="2_0erfb"]
 [ext_resource type="StyleBox" uid="uid://dd2144855ixb7" path="res://theme/card_common.tres" id="3_ywht5"]
 [ext_resource type="StyleBox" uid="uid://73b0yy0www8t" path="res://theme/card_rare.tres" id="4_yfxnx"]
 [ext_resource type="StyleBox" uid="uid://frk047sk17h2" path="res://theme/card_epic.tres" id="5_0841k"]
-[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="6_ywht5"]
+[ext_resource type="Texture2D" uid="uid://ds3jcwbvyapi4" path="res://assets/sprites/hud/clank.png" id="6_ywht5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywht5"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
 
 [node name="BaseCard" type="PanelContainer"]
 clip_contents = true
@@ -13,6 +16,7 @@ custom_minimum_size = Vector2(240, 300)
 offset_right = 120.0
 offset_bottom = 150.0
 theme = ExtResource("1_ccak6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ywht5")
 script = ExtResource("2_0erfb")
 style_common = ExtResource("3_ywht5")
 style_rare = ExtResource("4_yfxnx")

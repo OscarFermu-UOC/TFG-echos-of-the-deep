@@ -2,10 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://b1wf6ueqbxmjq" path="res://theme/regular_font.tres" id="1_fnijo"]
 [ext_resource type="StyleBox" uid="uid://dd2144855ixb7" path="res://theme/card_common.tres" id="2_6lcf5"]
-[ext_resource type="Texture2D" uid="uid://c0jlk7xk2x4h2" path="res://assets/sprites/player/default_character.png" id="2_okxtm"]
 [ext_resource type="Script" uid="uid://b1vtmhb1x01yh" path="res://scenes/card/base_card.gd" id="2_u2tlh"]
 [ext_resource type="StyleBox" uid="uid://73b0yy0www8t" path="res://theme/card_rare.tres" id="4_b7wc3"]
 [ext_resource type="StyleBox" uid="uid://frk047sk17h2" path="res://theme/card_epic.tres" id="5_ktr3p"]
+[ext_resource type="Texture2D" uid="uid://ds3jcwbvyapi4" path="res://assets/sprites/hud/clank.png" id="6_6lcf5"]
 
 [node name="BaseCard" type="PanelContainer"]
 clip_contents = true
@@ -33,7 +33,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("2_okxtm")
+texture = ExtResource("6_6lcf5")
 expand_mode = 1
 stretch_mode = 5
 
@@ -57,7 +57,7 @@ layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true
 text = "Cost: 5
-Cost: 50"
+0Cost: 50"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
