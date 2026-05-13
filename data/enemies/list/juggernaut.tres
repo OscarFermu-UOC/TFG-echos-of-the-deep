@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://dbseocnh0mpj8"]
+
+[ext_resource type="Script" uid="uid://plqrdsdje3s1" path="res://data/enemies/enemy_stats.gd" id="1_npoah"]
+[ext_resource type="Texture2D" uid="uid://clk6sagbj6dix" path="res://assets/sprites/enemy/juggernaut.png" id="2_jcewj"]
+
+[resource]
+script = ExtResource("1_npoah")
+name = "Juggernaut"
+texture = ExtResource("2_jcewj")
+max_health = 40
+damage = 5
+move_speed = 30.0
+attack_range = 20.0
+metadata/_custom_type_script = "uid://plqrdsdje3s1"

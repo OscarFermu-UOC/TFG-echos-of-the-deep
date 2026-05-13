@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://4m228n4v618"]
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://4m228n4v618"]
 
 [ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_bcgtq"]
+[ext_resource type="Texture2D" uid="uid://dhx1o5au0xrxa" path="res://assets/sprites/upgrades/quantum_cpu.png" id="1_uwke0"]
 
 [resource]
 script = ExtResource("1_bcgtq")
 id = "card_cooldown_reduction"
 title = "Quantum CPU"
+icon = ExtResource("1_uwke0")
 description = "Reduces the time between cards"
 stat_preview = "+10% Cast Speed"

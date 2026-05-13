@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="RelicData" load_steps=2 format=3 uid="uid://csun3mq87dhca"]
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://csun3mq87dhca"]
 
 [ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_a214a"]
+[ext_resource type="Texture2D" uid="uid://d1n0tur2onf2h" path="res://assets/sprites/relics/free_reroll.png" id="1_d5d51"]
 
 [resource]
 script = ExtResource("1_a214a")
 id = "free_reroll"
 title = "Free Reroll"
+icon = ExtResource("1_d5d51")
 description = "Get a free reroll in the following shops this run"
 cost = 10
 type = 1

@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="RelicData" load_steps=2 format=3 uid="uid://bg7f3cg3bnm6m"]
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://bg7f3cg3bnm6m"]
 
+[ext_resource type="Texture2D" uid="uid://sxx7ggintt42" path="res://assets/sprites/relics/mouse_light.png" id="1_m5lc0"]
 [ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_wyp0j"]
 
 [resource]
 script = ExtResource("1_wyp0j")
 id = "mouse_light"
 title = "Extra Light"
+icon = ExtResource("1_m5lc0")
 description = "Shed light with the mouse"
 cost = 10
 type = 1

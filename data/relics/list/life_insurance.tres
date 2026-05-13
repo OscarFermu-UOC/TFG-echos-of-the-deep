@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="RelicData" load_steps=2 format=3 uid="uid://gp8vyaxmdb86"]
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://gp8vyaxmdb86"]
 
 [ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_tr0e1"]
+[ext_resource type="Texture2D" uid="uid://km0ivo485c4n" path="res://assets/sprites/relics/life_insurance.png" id="1_yx5b2"]
 
 [resource]
 script = ExtResource("1_tr0e1")
 id = "life_insurance"
 title = "Life Insurance"
+icon = ExtResource("1_yx5b2")
 description = "Keep 50% of the gold when you die"
 cost = 10
 type = 1

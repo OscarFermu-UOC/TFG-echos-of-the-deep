@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://gdxnaenf8f87"]
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://gdxnaenf8f87"]
 
+[ext_resource type="Texture2D" uid="uid://dh1l273qjtysj" path="res://assets/sprites/upgrades/reinforced_armor.png" id="1_dlcqd"]
 [ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_yv8k7"]
 
 [resource]
 script = ExtResource("1_yv8k7")
 id = "max_health"
 title = "Reinforced Armor"
+icon = ExtResource("1_dlcqd")
 description = "Increases your max health"

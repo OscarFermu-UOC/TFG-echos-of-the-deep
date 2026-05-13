@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="RelicData" load_steps=2 format=3 uid="uid://xq08571avd42"]
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://xq08571avd42"]
 
 [ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_4f4fe"]
+[ext_resource type="Texture2D" uid="uid://b3i8amsvmno2v" path="res://assets/sprites/relics/vampirism.png" id="1_mks0s"]
 
 [resource]
 script = ExtResource("1_4f4fe")
 id = "vampirism"
 title = "Vampirism"
+icon = ExtResource("1_mks0s")
 description = "Heal half a heart every time you kill an enemy"
 cost = 10
 type = 1

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=12 format=3 uid="uid://bvw7rt5rvloii"]
+
+[ext_resource type="Texture2D" uid="uid://8io1gpitmrtn" path="res://assets/sprites/player/thief.png" id="1_wpor8"]
+[ext_resource type="Script" uid="uid://dswjbq3bld624" path="res://data/characters/character_class.gd" id="2_o3m1l"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="3_cyrvy"]
+[ext_resource type="Resource" uid="uid://di7g7k7tci0jn" path="res://data/weapons/list/shotgun.tres" id="4_2l4sq"]
+[ext_resource type="Resource" uid="uid://bc4luw38h8qor" path="res://data/cards/deck/duct_tape.tres" id="4_exuc2"]
+[ext_resource type="Resource" uid="uid://8ctrkrn641h3" path="res://data/cards/deck/energy_drink.tres" id="5_4xgdo"]
+[ext_resource type="Resource" uid="uid://xxlwtlvdsd55" path="res://data/cards/deck/rock_throw.tres" id="6_bcb61"]
+[ext_resource type="Resource" uid="uid://cne11hq2pyb22" path="res://data/cards/deck/rusty_padlock.tres" id="7_08gpn"]
+[ext_resource type="Resource" uid="uid://b2mjlurmva7w" path="res://data/cards/deck/treasure_hunter.tres" id="8_08gpn"]
+[ext_resource type="Resource" uid="uid://1rlcjwb1ylc5" path="res://data/cards/deck/eerie_silence.tres" id="9_nom0l"]
+[ext_resource type="Resource" uid="uid://77a2m2gjmtqb" path="res://data/cards/deck/greedy_bag.tres" id="10_y6wyx"]
+
+[resource]
+script = ExtResource("2_o3m1l")
+id = "thief"
+char_name = "The Thief"
+portrait = ExtResource("1_wpor8")
+unlock_cost = 5
+max_health = 80
+walk_speed = 50.0
+run_speed = 110.0
+roll_duration = 0.3
+roll_cooldown = 0.6
+noise_distance_threshold = 300.0
+starting_weapon = ExtResource("4_2l4sq")
+starting_deck = Array[ExtResource("3_cyrvy")]([ExtResource("4_exuc2"), ExtResource("5_4xgdo"), ExtResource("6_bcb61"), ExtResource("7_08gpn"), ExtResource("8_08gpn"), ExtResource("9_nom0l"), ExtResource("10_y6wyx")])
+metadata/_custom_type_script = "uid://dswjbq3bld624"

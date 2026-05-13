@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=10 format=3 uid="uid://28meoeyrxa5q"]
+
+[ext_resource type="Texture2D" uid="uid://dmrpwc06ooks" path="res://assets/sprites/player/survivor.png" id="1_hwd25"]
+[ext_resource type="Script" uid="uid://dswjbq3bld624" path="res://data/characters/character_class.gd" id="2_st0yj"]
+[ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="3_k2qf0"]
+[ext_resource type="Resource" uid="uid://bc4luw38h8qor" path="res://data/cards/deck/duct_tape.tres" id="4_idfpk"]
+[ext_resource type="Resource" uid="uid://8ctrkrn641h3" path="res://data/cards/deck/energy_drink.tres" id="5_qtjq7"]
+[ext_resource type="Resource" uid="uid://xxlwtlvdsd55" path="res://data/cards/deck/rock_throw.tres" id="7_fgmiu"]
+[ext_resource type="Resource" uid="uid://b2mjlurmva7w" path="res://data/cards/deck/treasure_hunter.tres" id="8_xkc4i"]
+[ext_resource type="Resource" uid="uid://cne11hq2pyb22" path="res://data/cards/deck/rusty_padlock.tres" id="9_cve8q"]
+[ext_resource type="Resource" uid="uid://cmtp8ghkt8j6w" path="res://data/weapons/list/pistol.tres" id="10_w8562"]
+
+[resource]
+script = ExtResource("2_st0yj")
+id = "survivor"
+char_name = "The Survivor"
+portrait = ExtResource("1_hwd25")
+roll_duration = 0.2
+starting_weapon = ExtResource("10_w8562")
+starting_deck = Array[ExtResource("3_k2qf0")]([ExtResource("4_idfpk"), ExtResource("5_qtjq7"), ExtResource("9_cve8q"), ExtResource("7_fgmiu"), ExtResource("8_xkc4i")])
+metadata/_custom_type_script = "uid://dswjbq3bld624"

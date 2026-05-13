@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=3 format=3 uid="uid://dt5mjuisuniwa"]
+
+[ext_resource type="Script" uid="uid://bj6v8p5p2wnl1" path="res://data/artifacts/artifact_data.gd" id="1_8dpvv"]
+[ext_resource type="Texture2D" uid="uid://dyuspitphfq5h" path="res://assets/sprites/artifacts/foremans_mask.png" id="1_b5vu1"]
+
+[resource]
+script = ExtResource("1_8dpvv")
+title = "Foreman's Mask"
+icon = ExtResource("1_b5vu1")
+value = 15

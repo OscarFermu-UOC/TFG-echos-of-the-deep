@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://h8dpkh2sgqum"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://h8dpkh2sgqum"]
 
 [ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_4icmr"]
 [ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_4tuot"]
+[ext_resource type="Texture2D" uid="uid://ckcthg2pqfa14" path="res://assets/sprites/cards/quick_draw.png" id="2_tdasm"]
 
 [sub_resource type="Resource" id="Resource_4icmr"]
 script = ExtResource("1_4icmr")
@@ -14,6 +15,7 @@ script = ExtResource("2_4tuot")
 id = "quick_draw"
 title = "Quick Draw"
 description = "Draw 2 cards"
+icon = ExtResource("2_tdasm")
 rarity = 1
 max_copies = 2
 effects = Array[ExtResource("1_4icmr")]([SubResource("Resource_4icmr")])

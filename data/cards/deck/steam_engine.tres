@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://cfgnagrgaxusx"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://cfgnagrgaxusx"]
 
 [ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_2d1ir"]
+[ext_resource type="Texture2D" uid="uid://b53xocpeq64u3" path="res://assets/sprites/cards/steam_engine.png" id="2_6hroi"]
 [ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_yqrso"]
 
 [sub_resource type="Resource" id="Resource_2d1ir"]
@@ -15,5 +16,7 @@ script = ExtResource("2_yqrso")
 id = "steam_engine"
 title = "Steam Engine"
 description = "Add speed for each Hazard Block lost (max 5)"
+icon = ExtResource("2_6hroi")
 rarity = 1
+max_copies = 2
 effects = Array[ExtResource("1_2d1ir")]([SubResource("Resource_2d1ir")])

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" load_steps=4 format=3 uid="uid://pb62r1al7y10"]
+
+[ext_resource type="PackedScene" uid="uid://dvradrqgy4ibn" path="res://scenes/enemy/enemy_melee.tscn" id="1_fn8a5"]
+[ext_resource type="Script" uid="uid://beirn45gwpo74" path="res://data/enemies/enemy_spawn_data.gd" id="2_afvqc"]
+[ext_resource type="Resource" uid="uid://c2m54r524r8id" path="res://data/enemies/list/mutant.tres" id="3_ilvsp"]
+
+[resource]
+script = ExtResource("2_afvqc")
+enemy_scene = ExtResource("1_fn8a5")
+name = "Mutant"
+stats = ExtResource("3_ilvsp")
+min_cycle = 2
+base_weight = 20.0

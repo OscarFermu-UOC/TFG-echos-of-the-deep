@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://dv4wnp6m3ydev"]
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://dv4wnp6m3ydev"]
 
 [ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_3u33c"]
+[ext_resource type="Texture2D" uid="uid://c076c3btmxukf" path="res://assets/sprites/upgrades/reflexes.png" id="1_ty5rq"]
 
 [resource]
 script = ExtResource("1_3u33c")
 id = "roll_cooldown"
 title = "Reflexes"
+icon = ExtResource("1_ty5rq")
 description = "Reduces the time between rolls"
 stat_preview = "-0.1s roll cooldown"

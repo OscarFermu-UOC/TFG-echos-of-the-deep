@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=3 format=3 uid="uid://frxkm80xho0u"]
+
+[ext_resource type="Texture2D" uid="uid://bcrn7fifro6a4" path="res://assets/sprites/artifacts/corrupted_cube.png" id="1_2pvg1"]
+[ext_resource type="Script" uid="uid://bj6v8p5p2wnl1" path="res://data/artifacts/artifact_data.gd" id="1_b8ngy"]
+
+[resource]
+script = ExtResource("1_b8ngy")
+title = "Corrupted Data Cube"
+icon = ExtResource("1_2pvg1")
+value = 20

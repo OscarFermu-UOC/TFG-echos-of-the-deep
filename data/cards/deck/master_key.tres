@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://dacstn772leyx"]
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://dacstn772leyx"]
 
 [ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_cnrq3"]
+[ext_resource type="Texture2D" uid="uid://vtqemj5jreqm" path="res://assets/sprites/cards/master_key.png" id="2_d5hbo"]
 [ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_vjpk5"]
 
 [sub_resource type="Resource" id="Resource_cnrq3"]
@@ -25,5 +26,6 @@ script = ExtResource("2_vjpk5")
 id = "master_key"
 title = "Master Key"
 description = "Adds 10 Clank Block, 20% move speed and generates 5 Loot"
+icon = ExtResource("2_d5hbo")
 rarity = 2
 effects = Array[ExtResource("1_cnrq3")]([SubResource("Resource_cnrq3"), SubResource("Resource_vjpk5"), SubResource("Resource_d5hbo")])

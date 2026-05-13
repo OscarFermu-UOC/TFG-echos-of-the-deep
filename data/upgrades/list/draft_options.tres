@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://bijisdlld2igh"]
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://bijisdlld2igh"]
 
 [ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_el0bv"]
+[ext_resource type="Texture2D" uid="uid://dvjrld702pei2" path="res://assets/sprites/upgrades/extra_RAM.png" id="1_vuaso"]
 
 [resource]
 script = ExtResource("1_el0bv")
 id = "draft_options"
 title = "Extra RAM Slot"
+icon = ExtResource("1_vuaso")
 description = "Increases the number of cards drafted"
 max_level = 2
 base_cost = 4

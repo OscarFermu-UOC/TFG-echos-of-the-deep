@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=3 format=3 uid="uid://d06bx1ct2udcd"]
+
+[ext_resource type="Script" uid="uid://bj6v8p5p2wnl1" path="res://data/artifacts/artifact_data.gd" id="1_al8jd"]
+[ext_resource type="Texture2D" uid="uid://do7fi4mdh5v30" path="res://assets/sprites/artifacts/eternal_battery.png" id="1_bejae"]
+
+[resource]
+script = ExtResource("1_al8jd")
+title = "Eternal Battery"
+icon = ExtResource("1_bejae")
+value = 10

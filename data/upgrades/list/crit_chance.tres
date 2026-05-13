@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://dk4bijss4n017"]
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://dk4bijss4n017"]
 
+[ext_resource type="Texture2D" uid="uid://curx5g0lditv6" path="res://assets/sprites/upgrades/laser_sight.png" id="1_3myrc"]
 [ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_31c3v"]
 
 [resource]
 script = ExtResource("1_31c3v")
 id = "crit_chance"
 title = "Laser Sight"
+icon = ExtResource("1_3myrc")
 description = "Increases the probability of a crit attack"
 max_level = 10
 stat_preview = "+5% Crit Chance"

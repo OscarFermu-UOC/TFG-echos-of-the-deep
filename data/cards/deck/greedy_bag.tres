@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://77a2m2gjmtqb"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://77a2m2gjmtqb"]
 
 [ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_gy67m"]
 [ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_v7q7m"]
+[ext_resource type="Texture2D" uid="uid://686qabev1ixa" path="res://assets/sprites/cards/greedy_bag.png" id="2_voffw"]
 
 [sub_resource type="Resource" id="Resource_gy67m"]
 script = ExtResource("1_gy67m")
@@ -15,4 +16,7 @@ script = ExtResource("2_v7q7m")
 id = "greedy_bag"
 title = "Greedy Bag"
 description = "Generates 1 loot. If you have more than 5 clank block, generates 3 loot."
+icon = ExtResource("2_voffw")
+rarity = 1
+max_copies = 2
 effects = Array[ExtResource("1_gy67m")]([SubResource("Resource_gy67m")])

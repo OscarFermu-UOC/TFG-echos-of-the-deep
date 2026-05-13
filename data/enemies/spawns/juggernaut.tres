@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" load_steps=4 format=3 uid="uid://dcller0rhgim5"]
+
+[ext_resource type="PackedScene" uid="uid://dvradrqgy4ibn" path="res://scenes/enemy/enemy_melee.tscn" id="1_4p1lp"]
+[ext_resource type="Script" uid="uid://beirn45gwpo74" path="res://data/enemies/enemy_spawn_data.gd" id="1_xdphi"]
+[ext_resource type="Resource" uid="uid://dbseocnh0mpj8" path="res://data/enemies/list/juggernaut.tres" id="3_fakfn"]
+
+[resource]
+script = ExtResource("1_xdphi")
+enemy_scene = ExtResource("1_4p1lp")
+name = "Juggernaut"
+stats = ExtResource("3_fakfn")

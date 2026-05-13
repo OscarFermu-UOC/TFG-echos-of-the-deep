@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=3 format=3 uid="uid://bxq0jv7x0s4iw"]
+
+[ext_resource type="Script" uid="uid://bj6v8p5p2wnl1" path="res://data/artifacts/artifact_data.gd" id="1_6afqm"]
+[ext_resource type="Texture2D" uid="uid://cc3vps3yo2k42" path="res://assets/sprites/artifacts/silent_heart.png" id="1_tctu4"]
+
+[resource]
+script = ExtResource("1_6afqm")
+title = "Silent Heart"
+icon = ExtResource("1_tctu4")
+value = 40

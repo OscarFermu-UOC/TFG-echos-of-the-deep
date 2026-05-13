@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://d3u3phxtc18xl"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://d3u3phxtc18xl"]
 
 [ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_ay142"]
+[ext_resource type="Texture2D" uid="uid://c2ebktuglmimx" path="res://assets/sprites/cards/panic_converter.png" id="2_hx0yc"]
 [ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_rp2g8"]
 
 [sub_resource type="Resource" id="Resource_ay142"]
@@ -14,5 +15,6 @@ script = ExtResource("2_rp2g8")
 id = "panic_converter"
 title = "Panic Converter"
 description = "Get 5% speed for each Clank Block lost"
+icon = ExtResource("2_hx0yc")
 rarity = 2
 effects = Array[ExtResource("1_ay142")]([SubResource("Resource_ay142")])

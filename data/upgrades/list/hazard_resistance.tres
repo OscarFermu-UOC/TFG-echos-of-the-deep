@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://d2r5te1onf0f6"]
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://d2r5te1onf0f6"]
 
 [ext_resource type="Script" uid="uid://v54jrmcyvjnn" path="res://data/upgrades/upgrade_data.gd" id="1_3byi2"]
+[ext_resource type="Texture2D" uid="uid://bkwekr2pysm2t" path="res://assets/sprites/upgrades/danger_sense.png" id="1_nued0"]
 
 [resource]
 script = ExtResource("1_3byi2")
 id = "hazard_resistance"
 title = "Danger Sense"
+icon = ExtResource("1_nued0")
 description = "Increases the time between hazard generation"
 stat_preview = "+1s Hazard speed"

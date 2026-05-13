@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=3 format=3 uid="uid://dtewtf87ittkg"]
+
+[ext_resource type="Texture2D" uid="uid://ctjihv42n3cgl" path="res://assets/sprites/artifacts/fossilized_gear.png" id="1_0x6im"]
+[ext_resource type="Script" uid="uid://bj6v8p5p2wnl1" path="res://data/artifacts/artifact_data.gd" id="1_uya6v"]
+
+[resource]
+script = ExtResource("1_uya6v")
+title = "Fossilized Gear"
+icon = ExtResource("1_0x6im")
+value = 5

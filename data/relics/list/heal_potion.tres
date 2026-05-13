@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="RelicData" load_steps=2 format=3 uid="uid://dgxxhuar30ciw"]
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://dgxxhuar30ciw"]
 
+[ext_resource type="Texture2D" uid="uid://bimwugxuvvcwt" path="res://assets/sprites/relics/heal_potion.png" id="1_5e33s"]
 [ext_resource type="Script" uid="uid://d13dob0bkwb03" path="res://data/relics/relic_data.gd" id="1_fn5qp"]
 
 [resource]
 script = ExtResource("1_fn5qp")
 id = "heal"
 title = "Heal Potion"
+icon = ExtResource("1_5e33s")
 description = "Heals 1 heart"
 cost = 5
 stat_value = 20.0

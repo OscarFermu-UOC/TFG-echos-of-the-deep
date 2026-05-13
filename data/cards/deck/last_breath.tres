@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://71k56ovmu2y0"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://71k56ovmu2y0"]
 
 [ext_resource type="Script" uid="uid://cdp02l1gst5us" path="res://data/cards/card_effect.gd" id="1_glpxh"]
+[ext_resource type="Texture2D" uid="uid://dcsoxc1hvi8ah" path="res://assets/sprites/cards/last_breath.png" id="2_4khbe"]
 [ext_resource type="Script" uid="uid://nisejxogkmv" path="res://data/cards/card_data.gd" id="2_dkgla"]
 
 [sub_resource type="Resource" id="Resource_dkgla"]
@@ -15,5 +16,7 @@ script = ExtResource("2_dkgla")
 id = "last_breath"
 title = "Last Breath"
 description = "Add 2 Clank Block for each missing heart"
+icon = ExtResource("2_4khbe")
 rarity = 1
+max_copies = 2
 effects = Array[ExtResource("1_glpxh")]([SubResource("Resource_dkgla")])
