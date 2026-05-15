@@ -78,7 +78,7 @@ func start_new_run() -> void:
 
 	_generate_dungeon_level(stage)
 	_update_compass_logic()
-
+	
 	var upgrades: Dictionary = GlobalData.save_file.unlocked_upgrades
 	card_manager.set_speed_modifier(upgrades.get(UpgradeIDs.CARD_COOLDOWN, 0))
 	card_manager.start_deck_cycle(GlobalData.current_run_deck)
@@ -140,7 +140,7 @@ func _on_run_successful(artifact: ArtifactData) -> void:
 	GlobalData.current_player_hp = %Player.current_health
 	GlobalData.temp_run_gold += loot_manager.coins + artifact.value
 	GlobalData.save()
-	get_tree().change_scene_to_file(SCENE_ELEVATOR)
+	SceneTransition.change_scene_to_file(SCENE_ELEVATOR)
  
 func _on_artifact_picked_up(artifact: ArtifactData) -> void:
 	GlobalData.is_ascending = true
@@ -164,7 +164,7 @@ func _on_player_died() -> void:
 	GlobalData.save()
  
 	await get_tree().create_timer(DEATH_PAUSE_DURATION, true, false, true).timeout
-	get_tree().change_scene_to_file(SCENE_GAME_OVER)
+	SceneTransition.change_scene_to_file(SCENE_GAME_OVER)
  
 func _on_hunter_summon() -> void:
 	map_generator.spawn_hunter()

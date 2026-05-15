@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://p4sn0r4j4ecw"]
 
 [ext_resource type="Script" uid="uid://dbkgmrs5qj62m" path="res://scenes/player/player_projectile.gd" id="1_2g36u"]
+[ext_resource type="Texture2D" uid="uid://hajy6xb0x2m8" path="res://assets/sprites/player/bullet.png" id="2_cixeb"]
 [ext_resource type="AudioStream" uid="uid://mxa35u6kryrd" path="res://assets/sounds/enemy/ranged_attack.mp3" id="2_javh7"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rvm7w"]
-size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvm7w"]
 size = Vector2(8, 8)
 
 [node name="PlayerProjectile" type="Area2D"]
+modulate = Color(0.3553136, 0.35531354, 0.35531357, 1)
+scale = Vector2(0.5, 0.5)
 collision_layer = 32
 collision_mask = 17
 script = ExtResource("1_2g36u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_rvm7w")
+texture = ExtResource("2_cixeb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rvm7w")

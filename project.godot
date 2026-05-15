@@ -11,15 +11,18 @@ config_version=5
 [application]
 
 config/name="Echos of the Deep"
-run/main_scene="uid://cm0mwo4u1mcpc"
+run/main_scene="uid://buuwqrj8aep8m"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
-EventBus="*res://globals/events.gd"
 GlobalData="*res://globals/global_data.gd"
+EventBus="*res://globals/events.gd"
+SceneTransition="*res://globals/scene_transition/scene_transition.tscn"
 CardDatabase="*res://globals/card_database/card_database.tscn"
 RelicDatabase="*res://globals/relic_database/relic_database.tscn"
+Tooltip="*res://ui/tooltip/tooltip.tscn"
+PostProcess="*res://ui/post_process/post_process.tscn"
 
 [debug]
 

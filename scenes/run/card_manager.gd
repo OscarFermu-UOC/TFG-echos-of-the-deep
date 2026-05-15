@@ -64,7 +64,7 @@ func start_deck_cycle(initial_deck: Array[CardData]) -> void:
  
 	is_drawing = false
 	draw_timer = 0.0
-	
+ 
 func set_speed_modifier(level: int) -> void:
 	# Reducimos el cooldown un porcentaje fijo por nivel, con un mínimo para evitar robo instantáneo
 	cooldown_mult = maxf(1.0 - level * UpgradeIDs.CARD_COOLDOWN_VALUE, MIN_COOLDOWN_MULT)

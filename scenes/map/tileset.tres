@@ -1,35 +1,130 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://2vtjuxe3q0q1"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://2pwk4rdwseb1"]
 
-[ext_resource type="Texture2D" uid="uid://cofrro3gkjqqr" path="res://assets/sprites/map/tileset.png" id="1_qv07q"]
+[ext_resource type="Texture2D" uid="uid://croh5iw02ehpl" path="res://assets/sprites/tileset.png" id="1_faav1"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qv07q"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b2jv0"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2hj43"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_swjfp"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_rmtps"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vdlv6"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sjjy0"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_puavq"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0556h"]
-texture = ExtResource("1_qv07q")
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3dhcn"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sxgif"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mcx55"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xvfnf"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_87qe1"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s2ur2"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r6uak"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bs4f"]
+texture = ExtResource("1_faav1")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 1
-0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_qv07q")
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_b2jv0")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
 1:0/0/terrain_set = 0
-1:0/0/terrain = 2
-1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_2hj43")
+1:0/0/terrain = 1
+1:0/0/probability = 0.1
+1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_3dhcn")
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
 2:0/0/terrain_set = 0
-2:0/0/terrain = 0
-2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rmtps")
+2:0/0/terrain = 2
+2:0/0/probability = 0.1
+2:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_87qe1")
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 1
+0:1/0/probability = 0.1
+0:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_swjfp")
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 1
+1:1/0/probability = 0.1
+1:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_sxgif")
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 1
+2:1/0/probability = 0.02
+2:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_s2ur2")
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 1
+0:2/0/probability = 0.1
+0:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_vdlv6")
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/probability = 0.1
+1:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_mcx55")
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/probability = 0.1
+2:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_r6uak")
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 1
+0:3/0/probability = 0.1
+0:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_sjjy0")
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/terrain = 1
+1:3/0/probability = 0.1
+1:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_xvfnf")
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/terrain_set = 0
+2:3/0/terrain = 0
+2:3/0/probability = 0.4
+2:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_puavq")
+0:4/0 = 0
+0:4/0/terrain_set = 0
+0:4/0/terrain = 0
+0:4/0/probability = 0.4
+0:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_puavq")
+1:4/0 = 0
+1:4/0/terrain_set = 0
+1:4/0/terrain = 0
+1:4/0/probability = 0.4
+1:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_puavq")
+2:4/0 = 0
+2:4/0/terrain_set = 0
+2:4/0/terrain = 0
+2:4/0/probability = 0.4
+2:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_puavq")
 
 [resource]
 occlusion_layer_0/light_mask = 1
@@ -43,4 +138,4 @@ terrain_set_0/terrain_1/color = Color(0, 0.5400402, 0.09015376, 1)
 terrain_set_0/terrain_2/name = "Face"
 terrain_set_0/terrain_2/color = Color(0.180498, 0.4154492, 1, 1)
 navigation_layer_0/layers = 2
-sources/0 = SubResource("TileSetAtlasSource_0556h")
+sources/0 = SubResource("TileSetAtlasSource_1bs4f")

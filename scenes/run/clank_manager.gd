@@ -2,6 +2,9 @@
 class_name ClankManager
 extends Node
 
+@onready var _clank_sound: AudioStreamPlayer = $Audio/ClankSound
+@onready var _clank_block_sound: AudioStreamPlayer = $Audio/ClankBlockSound
+
 @export var max_clank: int = 10
 
 var current_clank: int = 0
@@ -13,6 +16,9 @@ func _ready() -> void:
 func add_clank(amount: int = 1) -> void:	
 	if amount <= 0:
 		return
+		
+	if _clank_sound and _clank_sound.stream:
+		_clank_sound.play()
 	
 	# El bloqueo absorbe el ruido entrante antes de que se acumule
 	var initial_amount = amount
@@ -31,6 +37,9 @@ func add_clank(amount: int = 1) -> void:
 func add_clank_block(amount: int) -> void:
 	clank_block = maxi(clank_block + amount, 0)
 	EventBus.clank_block_changed.emit(clank_block)
+	
+	if _clank_block_sound and _clank_block_sound.stream:
+		_clank_block_sound.play()
 
 func reset():
 	current_clank = 0

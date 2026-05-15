@@ -1,45 +1,59 @@
-[gd_scene load_steps=23 format=3 uid="uid://bvljql3o2vdmo"]
+[gd_scene load_steps=33 format=3 uid="uid://bvljql3o2vdmo"]
 
-[ext_resource type="PackedScene" uid="uid://5v41kwv1vpo" path="res://ui/tension_hud/tension_hud.tscn" id="1_y3spc"]
-[ext_resource type="PackedScene" uid="uid://cvcid2omt0xma" path="res://ui/health_hud/health_hud.tscn" id="2_psst2"]
-[ext_resource type="PackedScene" uid="uid://cgo1k0s2wyd1t" path="res://ui/compass_hud/compass_hud.tscn" id="2_x53nd"]
-[ext_resource type="PackedScene" uid="uid://dvhb5r50dlig" path="res://ui/hand_hud/hand_hud.tscn" id="3_kdgoc"]
-[ext_resource type="PackedScene" uid="uid://dbvycnysr8mfw" path="res://ui/block_hud/block_hud.tscn" id="3_ymu0v"]
-[ext_resource type="PackedScene" uid="uid://dur7l4k2kwtfm" path="res://scenes/loot/loot_spawner.tscn" id="4_l6p45"]
+[ext_resource type="PackedScene" uid="uid://cgo1k0s2wyd1t" path="res://ui/compass_hud/compass_hud.tscn" id="1_yeia0"]
+[ext_resource type="PackedScene" uid="uid://dbvycnysr8mfw" path="res://ui/block_hud/block_hud.tscn" id="3_x53nd"]
+[ext_resource type="PackedScene" uid="uid://dvhb5r50dlig" path="res://ui/hand_hud/hand_hud.tscn" id="4_aoa3b"]
 [ext_resource type="PackedScene" uid="uid://dk0w1glmccbiu" path="res://scenes/map/map_generator.tscn" id="5_fo0ly"]
-[ext_resource type="PackedScene" uid="uid://bmerlest64im3" path="res://ui/loot_hud/loot_hud.tscn" id="6_vqexm"]
+[ext_resource type="PackedScene" uid="uid://5v41kwv1vpo" path="res://ui/tension_hud/tension_hud.tscn" id="5_x53nd"]
 [ext_resource type="PackedScene" uid="uid://brhtmr3l7q4oq" path="res://scenes/player/player.tscn" id="6_x53nd"]
 [ext_resource type="Script" uid="uid://dp5ddop7sifs8" path="res://scenes/run/run_manager.gd" id="7_l6p45"]
-[ext_resource type="PackedScene" uid="uid://7iy6al05p7bk" path="res://ui/relic_hud/relic_hud.tscn" id="7_wy2jw"]
+[ext_resource type="PackedScene" uid="uid://bmerlest64im3" path="res://ui/loot_hud/loot_hud.tscn" id="7_ymu0v"]
+[ext_resource type="PackedScene" uid="uid://cvcid2omt0xma" path="res://ui/health_hud/health_hud.tscn" id="8_0pc8y"]
 [ext_resource type="Script" uid="uid://wh7gi8clyc88" path="res://scenes/run/clank_manager.gd" id="8_kdgoc"]
 [ext_resource type="PackedScene" uid="uid://dhlresaxijjg8" path="res://ui/pause_menu/pause_menu.tscn" id="8_wy2jw"]
+[ext_resource type="PackedScene" uid="uid://chs025g8k5n2" path="res://ui/notification_banner/notification_banner.tscn" id="9_0pc8y"]
+[ext_resource type="PackedScene" uid="uid://7iy6al05p7bk" path="res://ui/relic_hud/relic_hud.tscn" id="9_aoa3b"]
 [ext_resource type="Script" uid="uid://t3ddh5tux7et" path="res://scenes/run/card_manager.gd" id="9_cnkn7"]
 [ext_resource type="Script" uid="uid://cmxu2f0k5bkcn" path="res://scenes/run/hazard_manager.gd" id="9_y3spc"]
-[ext_resource type="Script" uid="uid://batg7rvrt556t" path="res://scenes/run/loot_manager.gd" id="10_0pc8y"]
+[ext_resource type="Script" uid="uid://blixplnb7yjjn" path="res://scenes/run/loot_manager.gd" id="10_0pc8y"]
 [ext_resource type="PackedScene" uid="uid://jh5h5r0smod7" path="res://scenes/loot/coin/coin.tscn" id="10_g42ja"]
 [ext_resource type="Script" uid="uid://beirn45gwpo74" path="res://data/enemies/enemy_spawn_data.gd" id="10_u2bn2"]
+[ext_resource type="PackedScene" uid="uid://dur7l4k2kwtfm" path="res://scenes/loot/loot_spawner.tscn" id="11_26or8"]
 [ext_resource type="PackedScene" uid="uid://blbocd3tbl4cs" path="res://scenes/loot/key/key.tscn" id="11_cnkn7"]
-[ext_resource type="Script" uid="uid://cu702a8anfhq" path="res://scenes/run/relic_manager.gd" id="14_fo0ly"]
+[ext_resource type="Resource" uid="uid://dcller0rhgim5" path="res://data/enemies/spawns/juggernaut.tres" id="13_4hft2"]
+[ext_resource type="Resource" uid="uid://pb62r1al7y10" path="res://data/enemies/spawns/mutant.tres" id="14_x5y4b"]
+[ext_resource type="Resource" uid="uid://bu4gqj6kxn3lv" path="res://data/enemies/spawns/stalker.tres" id="15_4ets7"]
 [ext_resource type="Script" uid="uid://fktr7va33frn" path="res://scenes/player/camera.gd" id="18_y3spc"]
+[ext_resource type="AudioStream" uid="uid://cnpfoswkk03fl" path="res://assets/sounds/effects/clank_block.mp3" id="19_aoa3b"]
+[ext_resource type="AudioStream" uid="uid://dn0tow72715um" path="res://assets/sounds/effects/clank.mp3" id="19_hu4rv"]
 [ext_resource type="PackedScene" uid="uid://bqeb7uwvpj7jl" path="res://scenes/loot/ether/ether.tscn" id="21_psst2"]
+[ext_resource type="Script" uid="uid://cu702a8anfhq" path="res://scenes/run/relic_manager.gd" id="21_u2bn2"]
+[ext_resource type="AudioStream" uid="uid://b3tggyifw5sjp" path="res://assets/sounds/effects/hazard.mp3" id="22_26or8"]
+[ext_resource type="AudioStream" uid="uid://bp732a3oj6uyt" path="res://assets/sounds/effects/hazard_block.mp3" id="23_4hft2"]
+[ext_resource type="Script" path="res://scenes/run/damage_label_manager.gd" id="26_0bq42"]
+[ext_resource type="PackedScene" uid="uid://bovptmxw4d0tx" path="res://ui/floating_text/floating_text.tscn" id="27_wgm62"]
 
 [node name="Main" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="TensionHUD" parent="UI" instance=ExtResource("1_y3spc")]
+[node name="TensionHUD" parent="UI" instance=ExtResource("5_x53nd")]
 
-[node name="HealthHUD" parent="UI" instance=ExtResource("2_psst2")]
+[node name="HealthHUD" parent="UI" instance=ExtResource("8_0pc8y")]
+layer = 2
 
-[node name="BlockHUD" parent="UI" instance=ExtResource("3_ymu0v")]
+[node name="BlockHUD" parent="UI" instance=ExtResource("3_x53nd")]
 
-[node name="HandHUD" parent="UI" instance=ExtResource("3_kdgoc")]
+[node name="HandHUD" parent="UI" instance=ExtResource("4_aoa3b")]
 
-[node name="CompassHUD" parent="UI" instance=ExtResource("2_x53nd")]
+[node name="CompassHUD" parent="UI" instance=ExtResource("1_yeia0")]
+layer = 2
 
-[node name="LootHUD" parent="UI" instance=ExtResource("6_vqexm")]
+[node name="LootHUD" parent="UI" instance=ExtResource("7_ymu0v")]
 
-[node name="RelicHUD" parent="UI" instance=ExtResource("7_wy2jw")]
+[node name="RelicHUD" parent="UI" instance=ExtResource("9_aoa3b")]
+
+[node name="NotificationBanner" parent="UI" instance=ExtResource("9_0pc8y")]
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_wy2jw")]
 visible = false
@@ -47,11 +61,12 @@ visible = false
 [node name="MapGenerator" parent="." instance=ExtResource("5_fo0ly")]
 unique_name_in_owner = true
 z_index = -2
+position = Vector2(2, 0)
 map_width = 60
 map_height = 40
 room_count = 12
-loot_scene = ExtResource("4_l6p45")
-possible_enemies = Array[ExtResource("10_u2bn2")]([])
+loot_scene = ExtResource("11_26or8")
+possible_enemies = Array[ExtResource("10_u2bn2")]([ExtResource("13_4hft2"), ExtResource("14_x5y4b"), ExtResource("15_4ets7")])
 chance_increase_per_stage = 0.1
 
 [node name="Player" parent="." instance=ExtResource("6_x53nd")]
@@ -70,17 +85,43 @@ script = ExtResource("7_l6p45")
 [node name="ClankManager" type="Node" parent="RunManager"]
 script = ExtResource("8_kdgoc")
 
+[node name="Audio" type="Node2D" parent="RunManager/ClankManager"]
+
+[node name="ClankSound" type="AudioStreamPlayer" parent="RunManager/ClankManager/Audio"]
+stream = ExtResource("19_hu4rv")
+bus = &"SFX"
+
+[node name="ClankBlockSound" type="AudioStreamPlayer" parent="RunManager/ClankManager/Audio"]
+stream = ExtResource("19_aoa3b")
+bus = &"SFX"
+
 [node name="HazardManager" type="Node" parent="RunManager"]
 script = ExtResource("9_y3spc")
+hazard_interval = 10.0
+
+[node name="Audio" type="Node2D" parent="RunManager/HazardManager"]
+
+[node name="HazardSound" type="AudioStreamPlayer" parent="RunManager/HazardManager/Audio"]
+stream = ExtResource("22_26or8")
+bus = &"SFX"
+
+[node name="HazardBlockSound" type="AudioStreamPlayer" parent="RunManager/HazardManager/Audio"]
+stream = ExtResource("23_4hft2")
+bus = &"SFX"
 
 [node name="CardManager" type="Node" parent="RunManager"]
 script = ExtResource("9_cnkn7")
 
 [node name="LootManager" type="Node" parent="RunManager"]
 script = ExtResource("10_0pc8y")
+spawn_chance = 0.5
 coin_scene = ExtResource("10_g42ja")
 key_scene = ExtResource("11_cnkn7")
 ether_scene = ExtResource("21_psst2")
 
 [node name="RelicManager" type="Node" parent="RunManager"]
-script = ExtResource("14_fo0ly")
+script = ExtResource("21_u2bn2")
+
+[node name="DamageLabelManager" type="Node" parent="RunManager"]
+script = ExtResource("26_0bq42")
+floating_text_scene = ExtResource("27_wgm62")

@@ -1,6 +1,9 @@
 # Gestiona el nivel de peligro ambiental: sube periódicamente y puede ser bloqueado por cartas.
 class_name HazardManager
 extends Node
+
+@onready var _hazard_sound: AudioStreamPlayer = $Audio/HazardSound
+@onready var _hazard_block_sound: AudioStreamPlayer = $Audio/HazardBlockSound
  
 @export var max_hazard: int = 100
 @export var hazard_interval: float = 5.0 # Segundos entre incrementos automáticos
@@ -37,10 +40,16 @@ func add_hazard(amount: int = 1) -> void:
 
 	EventBus.hazard_changed.emit(current_hazard, max_hazard)
 	EventBus.hazard_block_changed.emit(hazard_block)
+	
+	if _hazard_sound and _hazard_sound.stream:
+		_hazard_sound.play()
 		
 func add_hazard_block(amount: int) -> void:
 	hazard_block = maxi(hazard_block + amount, 0)
 	EventBus.hazard_block_changed.emit(hazard_block)
+	
+	if _hazard_block_sound and _hazard_block_sound.stream:
+		_hazard_block_sound.play()
 
 func reset():
 	current_hazard = 0

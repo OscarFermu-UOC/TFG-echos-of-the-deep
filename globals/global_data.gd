@@ -23,7 +23,7 @@ var current_run_deck: Array[CardData] = []
 var temp_run_gold: int = 0
 var temp_run_ether: int = 0
 var current_cycle: int = 1
-var current_stage: int = 0
+var current_stage: int = 1
 var current_player_hp: int = -1 # -1 significa usar la salud por defecto de la clase
 var current_run_relics: Array[String] = []
 
@@ -47,8 +47,6 @@ var max_clank_reached: bool = false
 # ==========================================================
 func _ready() -> void:
 	_load_or_create_save()
-	save_file.ether = 100
-	save_file.unlocked_upgrades.clear()
 
 # ==========================================================
 # SAVE / LOAD
